@@ -102,4 +102,5 @@ Public Class MainFrm
     Private Sub GeneralToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GeneralToolStripMenuItem.Click
         Settings.ShowDialog()
     End Sub
+
 End Class
