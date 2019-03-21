@@ -15,6 +15,13 @@ Public Class Settings
         upgate.checkinternetconn()
         If upgate.internet = True Then
             upgate.checkupdate("", Label6.Text)
+            If upgate.updateavailable = False Then
+                Label9.Text = "Versi Aplikasi program anda sudah yang terbaru"
+                Button4.Enabled = False
+            End If
+        Else
+            Label9.Text = "Pastikan internet anda terkoneksi"
+            Button4.Enabled = False
         End If
     End Sub
 End Class

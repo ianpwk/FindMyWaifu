@@ -189,7 +189,7 @@ Partial Class Settings
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(190, 52)
+        Me.Button4.Location = New System.Drawing.Point(216, 47)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 0
@@ -199,7 +199,7 @@ Partial Class Settings
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(57, 14)
+        Me.Label5.Location = New System.Drawing.Point(35, 9)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(48, 13)
         Me.Label5.TabIndex = 1
@@ -208,7 +208,7 @@ Partial Class Settings
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(57, 34)
+        Me.Label6.Location = New System.Drawing.Point(35, 29)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(39, 13)
         Me.Label6.TabIndex = 2
@@ -216,7 +216,7 @@ Partial Class Settings
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(190, 153)
+        Me.Button5.Location = New System.Drawing.Point(216, 148)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 0
@@ -226,7 +226,7 @@ Partial Class Settings
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(57, 110)
+        Me.Label7.Location = New System.Drawing.Point(35, 105)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(79, 13)
         Me.Label7.TabIndex = 1
@@ -235,7 +235,7 @@ Partial Class Settings
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(57, 158)
+        Me.Label8.Location = New System.Drawing.Point(35, 153)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(39, 13)
         Me.Label8.TabIndex = 2
@@ -244,7 +244,7 @@ Partial Class Settings
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(57, 57)
+        Me.Label9.Location = New System.Drawing.Point(35, 52)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(39, 13)
         Me.Label9.TabIndex = 3

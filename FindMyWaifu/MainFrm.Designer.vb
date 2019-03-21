@@ -51,6 +51,8 @@ Partial Class MainFrm
         Me.Button1 = New System.Windows.Forms.Button()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.rndno = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
@@ -62,7 +64,7 @@ Partial Class MainFrm
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.Panel1.Controls.Add(Me.RichTextBox1)
         Me.Panel1.Controls.Add(Me.Kasumi)
         Me.Panel1.Controls.Add(Me.ToolStrip1)
@@ -161,36 +163,36 @@ Partial Class MainFrm
         'ConnectToolStripMenuItem
         '
         Me.ConnectToolStripMenuItem.Name = "ConnectToolStripMenuItem"
-        Me.ConnectToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ConnectToolStripMenuItem.Size = New System.Drawing.Size(128, 22)
         Me.ConnectToolStripMenuItem.Text = "Connect..."
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(125, 6)
         '
         'OptionToolStripMenuItem1
         '
         Me.OptionToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GeneralToolStripMenuItem, Me.ToolStripSeparator2, Me.UpdateToolStripMenuItem})
         Me.OptionToolStripMenuItem1.Name = "OptionToolStripMenuItem1"
-        Me.OptionToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.OptionToolStripMenuItem1.Size = New System.Drawing.Size(128, 22)
         Me.OptionToolStripMenuItem1.Text = "Option"
         '
         'GeneralToolStripMenuItem
         '
         Me.GeneralToolStripMenuItem.Name = "GeneralToolStripMenuItem"
-        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GeneralToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.GeneralToolStripMenuItem.Text = "General"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(111, 6)
         '
         'UpdateToolStripMenuItem
         '
         Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(114, 22)
         Me.UpdateToolStripMenuItem.Text = "Update"
         '
         'HelpToolStripMenuItem
@@ -265,13 +267,33 @@ Partial Class MainFrm
         '
         'Timer1
         '
-        Me.Timer1.Interval = 5000
+        Me.Timer1.Interval = 1000
+        '
+        'rndno
+        '
+        Me.rndno.AutoSize = True
+        Me.rndno.Location = New System.Drawing.Point(12, 39)
+        Me.rndno.Name = "rndno"
+        Me.rndno.Size = New System.Drawing.Size(39, 13)
+        Me.rndno.TabIndex = 6
+        Me.rndno.Text = "Label2"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(13, 56)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "Label2"
         '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(517, 366)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.rndno)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
@@ -326,4 +348,6 @@ Partial Class MainFrm
     Friend WithEvents ToolStripButton2 As ToolStripButton
     Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents rndno As Label
+    Friend WithEvents Label2 As Label
 End Class
