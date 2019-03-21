@@ -8,6 +8,8 @@ Public Class MainFrm
     Dim da As OleDbDataAdapter
     Dim ds As DataSet
     Dim R As Integer
+
+    Dim s As Integer
     Dim rn As New Random
     Dim LokasNomorB As String
 
@@ -31,12 +33,12 @@ Public Class MainFrm
 
             Dim dr As OleDbDataReader = cmd.ExecuteReader(CommandBehavior.SingleResult)
             If dr.Read Then
-                Dim S As Integer = dr("NO").ToString
+                s = dr("No").ToString
 
                 R = rn.Next(1, S)
                 rndno.Text = R
             End If
-            'Conn.Close()
+            Conn.Close()
         Catch ex As Exception
             Timer1.Enabled = False
             MessageBox.Show(ex.Message)
@@ -55,12 +57,14 @@ Public Class MainFrm
         'conversi
         Try
             Koneksi()
-            'Conn.Open()
+            Conn.Open()
 
-            Dim cmd1 As OleDbCommand = Conn.CreateCommand
+            Dim cmd1 As New OleDbCommand
+            cmd1 = Conn.CreateCommand
 
-            cmd1.CommandText = "SELECT * form NameWaifu where NO='" + rndno.Text + "';"
-            Dim dr1 As OleDbDataReader = cmd.ExecuteReader(CommandBehavior.SingleResult)
+            cmd1.Parameters.AddWithValue("@id", rndno.Text)
+            cmd1.CommandText = "SELECT * from [NameWaifu] where [No] =@id"
+            Dim dr1 As OleDbDataReader = cmd1.ExecuteReader(CommandBehavior.SingleResult)
 
             If dr1.Read Then
                 Label2.Text = dr1("NameWaifu").ToString

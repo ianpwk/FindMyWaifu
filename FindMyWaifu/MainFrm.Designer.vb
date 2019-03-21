@@ -277,6 +277,7 @@ Partial Class MainFrm
         Me.rndno.Size = New System.Drawing.Size(39, 13)
         Me.rndno.TabIndex = 6
         Me.rndno.Text = "Label2"
+        Me.rndno.Visible = False
         '
         'Label2
         '
@@ -286,6 +287,7 @@ Partial Class MainFrm
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Label2"
+        Me.Label2.Visible = False
         '
         'MainFrm
         '
