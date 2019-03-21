@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>FindMyWaifu.My.MyApplication</StartupObject>
     <RootNamespace>FindMyWaifu</RootNamespace>
-    <AssemblyName>Find My Waifu</AssemblyName>
+    <AssemblyName>FindMyWaifu</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -38,7 +38,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Find My Waifu.xml</DocumentationFile>
+    <DocumentationFile>FindMyWaifu.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -48,7 +48,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Find My Waifu.xml</DocumentationFile>
+    <DocumentationFile>FindMyWaifu.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
