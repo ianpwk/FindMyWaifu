@@ -67,9 +67,6 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoUpdater.NET">
-      <HintPath>..\..\..\..\..\Desktop\net40\AutoUpdater.NET.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetUpdater">
       <HintPath>..\..\..\..\..\Downloads\Compressed\DotNetUpdater.dll</HintPath>
     </Reference>
@@ -149,6 +146,12 @@
     <Compile Include="Settings.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="StartProgram.Designer.vb">
+      <DependentUpon>StartProgram.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StartProgram.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutBox.resx">
@@ -175,6 +178,9 @@
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StartProgram.resx">
+      <DependentUpon>StartProgram.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -191,15 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\c1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kasumi-Toyama-Power-chibi.YfxFAe.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kasumi-Toyama-Power-chibi.NFOyKG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Kasumi-Toyama-Power-chibi.rWnUUV.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\32391-200.png" />
@@ -220,6 +217,18 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kasumi-Toyama-Power-chibi.NFOyKG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kasumi-Toyama-Power-chibi.rWnUUV.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Kasumi-Toyama-Power-chibi.YfxFAe.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -63,16 +63,6 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property _32391_200() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("32391-200", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized resource of type System.Drawing.Bitmap.
-        '''</summary>
         Friend ReadOnly Property c1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("c1", resourceCulture)
@@ -85,7 +75,7 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property Kasumi_Toyama_Power_chibi_NFOyKG() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Kasumi-Toyama-Power-chibi.NFOyKG", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Kasumi_Toyama_Power_chibi_NFOyKG", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -95,7 +85,7 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property Kasumi_Toyama_Power_chibi_rWnUUV() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Kasumi-Toyama-Power-chibi.rWnUUV", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Kasumi_Toyama_Power_chibi_rWnUUV", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -105,7 +95,7 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property Kasumi_Toyama_Power_chibi_YfxFAe() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Kasumi-Toyama-Power-chibi.YfxFAe", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Kasumi_Toyama_Power_chibi_YfxFAe", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

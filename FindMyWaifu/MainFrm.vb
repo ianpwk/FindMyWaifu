@@ -47,7 +47,7 @@ Public Class MainFrm
             KasumiFail.Visible = True
             If ex.Message = "Microsoft.ACE.OLEDB.12.0′ provNomorer Is Not registered on the local machine" Then
                 RichTextBox1.Text = "Silahkan klik tombol di atas"
-                ToolStripButton2.Enabled = True
+                'ToolStripButton2.Enabled = True
             End If
         End Try
     End Sub
@@ -94,7 +94,6 @@ Public Class MainFrm
         ToolStripProgressBar1.Value = "0"
         Button1.Enabled = False
         Timer1.Enabled = True
-        'TextBox1.Text = (ds.Tables("NameWaifu"))
     End Sub
 
     Private Sub MainFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -105,33 +104,17 @@ Public Class MainFrm
         If InternetGetConnectedState(Out, 0) = True Then
             ToolStripStatusLabel1.Text = "Connected"
             ToolStripStatusLabel1.ForeColor = Color.Green
-            ConnectToolStripMenuItem.Checked = True
+            'ConnectToolStripMenuItem.Checked = True
         Else
             ToolStripStatusLabel1.Text = "Disconnected"
             ToolStripStatusLabel1.ForeColor = Color.Red
         End If
     End Sub
 
-    Private Sub ConnectToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConnectToolStripMenuItem.Click
+    Private Sub ConnectToolStripMenuItem_Click(sender As Object, e As EventArgs)
         FormConn.Label1.Text = "Connecting"
         FormConn.ShowDialog()
 
-    End Sub
-
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
-        AboutBox.ShowDialog()
-    End Sub
-
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        MsgBox("Pastikan sesuai dengan system operasi anda (32/64Bit)", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "peringatan")
-        Dim webAddress As String = "https://www.microsoft.com/en-us/download/details.aspx?Nomor=13255"
-        Process.Start(webAddress)
-        Form1.Close()
-    End Sub
-
-    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
-        FormConn.Label1.Text = "Connecting"
-        FormConn.ShowDialog()
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -150,8 +133,16 @@ Public Class MainFrm
         End If
     End Sub
 
-    Private Sub GeneralToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GeneralToolStripMenuItem.Click
+    Private Sub Conn_btn_Click(sender As Object, e As EventArgs) Handles Conn_btn.Click
+        FormConn.Label1.Text = "Connecting"
+        FormConn.ShowDialog()
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Settings.ShowDialog()
     End Sub
 
+    Private Sub AboutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem1.Click
+        AboutBox.ShowDialog()
+    End Sub
 End Class

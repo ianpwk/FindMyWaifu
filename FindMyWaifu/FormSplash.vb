@@ -3,7 +3,11 @@
         ProgressBar1.Value = ProgressBar1.Value + 10
         If ProgressBar1.Value = ProgressBar1.Maximum Then
             Timer1.Enabled = False
-            MainFrm.Show()
+            If My.Settings.StartProgram = True Then
+                StartProgram.Show()
+            Else
+                MainFrm.Show()
+            End If
             Me.Close()
         End If
     End Sub

@@ -13,7 +13,7 @@ Public Class FormConn
             MsgBox("Internet sudah terkoneksi", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Succes")
             MainFrm.ToolStripStatusLabel1.Text = "Connected"
             MainFrm.ToolStripStatusLabel1.ForeColor = Color.Green
-            MainFrm.ConnectToolStripMenuItem.Checked = True
+            'MainFrm.ConnectToolStripMenuItem.Checked = True
             MainFrm.Kasumi.Visible = False
             MainFrm.KasumiFail.Visible = False
             MainFrm.KasumiGo.Visible = True
