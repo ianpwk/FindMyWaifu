@@ -124,7 +124,7 @@ Partial Class FrmAbout
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FrmAbout"
         Me.ShowInTaskbar = False
-        Me.Text = "FrmAbout"
+        Me.Text = "About"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
