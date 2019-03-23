@@ -73,6 +73,16 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized resource of type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property connect() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("connect", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Kasumi_Toyama_Power_chibi_NFOyKG() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Kasumi_Toyama_Power_chibi_NFOyKG", resourceCulture)
@@ -96,6 +106,16 @@ Namespace My.Resources
         Friend ReadOnly Property Kasumi_Toyama_Power_chibi_YfxFAe() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Kasumi_Toyama_Power_chibi_YfxFAe", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized resource of type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property menu() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("menu", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

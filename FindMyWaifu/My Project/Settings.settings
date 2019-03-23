@@ -5,5 +5,11 @@
     <Setting Name="StartProgram" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="NameRemember" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Bahasa" Type="System.String" Scope="User">
+      <Value Profile="(Default)">indonesia</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

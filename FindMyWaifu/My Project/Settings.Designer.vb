@@ -65,6 +65,30 @@ Namespace My
                 Me("StartProgram") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property NameRemember() As Boolean
+            Get
+                Return CType(Me("NameRemember"),Boolean)
+            End Get
+            Set
+                Me("NameRemember") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("indonesia")>  _
+        Public Property Bahasa() As String
+            Get
+                Return CType(Me("Bahasa"),String)
+            End Get
+            Set
+                Me("Bahasa") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

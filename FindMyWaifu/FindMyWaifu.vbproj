@@ -119,6 +119,12 @@
     <Compile Include="FormSplash.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmAbout.Designer.vb">
+      <DependentUpon>FrmAbout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAbout.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MainFrm.Designer.vb">
       <DependentUpon>MainFrm.vb</DependentUpon>
     </Compile>
@@ -165,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSplash.resx">
       <DependentUpon>FormSplash.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAbout.resx">
+      <DependentUpon>FrmAbout.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.vb</DependentUpon>
@@ -229,6 +238,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Kasumi-Toyama-Power-chibi.YfxFAe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connect.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

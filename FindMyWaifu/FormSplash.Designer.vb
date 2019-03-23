@@ -50,6 +50,7 @@ Partial Class FormSplash
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Gray
         Me.Label2.Location = New System.Drawing.Point(16, 230)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(102, 13)
@@ -65,6 +66,7 @@ Partial Class FormSplash
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.BackgroundImage = Global.FindMyWaifu.My.Resources.Resources.c1
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(284, 261)
@@ -76,6 +78,7 @@ Partial Class FormSplash
         Me.Name = "FormSplash"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "FormSplash"
+        Me.TransparencyKey = System.Drawing.Color.Transparent
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

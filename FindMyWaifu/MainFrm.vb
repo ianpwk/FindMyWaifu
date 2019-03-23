@@ -145,4 +145,8 @@ Public Class MainFrm
     Private Sub AboutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem1.Click
         AboutBox.ShowDialog()
     End Sub
+
+    Private Sub ToolStripSplitButton1_ButtonClick(sender As Object, e As EventArgs) Handles ToolStripSplitButton1.ButtonClick
+        ToolStripSplitButton1.ShowDropDown()
+    End Sub
 End Class

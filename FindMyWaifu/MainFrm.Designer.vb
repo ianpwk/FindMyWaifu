@@ -23,12 +23,8 @@ Partial Class MainFrm
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainFrm))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
-        Me.Kasumi = New System.Windows.Forms.PictureBox()
-        Me.KasumiGo = New System.Windows.Forms.PictureBox()
-        Me.KasumiFail = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
@@ -41,19 +37,21 @@ Partial Class MainFrm
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdateToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.Conn_btn = New System.Windows.Forms.ToolStripButton()
+        Me.Kasumi = New System.Windows.Forms.PictureBox()
+        Me.KasumiGo = New System.Windows.Forms.PictureBox()
+        Me.KasumiFail = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
+        Me.ToolStrip2.SuspendLayout()
         CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KasumiFail, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.StatusStrip1.SuspendLayout()
-        Me.ToolStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -76,38 +74,6 @@ Partial Class MainFrm
         Me.RichTextBox1.Size = New System.Drawing.Size(219, 72)
         Me.RichTextBox1.TabIndex = 2
         Me.RichTextBox1.Text = ""
-        '
-        'Kasumi
-        '
-        Me.Kasumi.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
-        Me.Kasumi.Location = New System.Drawing.Point(68, 144)
-        Me.Kasumi.Name = "Kasumi"
-        Me.Kasumi.Size = New System.Drawing.Size(113, 131)
-        Me.Kasumi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.Kasumi.TabIndex = 1
-        Me.Kasumi.TabStop = False
-        '
-        'KasumiGo
-        '
-        Me.KasumiGo.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
-        Me.KasumiGo.Location = New System.Drawing.Point(68, 132)
-        Me.KasumiGo.Name = "KasumiGo"
-        Me.KasumiGo.Size = New System.Drawing.Size(113, 146)
-        Me.KasumiGo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.KasumiGo.TabIndex = 1
-        Me.KasumiGo.TabStop = False
-        Me.KasumiGo.Visible = False
-        '
-        'KasumiFail
-        '
-        Me.KasumiFail.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
-        Me.KasumiFail.Location = New System.Drawing.Point(56, 106)
-        Me.KasumiFail.Name = "KasumiFail"
-        Me.KasumiFail.Size = New System.Drawing.Size(143, 172)
-        Me.KasumiFail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.KasumiFail.TabIndex = 1
-        Me.KasumiFail.TabStop = False
-        Me.KasumiFail.Visible = False
         '
         'StatusStrip1
         '
@@ -199,11 +165,16 @@ Partial Class MainFrm
         Me.ToolStrip2.TabIndex = 9
         Me.ToolStrip2.Text = "ToolStrip2"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
         'ToolStripSplitButton1
         '
         Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripSplitButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.UpdateToolStripMenuItem1, Me.ToolStripSeparator3, Me.AboutToolStripMenuItem1})
-        Me.ToolStripSplitButton1.Image = CType(resources.GetObject("ToolStripSplitButton1.Image"), System.Drawing.Image)
+        Me.ToolStripSplitButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.ToolStripSeparator3, Me.AboutToolStripMenuItem1})
+        Me.ToolStripSplitButton1.Image = Global.FindMyWaifu.My.Resources.Resources.menu
         Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
         Me.ToolStripSplitButton1.Size = New System.Drawing.Size(32, 22)
@@ -212,39 +183,59 @@ Partial Class MainFrm
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
-        '
-        'UpdateToolStripMenuItem1
-        '
-        Me.UpdateToolStripMenuItem1.Name = "UpdateToolStripMenuItem1"
-        Me.UpdateToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
-        Me.UpdateToolStripMenuItem1.Text = "&Update"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(113, 6)
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
         Me.AboutToolStripMenuItem1.Text = "&About"
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
         'Conn_btn
         '
-        Me.Conn_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.Conn_btn.Image = CType(resources.GetObject("Conn_btn.Image"), System.Drawing.Image)
+        Me.Conn_btn.Image = Global.FindMyWaifu.My.Resources.Resources.connect
         Me.Conn_btn.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Conn_btn.Name = "Conn_btn"
-        Me.Conn_btn.Size = New System.Drawing.Size(23, 22)
+        Me.Conn_btn.Size = New System.Drawing.Size(72, 22)
         Me.Conn_btn.Text = "Connect"
+        '
+        'Kasumi
+        '
+        Me.Kasumi.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
+        Me.Kasumi.Location = New System.Drawing.Point(68, 144)
+        Me.Kasumi.Name = "Kasumi"
+        Me.Kasumi.Size = New System.Drawing.Size(113, 131)
+        Me.Kasumi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Kasumi.TabIndex = 1
+        Me.Kasumi.TabStop = False
+        '
+        'KasumiGo
+        '
+        Me.KasumiGo.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
+        Me.KasumiGo.Location = New System.Drawing.Point(68, 132)
+        Me.KasumiGo.Name = "KasumiGo"
+        Me.KasumiGo.Size = New System.Drawing.Size(113, 146)
+        Me.KasumiGo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.KasumiGo.TabIndex = 1
+        Me.KasumiGo.TabStop = False
+        Me.KasumiGo.Visible = False
+        '
+        'KasumiFail
+        '
+        Me.KasumiFail.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
+        Me.KasumiFail.Location = New System.Drawing.Point(56, 106)
+        Me.KasumiFail.Name = "KasumiFail"
+        Me.KasumiFail.Size = New System.Drawing.Size(143, 172)
+        Me.KasumiFail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.KasumiFail.TabIndex = 1
+        Me.KasumiFail.TabStop = False
+        Me.KasumiFail.Visible = False
         '
         'MainFrm
         '
@@ -264,13 +255,13 @@ Partial Class MainFrm
         Me.Name = "MainFrm"
         Me.Text = "Cari Waifu"
         Me.Panel1.ResumeLayout(False)
-        CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KasumiFail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ToolStrip2.ResumeLayout(False)
         Me.ToolStrip2.PerformLayout()
+        CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.KasumiFail, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -295,7 +286,6 @@ Partial Class MainFrm
     Friend WithEvents ToolStrip2 As ToolStrip
     Friend WithEvents ToolStripSplitButton1 As ToolStripSplitButton
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents UpdateToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator

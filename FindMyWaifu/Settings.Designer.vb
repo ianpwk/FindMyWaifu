@@ -22,6 +22,7 @@ Partial Class Settings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -42,6 +43,9 @@ Partial Class Settings
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -60,6 +64,7 @@ Partial Class Settings
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Button7)
         Me.TabPage1.Controls.Add(Me.Label4)
         Me.TabPage1.Controls.Add(Me.Button3)
         Me.TabPage1.Controls.Add(Me.Label3)
@@ -79,7 +84,7 @@ Partial Class Settings
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(117, 153)
+        Me.Label4.Location = New System.Drawing.Point(117, 164)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(177, 26)
         Me.Label4.TabIndex = 7
@@ -87,7 +92,7 @@ Partial Class Settings
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(117, 123)
+        Me.Button3.Location = New System.Drawing.Point(117, 134)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(99, 23)
         Me.Button3.TabIndex = 6
@@ -97,7 +102,7 @@ Partial Class Settings
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(20, 128)
+        Me.Label3.Location = New System.Drawing.Point(20, 139)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(74, 13)
         Me.Label3.TabIndex = 5
@@ -106,7 +111,7 @@ Partial Class Settings
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(77, 67)
+        Me.ComboBox1.Location = New System.Drawing.Point(77, 52)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(186, 21)
         Me.ComboBox1.TabIndex = 4
@@ -115,7 +120,7 @@ Partial Class Settings
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(20, 70)
+        Me.Label2.Location = New System.Drawing.Point(20, 55)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 13)
         Me.Label2.TabIndex = 3
@@ -124,7 +129,7 @@ Partial Class Settings
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(173, 22)
+        Me.RadioButton2.Location = New System.Drawing.Point(173, 15)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(59, 17)
         Me.RadioButton2.TabIndex = 2
@@ -135,7 +140,7 @@ Partial Class Settings
         '
         Me.RadioButton1.AutoSize = True
         Me.RadioButton1.Checked = True
-        Me.RadioButton1.Location = New System.Drawing.Point(77, 22)
+        Me.RadioButton1.Location = New System.Drawing.Point(77, 15)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(71, 17)
         Me.RadioButton1.TabIndex = 1
@@ -146,7 +151,7 @@ Partial Class Settings
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(20, 24)
+        Me.Label1.Location = New System.Drawing.Point(20, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(43, 13)
         Me.Label1.TabIndex = 0
@@ -172,7 +177,7 @@ Partial Class Settings
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(35, 52)
+        Me.Label9.Location = New System.Drawing.Point(98, 57)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(39, 13)
         Me.Label9.TabIndex = 3
@@ -250,12 +255,34 @@ Partial Class Settings
         Me.Button2.Text = "Save And Close"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(12, 234)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(103, 23)
+        Me.Button6.TabIndex = 8
+        Me.Button6.Text = "Reset Setup"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(105, 93)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(121, 23)
+        Me.Button7.TabIndex = 9
+        Me.Button7.Text = "Reset Nama"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        '
         'Settings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(336, 261)
         Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -293,4 +320,7 @@ Partial Class Settings
     Friend WithEvents Label5 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Label9 As Label
+    Friend WithEvents Button7 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Timer1 As Timer
 End Class

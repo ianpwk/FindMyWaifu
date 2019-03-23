@@ -14,7 +14,6 @@ Public Class Settings
             Dim newver As String = sr.ReadToEnd()
             Dim lastver As String = Application.ProductVersion
             Label6.Text = lastver.ToString
-            Label9.Text = newver.ToString
             If newver.ToString > lastver.ToString Then
 
             Else
@@ -22,7 +21,8 @@ Public Class Settings
                 Button4.Enabled = False
             End If
         Catch ex As Exception
-
+            Label9.Text = "Pastikan internet anda terkoneksi"
+            Button4.Enabled = False
         End Try
     End Sub
 
@@ -31,12 +31,19 @@ Public Class Settings
         Button5.Enabled = False
         ComboBox1.Enabled = False
         RadioButton2.Enabled = False
-
-        CheckForUpdates()
+        Label6.Text = Application.ProductVersion
         Label8.Text = versiDatabase
+        Timer1.Enabled = True
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
         Process.Start("https://github.com/ianpwk/FindMyWaifu/releases")
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Label9.Text = "Cek koneksi...."
+        CheckForUpdates()
+
+        Timer1.Enabled = False
     End Sub
 End Class
