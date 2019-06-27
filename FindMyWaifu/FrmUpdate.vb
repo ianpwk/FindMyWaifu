@@ -7,6 +7,7 @@ Public Class FrmUpdate
             Dim sr As System.IO.StreamReader = New System.IO.StreamReader(res.GetResponseStream())
             Dim newver As String = sr.ReadToEnd()
             Dim lastver As String = Application.ProductVersion
+
             Label2.Text = "Update Ver.: " + lastver.ToString
             If newver.ToString > lastver.ToString Then
 

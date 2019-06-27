@@ -61,9 +61,9 @@ Partial Class MainFrm
         Me.Panel1.Controls.Add(Me.Kasumi)
         Me.Panel1.Controls.Add(Me.KasumiGo)
         Me.Panel1.Controls.Add(Me.KasumiFail)
-        Me.Panel1.Location = New System.Drawing.Point(255, 28)
+        Me.Panel1.Location = New System.Drawing.Point(255, 12)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(262, 313)
+        Me.Panel1.Size = New System.Drawing.Size(262, 329)
         Me.Panel1.TabIndex = 0
         '
         'RichTextBox1
@@ -190,6 +190,7 @@ Partial Class MainFrm
         '
         'ToolStrip2
         '
+        Me.ToolStrip2.BackColor = System.Drawing.Color.DimGray
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4, Me.Conn_btn})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip2.Name = "ToolStrip2"

@@ -11,5 +11,8 @@
     <Setting Name="Bahasa" Type="System.String" Scope="User">
       <Value Profile="(Default)">indonesia</Value>
     </Setting>
+    <Setting Name="Theme" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Default</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

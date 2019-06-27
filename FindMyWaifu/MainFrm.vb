@@ -1,6 +1,6 @@
 ﻿Imports System.Data.OleDb
 Imports System.Runtime.InteropServices
-
+Imports FindMyWaifu.ClassTheme
 Public Class MainFrm
     'Mulai
     Dim Conn As OleDbConnection
@@ -88,6 +88,7 @@ Public Class MainFrm
         Else
             e.Cancel = True
         End If
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -109,6 +110,10 @@ Public Class MainFrm
             ToolStripStatusLabel1.Text = "Disconnected"
             ToolStripStatusLabel1.ForeColor = Color.Red
         End If
+
+
+        Dim Colors As New ClassTheme()
+        Colors.changetheme()
     End Sub
 
     Private Sub ConnectToolStripMenuItem_Click(sender As Object, e As EventArgs)

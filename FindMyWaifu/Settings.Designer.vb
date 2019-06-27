@@ -122,7 +122,7 @@ Partial Class Settings
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(186, 21)
         Me.ComboBox1.TabIndex = 4
-        Me.ComboBox1.Text = "Disesuaikan windows"
+        Me.ComboBox1.Text = "Default"
         '
         'Label2
         '
@@ -226,6 +226,7 @@ Partial Class Settings
         '
         'Button1
         '
+        Me.Button1.Enabled = False
         Me.Button1.Location = New System.Drawing.Point(121, 234)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
@@ -235,6 +236,7 @@ Partial Class Settings
         '
         'Button2
         '
+        Me.Button2.Enabled = False
         Me.Button2.Location = New System.Drawing.Point(202, 234)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(117, 23)
