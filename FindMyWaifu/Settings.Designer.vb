@@ -39,7 +39,6 @@ Partial Class Settings
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -171,7 +170,6 @@ Partial Class Settings
         Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.Label7)
         Me.TabPage2.Controls.Add(Me.Button5)
-        Me.TabPage2.Controls.Add(Me.Label5)
         Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -193,7 +191,7 @@ Partial Class Settings
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(35, 29)
+        Me.Label6.Location = New System.Drawing.Point(33, 17)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(172, 13)
         Me.Label6.TabIndex = 2
@@ -216,15 +214,6 @@ Partial Class Settings
         Me.Button5.TabIndex = 0
         Me.Button5.Text = "Update"
         Me.Button5.UseVisualStyleBackColor = True
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(35, 9)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 13)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Versi Apl"
         '
         'Button4
         '
@@ -261,9 +250,6 @@ Partial Class Settings
         Me.Button6.TabIndex = 8
         Me.Button6.Text = "Reset Setup"
         Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Timer1
-        '
         '
         'Settings
         '
@@ -306,7 +292,6 @@ Partial Class Settings
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Button5 As Button
-    Friend WithEvents Label5 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
