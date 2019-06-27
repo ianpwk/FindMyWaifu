@@ -25,6 +25,7 @@ Partial Class Settings
         Me.components = New System.ComponentModel.Container()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -34,7 +35,6 @@ Partial Class Settings
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -44,7 +44,6 @@ Partial Class Settings
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -80,6 +79,15 @@ Partial Class Settings
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "General"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(105, 93)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(121, 23)
+        Me.Button7.TabIndex = 9
+        Me.Button7.Text = "Reset Nama"
+        Me.Button7.UseVisualStyleBackColor = True
         '
         'Label4
         '
@@ -159,7 +167,6 @@ Partial Class Settings
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Label9)
         Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.Label7)
@@ -173,15 +180,6 @@ Partial Class Settings
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Update"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(98, 57)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(39, 13)
-        Me.Label9.TabIndex = 3
-        Me.Label9.Text = "Label9"
         '
         'Label8
         '
@@ -197,9 +195,9 @@ Partial Class Settings
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(35, 29)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(39, 13)
+        Me.Label6.Size = New System.Drawing.Size(172, 13)
         Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Label6"
+        Me.Label6.Text = "Tombol update dipindahkan ke sini"
         '
         'Label7
         '
@@ -230,7 +228,7 @@ Partial Class Settings
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(216, 47)
+        Me.Button4.Location = New System.Drawing.Point(36, 49)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(75, 23)
         Me.Button4.TabIndex = 0
@@ -263,15 +261,6 @@ Partial Class Settings
         Me.Button6.TabIndex = 8
         Me.Button6.Text = "Reset Setup"
         Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Location = New System.Drawing.Point(105, 93)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(121, 23)
-        Me.Button7.TabIndex = 9
-        Me.Button7.Text = "Reset Nama"
-        Me.Button7.UseVisualStyleBackColor = True
         '
         'Timer1
         '
@@ -319,7 +308,6 @@ Partial Class Settings
     Friend WithEvents Button5 As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents Button4 As Button
-    Friend WithEvents Label9 As Label
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Timer1 As Timer

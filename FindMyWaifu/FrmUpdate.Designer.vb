@@ -22,12 +22,14 @@ Partial Class FrmUpdate
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'Label1
@@ -53,24 +55,24 @@ Partial Class FrmUpdate
         Me.RichTextBox1.Enabled = False
         Me.RichTextBox1.Location = New System.Drawing.Point(12, 63)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(137, 152)
+        Me.RichTextBox1.Size = New System.Drawing.Size(159, 152)
         Me.RichTextBox1.TabIndex = 2
         Me.RichTextBox1.Text = ""
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 268)
+        Me.Button1.Location = New System.Drawing.Point(12, 257)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(137, 23)
+        Me.Button1.Size = New System.Drawing.Size(159, 23)
         Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Button1"
+        Me.Button1.Text = "Update"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
         Me.ProgressBar1.Location = New System.Drawing.Point(12, 241)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(137, 21)
+        Me.ProgressBar1.Size = New System.Drawing.Size(159, 10)
         Me.ProgressBar1.TabIndex = 4
         '
         'Label3
@@ -82,19 +84,23 @@ Partial Class FrmUpdate
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Label3"
         '
+        'Timer1
+        '
+        '
         'FrmUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(161, 303)
+        Me.ClientSize = New System.Drawing.Size(183, 285)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.RichTextBox1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FrmUpdate"
-        Me.Text = "FrmUpdate"
+        Me.Text = "Update"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -106,4 +112,5 @@ Partial Class FrmUpdate
     Friend WithEvents Button1 As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Label3 As Label
+    Friend WithEvents Timer1 As Timer
 End Class
