@@ -7,10 +7,6 @@ Public Class FrmUpdate
             Dim newver As String = ""
             Dim desc As String = ""
 
-            'Dim req As System.Net.HttpWebRequest = System.Net.HttpWebRequest.Create("https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21815&authkey=APPoahifAoJiGZo")
-
-            'Dim res As System.Net.HttpWebResponse = req.GetResponse()
-
             While xmlUpdate.Read()
                 Dim type = xmlUpdate.NodeType
                 If xmlUpdate.Name = "version" Then
@@ -20,7 +16,6 @@ Public Class FrmUpdate
                     desc = xmlUpdate.ReadInnerXml.ToString()
                 End If
             End While
-            'Dim sr As System.IO.StreamReader = New System.IO.StreamReader(res.GetResponseStream())
 
             Label2.Text = "Update Ver.: " + newver
             Dim lastver As String = Application.ProductVersion
@@ -43,13 +38,6 @@ Public Class FrmUpdate
     Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Label1.Text = "Curent ver.: " + Application.ProductVersion
         CheckForUpdates()
-    End Sub
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        Label3.Text = "Cek koneksi...."
-
-
-        Timer1.Enabled = False
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

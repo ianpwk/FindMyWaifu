@@ -52,7 +52,7 @@ Public Class Settings
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        Dim resetnama As Integer = MsgBox("Jika klik Yes, anda harus memasukan nama muat ulang" + Chr(13) + "Jika klik No, maka akan membatalkan progess ini", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Anda Yakin?")
+        Dim resetnama As Integer = MsgBox("Jika klik Yes, anda harus memasukan nama saat muat ulang" + Chr(13) + "Jika klik No, maka akan membatalkan progess ini", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Anda Yakin?")
         If resetnama = vbYes Then
             My.Settings.NameRemember = False
             My.Settings.name = ""
