@@ -8,7 +8,15 @@
             Else
                 MainFrm.Show()
             End If
+            Form1.Hide()
             Me.Close()
+        ElseIf ProgressBar1.Value = 10 Then
+            Form1.Hide()
         End If
+
+    End Sub
+
+    Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

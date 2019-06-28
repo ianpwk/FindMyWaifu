@@ -27,8 +27,14 @@ Public Class Settings
         Label8.Text = versiDatabase
         Timer1.Enabled = True
 
+        ComboBox1.Text = My.Settings.Theme
+
         ComboBox1.Items.Add("Default")
         ComboBox1.Items.Add("Dark")
+
+        If My.Settings.NameRemember = False Then
+            Button7.Enabled = False
+        End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -46,7 +52,12 @@ Public Class Settings
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
-        MsgBox("saat ini masih dalam tahap development" + Chr(13) + "tunggu update selanjutnya", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Belum final")
+        Dim resetnama As Integer = MsgBox("Jika klik Yes, anda harus memasukan nama muat ulang" + Chr(13) + "Jika klik No, maka akan membatalkan progess ini", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Anda Yakin?")
+        If resetnama = vbYes Then
+            My.Settings.NameRemember = False
+            My.Settings.name = ""
+            Button7.Enabled = False
+        End If
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click

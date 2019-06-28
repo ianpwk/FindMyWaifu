@@ -98,9 +98,17 @@ Public Class MainFrm
     End Sub
 
     Private Sub MainFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        RichTextBox1.Text = "Hai " + Form1.TextBox1.Text + ", senang berjumpa denganmu!!"
+        Dim Names As String
+        If My.Settings.NameRemember = True Then
+            Names = My.Settings.name
+
+        Else
+            Names = Form1.TextBox1.Text
+        End If
+
+        RichTextBox1.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
         ToolStripStatusLabel2.Text = ""
-        Label1.Text = "Waifu " + Form1.TextBox1.Text + " adalah?"
+        Label1.Text = "Waifu " + Names + " adalah?"
         Dim Out As Integer
         If InternetGetConnectedState(Out, 0) = True Then
             ToolStripStatusLabel1.Text = "Connected"

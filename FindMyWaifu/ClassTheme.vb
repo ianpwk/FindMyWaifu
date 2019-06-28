@@ -16,15 +16,20 @@
 
         MainFrm.BackColor = Color.White
         MainFrm.ForeColor = Color.Black
+
+        MainFrm.StatusStrip1.BackColor = Color.White
     End Sub
     Private Sub ColorDark()
-        MainFrm.ToolStrip2.BackColor = Color.DimGray
+        MainFrm.ToolStrip2.BackColor = Color.FromArgb(66, 66, 66)
         MainFrm.ToolStrip2.ForeColor = Color.White
 
         MainFrm.Conn_btn.Image = My.Resources.white_connect
         MainFrm.ToolStripSplitButton1.Image = My.Resources.white_menu
 
-        MainFrm.BackColor = Color.Black
+        MainFrm.BackColor = Color.FromArgb(117, 117, 117)
         MainFrm.ForeColor = Color.White
+
+        MainFrm.StatusStrip1.BackColor = Color.FromArgb(189, 189, 189)
+        MainFrm.ForeColor = Color.Black
     End Sub
 End Class
