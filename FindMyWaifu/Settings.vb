@@ -27,10 +27,10 @@ Public Class Settings
         Label8.Text = versiDatabase
         Timer1.Enabled = True
 
-        ComboBox1.Text = My.Settings.Theme
-
         ComboBox1.Items.Add("Default")
         ComboBox1.Items.Add("Dark")
+
+        ComboBox1.SelectedItem = My.Settings.Theme
 
         If My.Settings.NameRemember = False Then
             Button7.Enabled = False
@@ -66,5 +66,9 @@ Public Class Settings
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         MsgBox("saat ini masih dalam tahap development" + Chr(13) + "tunggu update selanjutnya", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Belum final")
+    End Sub
+
+    Private Sub Settings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        ComboBox1.Items.Clear()
     End Sub
 End Class

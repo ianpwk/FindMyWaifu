@@ -10,7 +10,7 @@ Public Class FrmUpdate
 
             Label2.Text = "Update Ver.: " + lastver.ToString
             If newver.ToString > lastver.ToString Then
-
+                Process.Start("https://github.com/ianpwk/FindMyWaifu/Release")
             Else
                 Label3.Text = "Versi anda sudah yang terbaru"
                 Button1.Enabled = False
