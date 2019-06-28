@@ -1,4 +1,5 @@
 ﻿Imports System.Data.OleDb
+Imports System.Xml
 Imports System.Runtime.InteropServices
 Imports FindMyWaifu.ClassTheme
 Public Class MainFrm
@@ -14,6 +15,31 @@ Public Class MainFrm
     Dim LokasNomorB As String
 
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
+
+    Public Sub CheckForUpdates()
+        Try
+            Dim xmlUpdate As New XmlTextReader("https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21815&authkey=APPoahifAoJiGZo")
+            Dim newver As String = ""
+
+            While xmlUpdate.Read()
+                Dim type = xmlUpdate.NodeType
+                If xmlUpdate.Name = "version" Then
+                    newver = xmlUpdate.ReadInnerXml.ToString()
+                End If
+            End While
+
+            Dim lastver As String = Application.ProductVersion
+
+            If newver.ToString > lastver.ToString Then
+                Dim cariupdate As Integer = MsgBox("Versi terbaru sudah hadir" + Chr(13) + "Apakah akan mengupdatenya?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Update Avaiable")
+                If cariupdate = vbYes Then
+                    FrmUpdate.ShowDialog()
+                End If
+            End If
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
     Sub Koneksi()
         LokasNomorB = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=data.accdb"
@@ -113,7 +139,8 @@ Public Class MainFrm
         If InternetGetConnectedState(Out, 0) = True Then
             ToolStripStatusLabel1.Text = "Connected"
             ToolStripStatusLabel1.ForeColor = Color.Green
-            'ConnectToolStripMenuItem.Checked = True
+
+            CheckForUpdates()
         Else
             ToolStripStatusLabel1.Text = "Disconnected"
             ToolStripStatusLabel1.ForeColor = Color.Red
@@ -163,5 +190,7 @@ Public Class MainFrm
         ToolStripSplitButton1.ShowDropDown()
     End Sub
 
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs)
 
+    End Sub
 End Class
