@@ -1,10 +1,32 @@
 ﻿Imports System.Data.OleDb
+Imports System.Net
 Public Class StartProgram
 
     Dim Conn As OleDbConnection
     Dim LokasNomorB As String
+    Dim DataFile As WebClient
+    Dim DataDownload As String = ""
+
+    Sub DownloadEngine()
+        DataFile = New WebClient()
+
+        If Environment.Is64BitOperatingSystem Then
+            DataDownload = "https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21814&authkey=AAJyWlZeNEowBXE"
+        Else
+            DataDownload = "https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21813&authkey=AMkKJyg4WDzIOZ8"
+        End If
+
+        Try
+            AddHandler DataFile.DownloadProgressChanged, AddressOf ProgChanged
+            DataFile.DownloadFileAsync(New Uri(DataDownload), "AccessEngine.exe")
+        Catch ex2 As Exception
+            MsgBox("Please check your internet", MsgBoxStyle.Exclamation + MsgBoxStyle.OkOnly, "Error")
+            Form1.Close()
+        End Try
+    End Sub
 
     Sub Koneksi()
+
         Try
             Timer1.Enabled = False
             LokasNomorB = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=data.accdb"
@@ -14,19 +36,33 @@ Public Class StartProgram
             Timer1.Enabled = True
         Catch ex As Exception
             'MessageBox.Show(ex.Message)
-            Dim msg1 As String = MsgBox("Module yang dibutuhkan di progam ini belum di install" + Chr(13) + "Silahkan install modulenya", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "Error")
+
+            Timer1.Enabled = False
+
+            Dim msg1 As String = MsgBox("Module yang dibutuhkan di program ini belum di install" + Chr(13) + "Silahkan install modulenya", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "Error")
             If msg1 = DialogResult.OK Then
-                Dim webAddress As String = "https://www.microsoft.com/en-us/download/details.aspx?Nomor=13255"
-                Process.Start(webAddress)
-                Form1.Close()
+                DownloadEngine()
             Else
                 Form1.Close()
             End If
         End Try
     End Sub
 
+    Private Sub ProgChanged(sender As Object, e As DownloadProgressChangedEventArgs)
+        ProgressBar1.Value = e.ProgressPercentage
+        Label1.Text = "Mendownload Module.. (" + e.ProgressPercentage.ToString() + "%)"
+        Label2.Text = String.Format("Terdownload {0} MB dari {1} MB", (e.BytesReceived / 1024D / 1024D).ToString("0.00"), (e.TotalBytesToReceive / 1024D / 1024D).ToString("0.00"))
+
+        If ProgressBar1.Value = 100 Then
+            Process.Start("AccessEngine.exe")
+            MainFrm.Show()
+            Me.Close()
+        End If
+    End Sub
+
     Private Sub StartProgram_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Timer1.Enabled = True
+        Label2.Text = ""
         Label1.Text = "Menyiapkan..."
     End Sub
 
@@ -38,12 +74,17 @@ Public Class StartProgram
         If ProgressBar1.Value = 50 Then
             Label1.Text = "Mendeteksi module..."
             Koneksi()
-        ElseIf ProgressBar1.Value = 51 Then
+        ElseIf ProgressBar1.Value = 80 Then
             Label1.Text = "menyelesaikan wizard..."
         ElseIf ProgressBar1.Value = 100 Then
             Timer1.Enabled = False
             MainFrm.Show()
+            My.Settings.StartProgram = False
             Me.Close()
         End If
+    End Sub
+
+    Private Sub StartProgram_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Form1.Close()
     End Sub
 End Class
