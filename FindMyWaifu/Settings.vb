@@ -9,8 +9,15 @@ Public Class Settings
         ElseIf ComboBox1.Text = "Default" Then
             My.Settings.Theme = "Default"
         End If
+
         Dim theme As New ClassTheme()
         theme.changetheme()
+
+        If CheckBox1.Checked = True Then
+            My.Settings.AutoUpdate = True
+        Else
+            My.Settings.AutoUpdate = False
+        End If
         Button1.Enabled = False
     End Sub
 
@@ -31,6 +38,10 @@ Public Class Settings
         ComboBox1.Items.Add("Dark")
 
         ComboBox1.SelectedItem = My.Settings.Theme
+
+        If My.Settings.AutoUpdate = True Then
+            CheckBox1.Checked = True
+        End If
 
         If My.Settings.NameRemember = False Then
             Button7.Enabled = False

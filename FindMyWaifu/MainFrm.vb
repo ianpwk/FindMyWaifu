@@ -9,7 +9,7 @@ Public Class MainFrm
     Dim da As OleDbDataAdapter
     Dim ds As DataSet
     Dim R As Integer
-
+    Dim msg As String = ""
     Dim s As Integer
     Dim rn As New Random
     Dim LokasNomorB As String
@@ -29,15 +29,17 @@ Public Class MainFrm
             End While
 
             Dim lastver As String = Application.ProductVersion
-
+            ToolStripStatusLabel2.Text = ""
             If newver.ToString > lastver.ToString Then
+                ToolStripStatusLabel2.Text = "Update Avaiable"
                 Dim cariupdate As Integer = MsgBox("Versi terbaru sudah hadir" + Chr(13) + "Apakah akan mengupdatenya?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Update Avaiable")
                 If cariupdate = vbYes Then
                     FrmUpdate.ShowDialog()
                 End If
             End If
         Catch ex As Exception
-
+            ToolStripStatusLabel2.ForeColor = Color.Red
+            ToolStripStatusLabel2.Text = "AutoUpdate Error"
         End Try
     End Sub
 
@@ -67,14 +69,12 @@ Public Class MainFrm
             Conn.Close()
         Catch ex As Exception
             Timer1.Enabled = False
+            msg = ex.Message.ToString()
             MessageBox.Show(ex.Message)
             Kasumi.Visible = False
             KasumiGo.Visible = False
             KasumiFail.Visible = True
-            If ex.Message = "Microsoft.ACE.OLEDB.12.0′ provNomorer Is Not registered on the local machine" Then
-                RichTextBox1.Text = "Silahkan klik tombol di atas"
-                'ToolStripButton2.Enabled = True
-            End If
+
         End Try
     End Sub
 
@@ -133,14 +133,15 @@ Public Class MainFrm
         End If
 
         RichTextBox1.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
-        ToolStripStatusLabel2.Text = ""
         Label1.Text = "Waifu " + Names + " adalah?"
         Dim Out As Integer
         If InternetGetConnectedState(Out, 0) = True Then
             ToolStripStatusLabel1.Text = "Connected"
             ToolStripStatusLabel1.ForeColor = Color.Green
 
-            CheckForUpdates()
+            If My.Settings.AutoUpdate = True Then
+                CheckForUpdates()
+            End If
         Else
             ToolStripStatusLabel1.Text = "Disconnected"
             ToolStripStatusLabel1.ForeColor = Color.Red

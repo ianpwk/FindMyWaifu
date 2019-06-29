@@ -44,6 +44,8 @@ Partial Class Settings
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -166,6 +168,7 @@ Partial Class Settings
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.CheckBox1)
         Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.Label7)
@@ -191,11 +194,11 @@ Partial Class Settings
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(33, 17)
+        Me.Label6.Location = New System.Drawing.Point(33, 19)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(172, 13)
+        Me.Label6.Size = New System.Drawing.Size(84, 13)
         Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Tombol update dipindahkan ke sini"
+        Me.Label6.Text = "Update Program"
         '
         'Label7
         '
@@ -217,11 +220,11 @@ Partial Class Settings
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(36, 49)
+        Me.Button4.Location = New System.Drawing.Point(36, 35)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.Size = New System.Drawing.Size(101, 23)
         Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Update"
+        Me.Button4.Text = "Manual Update"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button1
@@ -252,6 +255,17 @@ Partial Class Settings
         Me.Button6.TabIndex = 8
         Me.Button6.Text = "Reset Setup"
         Me.Button6.UseVisualStyleBackColor = True
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(36, 65)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(236, 17)
+        Me.CheckBox1.TabIndex = 3
+        Me.CheckBox1.Text = "Automatic Update, when Internet connected"
+        Me.ToolTip1.SetToolTip(Me.CheckBox1, "Jika diaktifkan, program akan freeze sebentar saat memulai")
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Settings
         '
@@ -298,4 +312,6 @@ Partial Class Settings
     Friend WithEvents Button7 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Timer1 As Timer
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
