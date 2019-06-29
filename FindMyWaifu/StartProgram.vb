@@ -82,7 +82,7 @@ Public Class StartProgram
             Timer1.Enabled = False
             MainFrm.Show()
             My.Settings.StartProgram = False
-            Me.Close()
+            Me.Hide()
         End If
     End Sub
 
