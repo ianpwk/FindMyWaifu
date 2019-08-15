@@ -181,7 +181,7 @@ Partial Class Settings
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(36, 65)
+        Me.CheckBox1.Location = New System.Drawing.Point(36, 40)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(236, 17)
         Me.CheckBox1.TabIndex = 3
@@ -212,9 +212,9 @@ Partial Class Settings
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(35, 105)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(79, 13)
+        Me.Label7.Size = New System.Drawing.Size(58, 13)
         Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Versi Database"
+        Me.Label7.Text = "Databases"
         '
         'Button5
         '
@@ -222,7 +222,7 @@ Partial Class Settings
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 0
-        Me.Button5.Text = "Update"
+        Me.Button5.Text = "Edit"
         Me.Button5.UseVisualStyleBackColor = True
         '
         'TabPage3

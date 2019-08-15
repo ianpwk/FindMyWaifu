@@ -3,11 +3,27 @@
         Label2.Text = "v" + Application.ProductVersion
     End Sub
 
-    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        FrmUpdate.ShowDialog()
+    End Sub
+
+    Private Sub GithubLink_Click(sender As Object, e As EventArgs) Handles GithubLink.Click
         Process.Start("https://github.com/ianpwk/FindMyWaifu")
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        FrmUpdate.ShowDialog()
+    Private Sub YoutubeLink_Click(sender As Object, e As EventArgs) Handles YoutubeLink.Click
+        Process.Start("https://youtube.com/ianardian1com")
+    End Sub
+
+    Private Sub InstagramLink_Click(sender As Object, e As EventArgs) Handles InstagramLink.Click
+        Process.Start("https://instagram.com/yansaan_")
+    End Sub
+
+    Private Sub TwitterLink_Click(sender As Object, e As EventArgs) Handles TwitterLink.Click
+        Process.Start("https://twitter.com/yansaan_")
+    End Sub
+
+    Private Sub FacebookLink_Click(sender As Object, e As EventArgs) Handles FacebookLink.Click
+        Process.Start("https://fb.me/yansaanxyz")
     End Sub
 End Class

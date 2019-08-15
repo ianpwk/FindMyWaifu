@@ -123,4 +123,13 @@ Public Class Settings
         BtnSave.Enabled = True
         BtnSaveExit.Enabled = True
     End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        BtnSave.Enabled = True
+        BtnSaveExit.Enabled = True
+    End Sub
+
+    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+
+    End Sub
 End Class

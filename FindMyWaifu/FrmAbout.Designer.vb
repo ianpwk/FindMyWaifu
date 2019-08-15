@@ -22,32 +22,29 @@ Partial Class FrmAbout
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Label5 = New System.Windows.Forms.Label()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.YoutubeLink = New System.Windows.Forms.PictureBox()
+        Me.GithubLink = New System.Windows.Forms.PictureBox()
+        Me.InstagramLink = New System.Windows.Forms.PictureBox()
+        Me.TwitterLink = New System.Windows.Forms.PictureBox()
+        Me.FacebookLink = New System.Windows.Forms.PictureBox()
+        CType(Me.YoutubeLink, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GithubLink, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.InstagramLink, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TwitterLink, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FacebookLink, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Image = Global.FindMyWaifu.My.Resources.Resources.c1
-        Me.PictureBox1.Location = New System.Drawing.Point(-1, 1)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(180, 167)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(4, 171)
+        Me.Label1.Location = New System.Drawing.Point(6, 17)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(143, 24)
         Me.Label1.TabIndex = 1
@@ -56,7 +53,7 @@ Partial Class FrmAbout
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 199)
+        Me.Label2.Location = New System.Drawing.Point(7, 53)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 2
@@ -64,7 +61,7 @@ Partial Class FrmAbout
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(306, 189)
+        Me.Button1.Location = New System.Drawing.Point(131, 233)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 3
@@ -74,7 +71,7 @@ Partial Class FrmAbout
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(212, 28)
+        Me.Label3.Location = New System.Drawing.Point(12, 82)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(61, 13)
         Me.Label3.TabIndex = 4
@@ -83,60 +80,114 @@ Partial Class FrmAbout
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(295, 155)
+        Me.Label4.Location = New System.Drawing.Point(120, 143)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(86, 13)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "2019 © yansaan"
         '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(212, 194)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(78, 13)
-        Me.LinkLabel1.TabIndex = 6
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Menuju GitHub"
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(212, 53)
+        Me.Label5.Location = New System.Drawing.Point(12, 107)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(47, 13)
         Me.Label5.TabIndex = 7
         Me.Label5.Text = "yansaan"
         '
+        'YoutubeLink
+        '
+        Me.YoutubeLink.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.YoutubeLink.Image = Global.FindMyWaifu.My.Resources.Resources.icons8_youtube_play_480px_2
+        Me.YoutubeLink.Location = New System.Drawing.Point(134, 173)
+        Me.YoutubeLink.Name = "YoutubeLink"
+        Me.YoutubeLink.Size = New System.Drawing.Size(25, 34)
+        Me.YoutubeLink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.YoutubeLink.TabIndex = 8
+        Me.YoutubeLink.TabStop = False
+        '
+        'GithubLink
+        '
+        Me.GithubLink.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.GithubLink.Image = Global.FindMyWaifu.My.Resources.Resources.icons8_github_512px_4
+        Me.GithubLink.Location = New System.Drawing.Point(178, 173)
+        Me.GithubLink.Name = "GithubLink"
+        Me.GithubLink.Size = New System.Drawing.Size(25, 34)
+        Me.GithubLink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.GithubLink.TabIndex = 8
+        Me.GithubLink.TabStop = False
+        '
+        'InstagramLink
+        '
+        Me.InstagramLink.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.InstagramLink.Image = Global.FindMyWaifu.My.Resources.Resources.icons8_instagram_new_filled_500px_4
+        Me.InstagramLink.Location = New System.Drawing.Point(92, 173)
+        Me.InstagramLink.Name = "InstagramLink"
+        Me.InstagramLink.Size = New System.Drawing.Size(25, 34)
+        Me.InstagramLink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.InstagramLink.TabIndex = 8
+        Me.InstagramLink.TabStop = False
+        '
+        'TwitterLink
+        '
+        Me.TwitterLink.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.TwitterLink.Image = Global.FindMyWaifu.My.Resources.Resources.icons8_twitter_208px_3
+        Me.TwitterLink.Location = New System.Drawing.Point(51, 173)
+        Me.TwitterLink.Name = "TwitterLink"
+        Me.TwitterLink.Size = New System.Drawing.Size(25, 34)
+        Me.TwitterLink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.TwitterLink.TabIndex = 8
+        Me.TwitterLink.TabStop = False
+        '
+        'FacebookLink
+        '
+        Me.FacebookLink.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.FacebookLink.Image = Global.FindMyWaifu.My.Resources.Resources.icons8_facebook_208px_7
+        Me.FacebookLink.Location = New System.Drawing.Point(13, 173)
+        Me.FacebookLink.Name = "FacebookLink"
+        Me.FacebookLink.Size = New System.Drawing.Size(25, 34)
+        Me.FacebookLink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.FacebookLink.TabIndex = 8
+        Me.FacebookLink.TabStop = False
+        '
         'FrmAbout
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(393, 218)
+        Me.ClientSize = New System.Drawing.Size(215, 268)
+        Me.Controls.Add(Me.YoutubeLink)
+        Me.Controls.Add(Me.GithubLink)
+        Me.Controls.Add(Me.InstagramLink)
+        Me.Controls.Add(Me.TwitterLink)
+        Me.Controls.Add(Me.FacebookLink)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.PictureBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "FrmAbout"
         Me.ShowInTaskbar = False
         Me.Text = "About"
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.YoutubeLink, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GithubLink, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.InstagramLink, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TwitterLink, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FacebookLink, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents LinkLabel1 As LinkLabel
     Friend WithEvents Label5 As Label
+    Friend WithEvents FacebookLink As PictureBox
+    Friend WithEvents TwitterLink As PictureBox
+    Friend WithEvents InstagramLink As PictureBox
+    Friend WithEvents YoutubeLink As PictureBox
+    Friend WithEvents GithubLink As PictureBox
 End Class
