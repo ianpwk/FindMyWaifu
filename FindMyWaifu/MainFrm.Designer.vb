@@ -61,9 +61,9 @@ Partial Class MainFrm
         Me.Panel1.Controls.Add(Me.Kasumi)
         Me.Panel1.Controls.Add(Me.KasumiGo)
         Me.Panel1.Controls.Add(Me.KasumiFail)
-        Me.Panel1.Location = New System.Drawing.Point(0, 12)
+        Me.Panel1.Location = New System.Drawing.Point(0, 25)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(473, 245)
+        Me.Panel1.Size = New System.Drawing.Size(473, 229)
         Me.Panel1.TabIndex = 0
         '
         'RichTextBox1
@@ -78,20 +78,20 @@ Partial Class MainFrm
         'Kasumi
         '
         Me.Kasumi.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
-        Me.Kasumi.Location = New System.Drawing.Point(301, 54)
+        Me.Kasumi.Location = New System.Drawing.Point(289, 16)
         Me.Kasumi.Name = "Kasumi"
-        Me.Kasumi.Size = New System.Drawing.Size(113, 131)
-        Me.Kasumi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Kasumi.Size = New System.Drawing.Size(165, 172)
+        Me.Kasumi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.Kasumi.TabIndex = 1
         Me.Kasumi.TabStop = False
         '
         'KasumiGo
         '
         Me.KasumiGo.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
-        Me.KasumiGo.Location = New System.Drawing.Point(301, 42)
+        Me.KasumiGo.Location = New System.Drawing.Point(289, 16)
         Me.KasumiGo.Name = "KasumiGo"
-        Me.KasumiGo.Size = New System.Drawing.Size(113, 146)
-        Me.KasumiGo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.KasumiGo.Size = New System.Drawing.Size(165, 172)
+        Me.KasumiGo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.KasumiGo.TabIndex = 1
         Me.KasumiGo.TabStop = False
         Me.KasumiGo.Visible = False
@@ -101,8 +101,8 @@ Partial Class MainFrm
         Me.KasumiFail.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
         Me.KasumiFail.Location = New System.Drawing.Point(289, 16)
         Me.KasumiFail.Name = "KasumiFail"
-        Me.KasumiFail.Size = New System.Drawing.Size(143, 172)
-        Me.KasumiFail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.KasumiFail.Size = New System.Drawing.Size(165, 172)
+        Me.KasumiFail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.KasumiFail.TabIndex = 1
         Me.KasumiFail.TabStop = False
         Me.KasumiFail.Visible = False
@@ -211,18 +211,18 @@ Partial Class MainFrm
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(113, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.AboutToolStripMenuItem1.Text = "&About"
         '
         'ToolStripSeparator4
