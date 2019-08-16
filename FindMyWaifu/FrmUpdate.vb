@@ -20,7 +20,7 @@ Public Class FrmUpdate
             Label2.Text = "Update Ver.: " + newver
             Dim lastver As String = Application.ProductVersion
 
-            If newver.ToString > lastver.ToString Then
+            If newver.ToString < lastver.ToString Then
                 RichTextBox1.Text = desc
                 Label3.Text = ""
             Else
