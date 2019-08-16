@@ -66,6 +66,9 @@
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>tumblr_pscuevC86h1wxengv_540~4.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetUpdater">
       <HintPath>..\..\..\..\..\Downloads\Compressed\DotNetUpdater.dll</HintPath>
@@ -260,42 +263,6 @@
     <None Include="Resources\white_menu.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8_github_120px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_facebook_208px_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_instagram_new_filled_120px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_twitter_120px_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_donate_120px.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_instagram_new_filled_500px_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_twitter_208px_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_donate_480px_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_facebook_208px_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_github_512px_3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_youtube_play_480px_1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icons8_facebook_208px_6.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\icons8_facebook_208px_7.png" />
   </ItemGroup>
   <ItemGroup>
@@ -314,6 +281,7 @@
     <None Include="Resources\icons8_youtube_play_480px_2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="tumblr_pscuevC86h1wxengv_540~4.ico" />
     <Content Include="waifudata.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
