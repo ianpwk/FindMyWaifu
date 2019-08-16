@@ -10,3 +10,5 @@ Feature
 - edit database (coming soon)
 - change chibi (coming soon)
 - And more
+
+[Download beta Program] (https://github.com/ianpwk/FindMyWaifu/releases)
