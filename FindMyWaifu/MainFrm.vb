@@ -175,11 +175,6 @@ Public Class MainFrm
         End If
     End Sub
 
-    Private Sub Conn_btn_Click(sender As Object, e As EventArgs)
-        FormConn.Label1.Text = "Connecting"
-        FormConn.ShowDialog()
-    End Sub
-
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         Settings.ShowDialog()
     End Sub
