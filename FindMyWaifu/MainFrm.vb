@@ -159,12 +159,6 @@ Public Class MainFrm
         Colors.changetheme()
     End Sub
 
-    Private Sub ConnectToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        FormConn.Label1.Text = "Connecting"
-        FormConn.ShowDialog()
-
-    End Sub
-
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If ToolStripProgressBar1.Value = "0" Then
             ToolStripProgressBar1.Value = "30"
@@ -181,7 +175,7 @@ Public Class MainFrm
         End If
     End Sub
 
-    Private Sub Conn_btn_Click(sender As Object, e As EventArgs) Handles Conn_btn.Click
+    Private Sub Conn_btn_Click(sender As Object, e As EventArgs)
         FormConn.Label1.Text = "Connecting"
         FormConn.ShowDialog()
     End Sub

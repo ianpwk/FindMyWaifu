@@ -45,7 +45,6 @@ Partial Class MainFrm
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Conn_btn = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -191,7 +190,7 @@ Partial Class MainFrm
         'ToolStrip2
         '
         Me.ToolStrip2.BackColor = System.Drawing.Color.DimGray
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4, Me.Conn_btn})
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.Size = New System.Drawing.Size(473, 25)
@@ -229,14 +228,6 @@ Partial Class MainFrm
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
-        'Conn_btn
-        '
-        Me.Conn_btn.Image = Global.FindMyWaifu.My.Resources.Resources.connect
-        Me.Conn_btn.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.Conn_btn.Name = "Conn_btn"
-        Me.Conn_btn.Size = New System.Drawing.Size(72, 22)
-        Me.Conn_btn.Text = "Connect"
         '
         'MainFrm
         '
@@ -291,5 +282,4 @@ Partial Class MainFrm
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
-    Friend WithEvents Conn_btn As ToolStripButton
 End Class

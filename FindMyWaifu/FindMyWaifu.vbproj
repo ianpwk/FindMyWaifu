@@ -102,12 +102,6 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormConn.Designer.vb">
-      <DependentUpon>FormConn.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FormConn.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="FormSplash.Designer.vb">
       <DependentUpon>FormSplash.vb</DependentUpon>
     </Compile>
@@ -168,9 +162,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormConn.resx">
-      <DependentUpon>FormConn.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSplash.resx">
       <DependentUpon>FormSplash.vb</DependentUpon>
