@@ -207,7 +207,7 @@
     <value>284, 79</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Menyiapkan Wizard</value>
+    <value>Menginstall Module</value>
   </data>
   <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
     <value>Timer1</value>

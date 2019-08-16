@@ -56,7 +56,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
         Public Property StartProgram() As Boolean
             Get
                 Return CType(Me("StartProgram"),Boolean)
@@ -124,6 +124,16 @@ Namespace My
             Set
                 Me("AutoUpdate") = value
             End Set
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\waifudata.mdb")>  _
+        Public ReadOnly Property waifudataConnectionString() As String
+            Get
+                Return CType(Me("waifudataConnectionString"),String)
+            End Get
         End Property
     End Class
 End Namespace

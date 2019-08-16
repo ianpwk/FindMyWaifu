@@ -44,7 +44,8 @@ Public Class MainFrm
     End Sub
 
     Sub Koneksi()
-        LokasNomorB = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=data.accdb"
+        'LokasNomorB = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=data.accdb"
+        LokasNomorB = My.Settings.waifudataConnectionString
         Conn = New OleDbConnection(LokasNomorB)
     End Sub
 
@@ -69,12 +70,20 @@ Public Class MainFrm
             Conn.Close()
         Catch ex As Exception
             Timer1.Enabled = False
-            msg = ex.Message.ToString()
-            MessageBox.Show(ex.Message)
-            Kasumi.Visible = False
-            KasumiGo.Visible = False
-            KasumiFail.Visible = True
 
+            msg = ex.Message.ToString()
+            MsgBox(msg)
+            If msg = "The 'Microsoft.ACE.OLEDB.12.0' provider is not registered on the local machine." Then
+                Dim msg1 As String = MsgBox("Module yang dibutuhkan di program ini belum di install" + Chr(13) + "Silahkan install modulenya", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "Error")
+                If msg1 = DialogResult.OK Then
+                    StartProgram.ShowDialog()
+                    StartProgram.DownloadEngine()
+                Else
+                    Kasumi.Visible = False
+                    KasumiGo.Visible = False
+                    KasumiFail.Visible = True
+                End If
+            End If
         End Try
     End Sub
 
@@ -146,8 +155,6 @@ Public Class MainFrm
             ToolStripStatusLabel1.Text = "Disconnected"
             ToolStripStatusLabel1.ForeColor = Color.Red
         End If
-
-
         Dim Colors As New ClassTheme()
         Colors.changetheme()
     End Sub

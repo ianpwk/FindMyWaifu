@@ -42,6 +42,7 @@ Partial Class StartProgram
         '
         'Timer1
         '
+        Me.Timer1.Interval = 2000
         '
         'Label2
         '

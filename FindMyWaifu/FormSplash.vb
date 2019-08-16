@@ -3,20 +3,12 @@
         ProgressBar1.Value = ProgressBar1.Value + 10
         If ProgressBar1.Value = ProgressBar1.Maximum Then
             Timer1.Enabled = False
-            If My.Settings.StartProgram = True Then
-                StartProgram.Show()
-            Else
-                MainFrm.Show()
-            End If
+            MainFrm.Show()
             Form1.Hide()
             Me.Close()
         ElseIf ProgressBar1.Value = 10 Then
             Form1.Hide()
         End If
-
-    End Sub
-
-    Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

@@ -34,7 +34,6 @@ Partial Class Settings
         Me.Button6 = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Label8 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -166,7 +165,6 @@ Partial Class Settings
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.CheckBox1)
-        Me.TabPage2.Controls.Add(Me.Label8)
         Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.Label7)
         Me.TabPage2.Controls.Add(Me.Button5)
@@ -189,15 +187,6 @@ Partial Class Settings
         Me.ToolTip1.SetToolTip(Me.CheckBox1, "Jika diaktifkan, program akan freeze sebentar saat memulai")
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(35, 153)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(39, 13)
-        Me.Label8.TabIndex = 2
-        Me.Label8.Text = "Label6"
-        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -218,7 +207,7 @@ Partial Class Settings
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(216, 148)
+        Me.Button5.Location = New System.Drawing.Point(36, 127)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(75, 23)
         Me.Button5.TabIndex = 0
@@ -398,7 +387,6 @@ Partial Class Settings
     Friend WithEvents BtnSaveExit As Button
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents Label8 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Button5 As Button
