@@ -13,6 +13,7 @@ Public Class MainFrm
     Dim s As Integer
     Dim rn As New Random
     Dim LokasNomorB As String
+    Dim Out As Integer
 
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
@@ -38,8 +39,13 @@ Public Class MainFrm
                 End If
             End If
         Catch ex As Exception
-            ToolStripStatusLabel2.ForeColor = Color.Red
-            ToolStripStatusLabel2.Text = "AutoUpdate Error"
+            If InternetGetConnectedState(Out, 0) = True Then
+                ToolStripStatusLabel2.ForeColor = Color.Red
+                ToolStripStatusLabel2.Visible = True
+                ToolStripStatusLabel2.Text = "Auto Update Error"
+            Else
+                ToolStripStatusLabel2.Visible = False
+            End If
         End Try
     End Sub
 
@@ -134,6 +140,8 @@ Public Class MainFrm
 
     Private Sub MainFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim Names As String
+
+        ToolStripStatusLabel2.Visible = False
         If My.Settings.NameRemember = True Then
             Names = My.Settings.name
 
@@ -143,7 +151,7 @@ Public Class MainFrm
 
         RichTextBox1.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
         Label1.Text = "Waifu " + Names + " adalah?"
-        Dim Out As Integer
+
         If InternetGetConnectedState(Out, 0) = True Then
             ToolStripStatusLabel1.Text = "Connected"
             ToolStripStatusLabel1.ForeColor = Color.Green

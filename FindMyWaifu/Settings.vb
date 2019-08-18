@@ -2,7 +2,7 @@
 
 Public Class Settings
     Dim versiDatabase As String = "0.0.0.1"
-
+    Dim dir = "theme"
     Public Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If ComboTheme.Text = "Dark" Then
             My.Settings.Theme = "Dark"
@@ -13,7 +13,7 @@ Public Class Settings
         Dim theme As New ClassTheme()
         theme.changetheme()
 
-        If CheckBox1.Checked = True Then
+        If CheckUpdate.Checked = True Then
             My.Settings.AutoUpdate = True
         Else
             My.Settings.AutoUpdate = False
@@ -32,7 +32,20 @@ Public Class Settings
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RadioButton2.Enabled = False
-        Timer1.Enabled = True
+        If (Not System.IO.Directory.Exists("theme")) Then
+            System.IO.Directory.CreateDirectory("theme")
+        End If
+
+        ComboTheme.DisplayMember = "Text"
+        Try
+            For Each file As String In System.IO.Directory.GetFiles(dir, "*.xsi")
+                ComboTheme.Items.Add(System.IO.Path.GetFileNameWithoutExtension(file))
+            Next
+
+        Catch ex As Exception
+
+        End Try
+
 
         ComboTheme.Items.Add("Default")
         ComboTheme.Items.Add("Dark")
@@ -40,7 +53,7 @@ Public Class Settings
         ComboTheme.SelectedItem = My.Settings.Theme
 
         If My.Settings.AutoUpdate = True Then
-            CheckBox1.Checked = True
+            CheckUpdate.Checked = True
         End If
 
         If My.Settings.NameRemember = False Then
@@ -77,10 +90,6 @@ Public Class Settings
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs)
-        MsgBox("saat ini masih dalam tahap development" + Chr(13) + "tunggu update selanjutnya", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Belum final")
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         MsgBox("saat ini masih dalam tahap development" + Chr(13) + "tunggu update selanjutnya", MsgBoxStyle.Information + MsgBoxStyle.OkOnly, "Belum final")
     End Sub
 
@@ -123,7 +132,7 @@ Public Class Settings
         BtnSaveExit.Enabled = True
     End Sub
 
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckUpdate.CheckedChanged
         BtnSave.Enabled = True
         BtnSaveExit.Enabled = True
     End Sub

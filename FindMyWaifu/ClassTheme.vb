@@ -1,33 +1,62 @@
 ﻿Public Class ClassTheme
+
+    Public ToolbarColor As Color
+    Public BackgroundColor As Color
+    Public StatusColor As Color
+
+    Public ToolbarText As Color
+    Public MainColor As Color
+    Public StatusText As Color
+    Public toolbarIcon As Image
+
     Public Sub changetheme()
         If My.Settings.Theme = "Default" Then
             Colordefaults()
         ElseIf My.Settings.Theme = "Dark" Then
             ColorDark()
+        Else
+
         End If
+    End Sub
+
+    Public Sub ChoiceColor()
+        MainFrm.ToolStrip2.BackColor = ToolbarColor
+        MainFrm.ToolStrip2.ForeColor = ToolbarText
+
+        MainFrm.ToolStripSplitButton1.Image = toolbarIcon
+
+        MainFrm.BackColor = BackgroundColor
+        MainFrm.ForeColor = MainColor
+
+        MainFrm.StatusStrip1.BackColor = StatusColor
+        MainFrm.StatusStrip1.ForeColor = StatusText
 
     End Sub
+
     Private Sub Colordefaults()
-        MainFrm.ToolStrip2.BackColor = Color.FromArgb(224, 224, 224)
-        MainFrm.ToolStrip2.ForeColor = Color.Black
+        ToolbarColor = Color.FromArgb(224, 224, 224)
+        ToolbarText = Color.Black
 
-        MainFrm.ToolStripSplitButton1.Image = My.Resources.menu
+        toolbarIcon = My.Resources.menu
 
-        MainFrm.BackColor = Color.White
-        MainFrm.ForeColor = Color.Black
+        BackgroundColor = Color.White
+        MainColor = Color.Black
 
-        MainFrm.StatusStrip1.BackColor = Color.White
+        StatusColor = Color.White
+
+        Call ChoiceColor()
     End Sub
     Private Sub ColorDark()
-        MainFrm.ToolStrip2.BackColor = Color.FromArgb(66, 66, 66)
-        MainFrm.ToolStrip2.ForeColor = Color.White
+        ToolbarColor = Color.FromArgb(66, 66, 66)
+        ToolbarText = Color.White
 
-        MainFrm.ToolStripSplitButton1.Image = My.Resources.white_menu
+        toolbarIcon = My.Resources.white_menu
 
-        MainFrm.BackColor = Color.FromArgb(117, 117, 117)
-        MainFrm.ForeColor = Color.White
+        BackgroundColor = Color.FromArgb(117, 117, 117)
+        MainColor = Color.Black
 
-        MainFrm.StatusStrip1.BackColor = Color.FromArgb(189, 189, 189)
-        MainFrm.ForeColor = Color.Black
+        StatusColor = Color.FromArgb(189, 189, 189)
+
+        Call ChoiceColor()
     End Sub
 End Class
