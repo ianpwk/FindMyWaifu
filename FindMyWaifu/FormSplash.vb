@@ -11,4 +11,9 @@
         End If
 
     End Sub
+
+    Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Label1.ForeColor = ColorTranslator.FromHtml("#ea5959")
+        Label1.Text = "v" + Application.ProductVersion
+    End Sub
 End Class

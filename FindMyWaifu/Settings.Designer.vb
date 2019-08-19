@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Settings
+Partial Class SettingsFrm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -407,8 +407,9 @@ Partial Class Settings
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Silver
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Location = New System.Drawing.Point(115, 56)
+        Me.Panel1.Location = New System.Drawing.Point(108, 56)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(82, 52)
         Me.Panel1.TabIndex = 2
@@ -441,7 +442,7 @@ Partial Class Settings
         Me.TextBox1.Text = "Test5"
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Settings
+        'SettingsFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -453,7 +454,7 @@ Partial Class Settings
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Settings"
+        Me.Name = "SettingsFrm"
         Me.ShowInTaskbar = False
         Me.Text = "Settings"
         Me.TabControl1.ResumeLayout(False)

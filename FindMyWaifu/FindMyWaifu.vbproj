@@ -282,6 +282,7 @@
     <None Include="Resources\icons8_youtube_play_480px_2.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\splash.png" />
     <Content Include="tumblr_pscuevC86h1wxengv_540~4.ico" />
     <Content Include="waifudata.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

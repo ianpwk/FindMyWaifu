@@ -1,6 +1,6 @@
 ﻿Imports System.IO, System.Net, System.Web
 
-Public Class Settings
+Public Class SettingsFrm
     Dim versiDatabase As String = "0.0.0.1"
     Dim dir = "theme"
     Public Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
@@ -130,6 +130,18 @@ Public Class Settings
     Private Sub ComboTheme_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTheme.SelectedIndexChanged
         BtnSave.Enabled = True
         BtnSaveExit.Enabled = True
+
+        Dim Colors As New ClassTheme()
+        Colors.previewtheme()
+        ToolStrip1.BackColor = Colors.ToolbarColor
+        ToolStrip1.ForeColor = Colors.ToolbarText
+        ToolStripButton1.Image = Colors.toolbarConIcon
+
+        GroupBox2.BackColor = Colors.BackgroundColor
+        GroupBox2.ForeColor = Colors.MainColor
+
+        StatusStrip1.BackColor = Colors.StatusColor
+        StatusStrip1.ForeColor = Colors.StatusText
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckUpdate.CheckedChanged

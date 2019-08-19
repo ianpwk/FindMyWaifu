@@ -31,7 +31,7 @@ Public Class MainFrm
 
             Dim lastver As String = Application.ProductVersion
             ToolStripStatusLabel2.Text = ""
-            If newver.ToString > lastver.ToString Then
+            If newver.ToString < lastver.ToString Then
                 ToolStripStatusLabel2.Text = "Update Avaiable"
                 Dim cariupdate As Integer = MsgBox("Versi terbaru sudah hadir" + Chr(13) + "Apakah akan mengupdatenya?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Update Avaiable")
                 If cariupdate = vbYes Then
@@ -184,7 +184,7 @@ Public Class MainFrm
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
-        Settings.ShowDialog()
+        SettingsFrm.ShowDialog()
     End Sub
 
     Private Sub AboutToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem1.Click
