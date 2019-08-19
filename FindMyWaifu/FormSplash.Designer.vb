@@ -30,9 +30,9 @@ Partial Class FormSplash
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(-1, 398)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-3, 314)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(673, 15)
+        Me.ProgressBar1.Size = New System.Drawing.Size(537, 15)
         Me.ProgressBar1.TabIndex = 1
         '
         'Timer1
@@ -45,7 +45,7 @@ Partial Class FormSplash
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Century Gothic", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(89, 350)
+        Me.Label1.Location = New System.Drawing.Point(69, 278)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(42, 15)
         Me.Label1.TabIndex = 2
@@ -57,8 +57,8 @@ Partial Class FormSplash
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(128, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.BackgroundImage = Global.FindMyWaifu.My.Resources.Resources.splash
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(672, 409)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.ClientSize = New System.Drawing.Size(532, 327)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.DoubleBuffered = True

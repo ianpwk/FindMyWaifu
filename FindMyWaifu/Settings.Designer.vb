@@ -44,7 +44,6 @@ Partial Class SettingsFrm
         Me.hap_chibi = New System.Windows.Forms.RadioButton()
         Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.chbiPreview = New System.Windows.Forms.PictureBox()
         Me.def_chibi = New System.Windows.Forms.RadioButton()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
@@ -54,13 +53,19 @@ Partial Class SettingsFrm
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.chbiPreview = New System.Windows.Forms.PictureBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -68,11 +73,11 @@ Partial Class SettingsFrm
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.chbiPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.chbiPreview, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl1
@@ -220,6 +225,8 @@ Partial Class SettingsFrm
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.Label4)
+        Me.TabPage3.Controls.Add(Me.Button1)
         Me.TabPage3.Controls.Add(Me.GroupBox2)
         Me.TabPage3.Controls.Add(Me.ComboTheme)
         Me.TabPage3.Controls.Add(Me.Label2)
@@ -235,7 +242,7 @@ Partial Class SettingsFrm
         '
         Me.ComboTheme.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboTheme.FormattingEnabled = True
-        Me.ComboTheme.Location = New System.Drawing.Point(85, 19)
+        Me.ComboTheme.Location = New System.Drawing.Point(85, 11)
         Me.ComboTheme.Name = "ComboTheme"
         Me.ComboTheme.Size = New System.Drawing.Size(121, 21)
         Me.ComboTheme.TabIndex = 14
@@ -243,7 +250,7 @@ Partial Class SettingsFrm
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(19, 22)
+        Me.Label2.Location = New System.Drawing.Point(19, 14)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 13)
         Me.Label2.TabIndex = 10
@@ -251,6 +258,9 @@ Partial Class SettingsFrm
         '
         'TabPage4
         '
+        Me.TabPage4.Controls.Add(Me.Button3)
+        Me.TabPage4.Controls.Add(Me.Button2)
+        Me.TabPage4.Controls.Add(Me.Label5)
         Me.TabPage4.Controls.Add(Me.fai_chibi)
         Me.TabPage4.Controls.Add(Me.hap_chibi)
         Me.TabPage4.Controls.Add(Me.ComboBox2)
@@ -289,9 +299,9 @@ Partial Class SettingsFrm
         Me.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox2.Enabled = False
         Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(28, 16)
+        Me.ComboBox2.Location = New System.Drawing.Point(89, 20)
         Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(279, 21)
+        Me.ComboBox2.Size = New System.Drawing.Size(131, 21)
         Me.ComboBox2.TabIndex = 19
         '
         'GroupBox3
@@ -303,15 +313,6 @@ Partial Class SettingsFrm
         Me.GroupBox3.TabIndex = 18
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Preview"
-        '
-        'chbiPreview
-        '
-        Me.chbiPreview.Location = New System.Drawing.Point(23, 16)
-        Me.chbiPreview.Name = "chbiPreview"
-        Me.chbiPreview.Size = New System.Drawing.Size(108, 106)
-        Me.chbiPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.chbiPreview.TabIndex = 0
-        Me.chbiPreview.TabStop = False
         '
         'def_chibi
         '
@@ -386,14 +387,6 @@ Partial Class SettingsFrm
         Me.StatusStrip1.TabIndex = 1
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.Image = Global.FindMyWaifu.My.Resources.Resources.connect
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(53, 22)
-        Me.ToolStripButton1.Text = "Test1"
-        '
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
@@ -442,6 +435,68 @@ Partial Class SettingsFrm
         Me.TextBox1.Text = "Test5"
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.Image = Global.FindMyWaifu.My.Resources.Resources.connect
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(53, 22)
+        Me.ToolStripButton1.Text = "Test1"
+        '
+        'chbiPreview
+        '
+        Me.chbiPreview.Location = New System.Drawing.Point(23, 16)
+        Me.chbiPreview.Name = "chbiPreview"
+        Me.chbiPreview.Size = New System.Drawing.Size(108, 106)
+        Me.chbiPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.chbiPreview.TabIndex = 0
+        Me.chbiPreview.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(218, 11)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Buka Folder"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(22, 39)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(243, 13)
+        Me.Label4.TabIndex = 17
+        Me.Label4.Text = "Anda dapat mengubah warna tema dengan file xsl"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(25, 23)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(58, 13)
+        Me.Label5.TabIndex = 22
+        Me.Label5.Text = "Chibi Pack"
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(226, 20)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 23
+        Me.Button2.Text = "Buka Folder"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(245, 201)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 24
+        Me.Button3.Text = "Help..."
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'SettingsFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -468,7 +523,6 @@ Partial Class SettingsFrm
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
-        CType(Me.chbiPreview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
@@ -477,6 +531,7 @@ Partial Class SettingsFrm
         Me.StatusStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.chbiPreview, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -519,4 +574,9 @@ Partial Class SettingsFrm
     Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Label5 As Label
 End Class
