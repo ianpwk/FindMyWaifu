@@ -45,7 +45,7 @@ Public Class FrmUpdate
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Button1.Text = "Update" Then
             'Process.Start("https://github.com/ianpwk/FindMyWaifu/releases")
-            'Dim frmOtherProject As New UpdateMyWaifu.FormUpdate
+
             'frmOtherProject.Show()
         ElseIf Button1.Text = "Retry" Then
             CheckForUpdates()
