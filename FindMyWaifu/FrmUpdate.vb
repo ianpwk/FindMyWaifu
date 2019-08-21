@@ -36,6 +36,8 @@ Public Class FrmUpdate
     End Sub
 
     Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        RichTextBox1.ReadOnly = True
+        RichTextBox1.BackColor = Color.Gray
         Label1.Text = "Curent ver.: " + Application.ProductVersion
         CheckForUpdates()
     End Sub

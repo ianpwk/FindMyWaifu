@@ -67,7 +67,6 @@ Partial Class MainFrm
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.Enabled = False
         Me.RichTextBox1.Location = New System.Drawing.Point(22, 84)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(219, 72)
@@ -143,7 +142,6 @@ Partial Class MainFrm
         '
         'TextBox1
         '
-        Me.TextBox1.Enabled = False
         Me.TextBox1.Location = New System.Drawing.Point(22, 291)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(432, 20)
@@ -210,18 +208,18 @@ Partial Class MainFrm
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(113, 6)
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
         Me.AboutToolStripMenuItem1.Text = "&About"
         '
         'ToolStripSeparator4

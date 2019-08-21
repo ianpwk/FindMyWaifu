@@ -50,7 +50,6 @@ Partial Class FrmUpdate
         '
         'RichTextBox1
         '
-        Me.RichTextBox1.Enabled = False
         Me.RichTextBox1.Location = New System.Drawing.Point(12, 61)
         Me.RichTextBox1.Name = "RichTextBox1"
         Me.RichTextBox1.Size = New System.Drawing.Size(301, 152)

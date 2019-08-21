@@ -140,7 +140,6 @@ Public Class MainFrm
 
     Private Sub MainFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim Names As String
-
         ToolStripStatusLabel2.Visible = False
         If My.Settings.NameRemember = True Then
             Names = My.Settings.name
@@ -148,6 +147,9 @@ Public Class MainFrm
         Else
             Names = Form1.TextBox1.Text
         End If
+
+        TextBox1.ReadOnly = True
+        RichTextBox1.ReadOnly = True
 
         RichTextBox1.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
         Label1.Text = "Waifu " + Names + " adalah?"
