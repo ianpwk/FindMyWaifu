@@ -20,7 +20,7 @@ Public Class FrmUpdate
             Label2.Text = "Update Ver.: " + newver
             Dim lastver As String = Application.ProductVersion
 
-            If newver.ToString < "0.0.0.3" Then
+            If newver.ToString < lastver.ToString Then
                 RichTextBox1.Text = desc
                 Label3.Text = ""
             Else
@@ -45,8 +45,8 @@ Public Class FrmUpdate
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Button1.Text = "Update" Then
             'Process.Start("https://github.com/ianpwk/FindMyWaifu/releases")
-            Dim frmOtherProject As New UpdateMyWaifu.FormUpdate
-            frmOtherProject.Show()
+            'Dim frmOtherProject As New UpdateMyWaifu.FormUpdate
+            'frmOtherProject.Show()
         ElseIf Button1.Text = "Retry" Then
             CheckForUpdates()
         End If

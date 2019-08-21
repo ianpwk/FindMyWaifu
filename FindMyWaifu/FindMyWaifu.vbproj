@@ -288,12 +288,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UpdateMyWaifu\UpdateMyWaifu.vbproj">
-      <Project>{ee585f41-15c0-4be0-a4f1-e55485c86879}</Project>
-      <Name>UpdateMyWaifu</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
