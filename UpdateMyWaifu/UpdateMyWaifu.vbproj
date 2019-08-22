@@ -102,12 +102,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FindMyWaifu\FindMyWaifu.vbproj">
-      <Project>{ef7e0788-92dc-4d7b-ad73-f6884b170843}</Project>
-      <Name>FindMyWaifu</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

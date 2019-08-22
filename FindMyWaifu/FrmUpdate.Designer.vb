@@ -22,12 +22,14 @@ Partial Class FrmUpdate
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.SuspendLayout()
         '
         'Label1
@@ -81,6 +83,10 @@ Partial Class FrmUpdate
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Label3"
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 2000
+        '
         'FrmUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -106,4 +112,5 @@ Partial Class FrmUpdate
     Friend WithEvents Button1 As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Label3 As Label
+    Friend WithEvents Timer1 As Timer
 End Class

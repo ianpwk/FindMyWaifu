@@ -5,9 +5,6 @@ Imports FindMyWaifu.ClassTheme
 Public Class MainFrm
     'Mulai
     Dim Conn As OleDbConnection
-    Dim cmd As OleDbCommand
-    Dim da As OleDbDataAdapter
-    Dim ds As DataSet
     Dim R As Integer
     Dim msg As String = ""
     Dim s As Integer
@@ -93,7 +90,7 @@ Public Class MainFrm
         End Try
     End Sub
 
-    Sub hasil()
+    Sub Hasil()
 
         'conversi
         Try
@@ -176,7 +173,7 @@ Public Class MainFrm
             Hitung()
             ToolStripProgressBar1.Value = "60"
         ElseIf ToolStripProgressBar1.Value = "60" Then
-            hasil()
+            Hasil()
             ToolStripProgressBar1.Value = "100"
         ElseIf ToolStripProgressBar1.Value = "100" Then
             Timer1.Enabled = False
