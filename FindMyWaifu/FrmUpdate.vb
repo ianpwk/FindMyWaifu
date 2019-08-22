@@ -18,7 +18,7 @@ Public Class FrmUpdate
             End While
 
             Label2.Text = "Update Ver.: " + newver
-            Dim lastver As String = Application.ProductVersion
+            Dim lastver As String = "0.0.0.3"
 
             If newver.ToString < lastver.ToString Then
                 RichTextBox1.Text = desc
@@ -44,6 +44,13 @@ Public Class FrmUpdate
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Button1.Text = "Update" Then
+            Dim process As New Process()
+            process.StartInfo.FileName = "UpdateMyWaifu.exe"
+            process.StartInfo.Verb = "runas"
+            process.StartInfo.UseShellExecute = True
+            process.Start()
+
+            Form1.Close()
             'Process.Start("https://github.com/ianpwk/FindMyWaifu/releases")
 
             'frmOtherProject.Show()
