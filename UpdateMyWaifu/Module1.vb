@@ -8,13 +8,25 @@ Module Module1
         FileToCopy = "C:\Users\Owner\Documents\test.txt"
         NewCopy = "C:\Users\Owner\Documents\NewTest.txt"
 
-        Console.WriteLine("Closing Porgram...")
-        Process.
+        Console.WriteLine("Apakah yakin mau merestart FindMyWaifu? (y/n)")
+        Dim line As String = Console.ReadLine()
+
+
+        If line = "Yes" OrElse line = "yes" OrElse line = "Y" OrElse line = "y" Then
+            Console.WriteLine("Closing Porgram...")
+            Process.GetProcessesByName("FindMyWaifu")(0).Kill()
+        End If
 
         If System.IO.File.Exists(FileToCopy) = True Then
 
             System.IO.File.Copy(FileToCopy, NewCopy)
+        Else
+            Console.WriteLine("File Update tidak Ditemukan atau versi program sudah yang terbaru.")
+            Console.ReadLine()
         End If
+        Dim myprocess As System.Diagnostics.Process = New System.Diagnostics.Process()
+        myprocess.StartInfo.FileName = "FindMyWaifu.exe"
+        myprocess.Start()
     End Sub
 
 End Module

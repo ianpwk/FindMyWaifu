@@ -29,17 +29,19 @@ Partial Class Form1
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(15, 36)
+        Me.TextBox1.Location = New System.Drawing.Point(15, 25)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(238, 20)
         Me.TextBox1.TabIndex = 0
         '
         'BtnMasuk
         '
+        Me.BtnMasuk.Enabled = False
         Me.BtnMasuk.Location = New System.Drawing.Point(144, 76)
         Me.BtnMasuk.Name = "BtnMasuk"
         Me.BtnMasuk.Size = New System.Drawing.Size(55, 23)
@@ -61,9 +63,9 @@ Partial Class Form1
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Location = New System.Drawing.Point(15, 80)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(93, 17)
+        Me.CheckBox1.Size = New System.Drawing.Size(90, 17)
         Me.CheckBox1.TabIndex = 3
-        Me.CheckBox1.Text = "Ingatkan saya"
+        Me.CheckBox1.Text = "Simpan nama"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'Button1
@@ -75,11 +77,21 @@ Partial Class Form1
         Me.Button1.Text = "Cancel"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(15, 52)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(159, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Hanya huruf yang dperbolehkan"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(265, 111)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Label1)
@@ -90,7 +102,6 @@ Partial Class Form1
         Me.MinimizeBox = False
         Me.Name = "Form1"
         Me.ShowIcon = False
-        Me.ShowInTaskbar = False
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -102,4 +113,5 @@ Partial Class Form1
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label2 As Label
 End Class
