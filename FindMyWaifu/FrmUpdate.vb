@@ -6,9 +6,6 @@ Public Class FrmUpdate
     Dim msg As String = ""
 
     Public Sub DownloadEngine()
-        If (Not System.IO.Directory.Exists("_data")) Then
-            System.IO.Directory.CreateDirectory("_data")
-        End If
         DataFile = New WebClient()
 
         DataDownload = "https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21814&authkey=AAJyWlZeNEowBXE"
@@ -23,6 +20,7 @@ Public Class FrmUpdate
 
     Private Sub ProgChanged(sender As Object, e As DownloadProgressChangedEventArgs)
         ProgressBar1.Value = e.ProgressPercentage
+        MainFrm.ToolStripProgressBar1.Value = e.ProgressPercentage
         Label3.Text = "Downloading Update.. (" + e.ProgressPercentage.ToString() + "%)"
 
         If ProgressBar1.Value = 100 Then
@@ -66,6 +64,14 @@ Public Class FrmUpdate
     End Sub
 
     Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim create As New CreateFolder()
+        If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data")) Then
+            System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data")
+        End If
+
+        IO.File.SetAttributes(create.appDataFMW & "\_data", IO.FileAttributes.Hidden Or
+                                  IO.FileAttributes.System)
+
         RichTextBox1.ReadOnly = True
         RichTextBox1.BackColor = ColorTranslator.FromHtml("#f3f3f3")
         Label1.Text = "Curent ver.: " + Application.ProductVersion

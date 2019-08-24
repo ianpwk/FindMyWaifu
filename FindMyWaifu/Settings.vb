@@ -1,9 +1,11 @@
 ﻿Imports System.IO, System.Net, System.Web
 
 Public Class SettingsFrm
-    Dim versiDatabase As String = "0.0.0.1"
-    Dim dir = "theme"
-    Public Sub Button1_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
+
+    ReadOnly create As New CreateFolder()
+    Dim dirTheme = create.appDataFMW & "\theme"
+    Dim dirChibi = create.appDataFMW & "\chibi"
+    Public Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If ComboTheme.Text = "Dark" Then
             My.Settings.Theme = "Dark"
         ElseIf ComboTheme.Text = "Default" Then
@@ -32,13 +34,21 @@ Public Class SettingsFrm
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RadioButton2.Enabled = False
-        If (Not System.IO.Directory.Exists("theme")) Then
-            System.IO.Directory.CreateDirectory("theme")
+
+        If (Not System.IO.Directory.Exists(create.appDataFMW & "\theme")) Then
+            System.IO.Directory.CreateDirectory(create.appDataFMW & "\theme")
+        End If
+
+        If (Not System.IO.Directory.Exists(create.appDataFMW & "\chibi")) Then
+            System.IO.Directory.CreateDirectory(create.appDataFMW & "\chibi")
         End If
 
         ComboTheme.DisplayMember = "Text"
+
+        ComboTheme.Items.Add("Default")
+        ComboTheme.Items.Add("Dark")
         Try
-            For Each file As String In System.IO.Directory.GetFiles(dir, "*.xsi")
+            For Each file As String In System.IO.Directory.GetFiles(dirTheme, "*.xsi")
                 ComboTheme.Items.Add(System.IO.Path.GetFileNameWithoutExtension(file))
             Next
 
@@ -46,11 +56,20 @@ Public Class SettingsFrm
 
         End Try
 
+        ComboChibi.DisplayMember = "Text"
 
-        ComboTheme.Items.Add("Default")
-        ComboTheme.Items.Add("Dark")
+        ComboChibi.Items.Add("Default")
+        Try
+            For Each chibi As String In System.IO.Directory.GetDirectories(dirChibi)
+                Dim dirInfo As New System.IO.DirectoryInfo(chibi)
+                ComboChibi.Items.Add(dirInfo.Name)
+            Next
+        Catch ex As Exception
+
+        End Try
 
         ComboTheme.SelectedItem = My.Settings.Theme
+        ComboChibi.SelectedItem = My.Settings.Chibi
 
         If My.Settings.AutoUpdate = True Then
             CheckUpdate.Checked = True
@@ -76,7 +95,7 @@ Public Class SettingsFrm
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSaveExit.Click
-        Button1_Click(sender, e)
+        BtnSave_Click(sender, e)
         Me.Close()
     End Sub
 
@@ -95,6 +114,7 @@ Public Class SettingsFrm
 
     Private Sub Settings_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         ComboTheme.Items.Clear()
+        ComboChibi.Items.Clear()
     End Sub
 
     Private Sub hap_chibi_CheckedChanged(sender As Object, e As EventArgs) Handles hap_chibi.CheckedChanged
@@ -149,7 +169,11 @@ Public Class SettingsFrm
         BtnSaveExit.Enabled = True
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
+    Private Sub OpenFThemeBtn_Click(sender As Object, e As EventArgs) Handles OpenFThemeBtn.Click
+        Process.Start(create.appDataFMW & "\theme")
+    End Sub
 
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Process.Start(create.appDataFMW & "\chibi")
     End Sub
 End Class

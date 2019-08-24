@@ -1,4 +1,7 @@
-﻿Public Class Form1
+﻿Imports System.Environment, System.IO
+Public Class Form1
+
+    Public appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu"
 
     Private Const CP_NOCLOSE_BUTTON As Integer = &H200
     Protected Overrides ReadOnly Property CreateParams() As Windows.Forms.CreateParams
@@ -24,6 +27,9 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim create As New CreateFolder()
+        Call create.CreateFolderFMW()
+
         If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
             MsgBox("Program ini sudah berjalan", MsgBoxStyle.Critical + vbOKOnly, "Error")
             Application.Exit()
@@ -45,6 +51,8 @@
 
             CheckBox1.Enabled = False
         End If
+
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click

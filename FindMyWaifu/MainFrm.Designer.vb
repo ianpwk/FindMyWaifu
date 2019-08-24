@@ -24,7 +24,6 @@ Partial Class MainFrm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Kasumi = New System.Windows.Forms.PictureBox()
         Me.KasumiGo = New System.Windows.Forms.PictureBox()
         Me.KasumiFail = New System.Windows.Forms.PictureBox()
@@ -33,10 +32,8 @@ Partial Class MainFrm
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.rndno = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
@@ -44,8 +41,9 @@ Partial Class MainFrm
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,27 +55,19 @@ Partial Class MainFrm
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Silver
-        Me.Panel1.Controls.Add(Me.RichTextBox1)
+        Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Kasumi)
         Me.Panel1.Controls.Add(Me.KasumiGo)
         Me.Panel1.Controls.Add(Me.KasumiFail)
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(473, 229)
+        Me.Panel1.Size = New System.Drawing.Size(395, 247)
         Me.Panel1.TabIndex = 0
-        '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.Location = New System.Drawing.Point(22, 84)
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(219, 72)
-        Me.RichTextBox1.TabIndex = 2
-        Me.RichTextBox1.Text = ""
         '
         'Kasumi
         '
         Me.Kasumi.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
-        Me.Kasumi.Location = New System.Drawing.Point(289, 16)
+        Me.Kasumi.Location = New System.Drawing.Point(117, 54)
         Me.Kasumi.Name = "Kasumi"
         Me.Kasumi.Size = New System.Drawing.Size(165, 172)
         Me.Kasumi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -87,7 +77,7 @@ Partial Class MainFrm
         'KasumiGo
         '
         Me.KasumiGo.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
-        Me.KasumiGo.Location = New System.Drawing.Point(289, 16)
+        Me.KasumiGo.Location = New System.Drawing.Point(117, 54)
         Me.KasumiGo.Name = "KasumiGo"
         Me.KasumiGo.Size = New System.Drawing.Size(165, 172)
         Me.KasumiGo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -98,7 +88,7 @@ Partial Class MainFrm
         'KasumiFail
         '
         Me.KasumiFail.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
-        Me.KasumiFail.Location = New System.Drawing.Point(289, 16)
+        Me.KasumiFail.Location = New System.Drawing.Point(117, 54)
         Me.KasumiFail.Name = "KasumiFail"
         Me.KasumiFail.Size = New System.Drawing.Size(165, 172)
         Me.KasumiFail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -111,7 +101,7 @@ Partial Class MainFrm
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1, Me.ToolStripStatusLabel2})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 369)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(473, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(395, 22)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -135,23 +125,15 @@ Partial Class MainFrm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(19, 275)
+        Me.Label1.Location = New System.Drawing.Point(12, 295)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(117, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Waifu Anda Adalah???"
         '
-        'TextBox1
-        '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(22, 291)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(432, 20)
-        Me.TextBox1.TabIndex = 4
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(379, 317)
+        Me.Button1.Location = New System.Drawing.Point(221, 330)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 5
@@ -162,25 +144,14 @@ Partial Class MainFrm
         '
         Me.Timer1.Interval = 1000
         '
-        'rndno
-        '
-        Me.rndno.AutoSize = True
-        Me.rndno.Location = New System.Drawing.Point(253, 343)
-        Me.rndno.Name = "rndno"
-        Me.rndno.Size = New System.Drawing.Size(39, 13)
-        Me.rndno.TabIndex = 6
-        Me.rndno.Text = "Label2"
-        Me.rndno.Visible = False
-        '
         'Label2
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(298, 343)
+        Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label2.Location = New System.Drawing.Point(135, 288)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.Size = New System.Drawing.Size(248, 26)
         Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Label2"
-        Me.Label2.Visible = False
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'ContextMenuStrip1
         '
@@ -193,7 +164,7 @@ Partial Class MainFrm
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip2.Name = "ToolStrip2"
-        Me.ToolStrip2.Size = New System.Drawing.Size(473, 25)
+        Me.ToolStrip2.Size = New System.Drawing.Size(395, 25)
         Me.ToolStrip2.TabIndex = 9
         Me.ToolStrip2.Text = "ToolStrip2"
         '
@@ -210,42 +181,49 @@ Partial Class MainFrm
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(177, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(113, 6)
         '
         'AboutToolStripMenuItem1
         '
         Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
         Me.AboutToolStripMenuItem1.Text = "&About"
+        '
+        'UpdateToolStripMenuItem
+        '
+        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.UpdateToolStripMenuItem.Text = "&Update"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
-        'UpdateToolStripMenuItem
+        'Label3
         '
-        Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.UpdateToolStripMenuItem.Text = "&Update"
+        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label3.Location = New System.Drawing.Point(60, 9)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(268, 37)
+        Me.Label3.TabIndex = 2
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(473, 391)
+        Me.ClientSize = New System.Drawing.Size(395, 391)
         Me.Controls.Add(Me.ToolStrip2)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.rndno)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.Panel1)
@@ -271,15 +249,12 @@ Partial Class MainFrm
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
     Friend WithEvents Kasumi As PictureBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
     Friend WithEvents KasumiGo As PictureBox
     Friend WithEvents KasumiFail As PictureBox
     Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
-    Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents rndno As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents ToolStrip2 As ToolStrip
@@ -289,4 +264,5 @@ Partial Class MainFrm
     Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents UpdateToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Label3 As Label
 End Class

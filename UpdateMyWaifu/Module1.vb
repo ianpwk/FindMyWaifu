@@ -5,6 +5,7 @@ Imports System.Security.Principal
 Module Module1
     Dim FileToCopy As String
     Dim NewCopy As String
+    Dim appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu"
     Sub Main()
         Dim identity = WindowsIdentity.GetCurrent()
         Dim principal = New WindowsPrincipal(identity)
@@ -12,7 +13,7 @@ Module Module1
         If isElevated Then
 
 
-            FileToCopy = "_data\FindMyWaifu.exe"
+            FileToCopy = appDataFMW & "\_data\FindMyWaifu.exe"
             NewCopy = "FindMyWaifu.exe"
 
             Console.WriteLine("Closing Program....")
@@ -27,6 +28,11 @@ Module Module1
 
             Console.WriteLine("Upgading file...")
             Threading.Thread.Sleep(3000)
+
+            If (Not System.IO.Directory.Exists(appDataFMW & "\_data")) Then
+                System.IO.Directory.CreateDirectory(appDataFMW & "\_data")
+            End If
+
             If System.IO.File.Exists(FileToCopy) = True Then
                 If System.IO.File.Exists(NewCopy) Then
                     System.IO.File.Delete(NewCopy)
@@ -37,13 +43,14 @@ Module Module1
                 Console.WriteLine("File Update tidak Ditemukan atau versi program sudah yang terbaru.")
                 Threading.Thread.Sleep(3000)
             End If
+
             Console.WriteLine("Opening...")
 
             Using myprocess As System.Diagnostics.Process = New System.Diagnostics.Process()
                 myprocess.StartInfo.FileName = "FindMyWaifu.exe"
                 myprocess.Start()
             End Using
-            Threading.Thread.Sleep(3000)
+            Threading.Thread.Sleep(1000)
         Else
             Console.WriteLine("Anda bukan admin")
             Threading.Thread.Sleep(3000)

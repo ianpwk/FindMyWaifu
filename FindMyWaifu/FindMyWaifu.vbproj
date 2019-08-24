@@ -101,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassTheme.vb" />
+    <Compile Include="CreateFolder.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>

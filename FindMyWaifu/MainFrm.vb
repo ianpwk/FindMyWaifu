@@ -12,6 +12,9 @@ Public Class MainFrm
     Dim LokasNomorB As String
     Dim Out As Integer
 
+    Dim NumberRnd As String = ""
+    Dim Hasilnya As String = ""
+
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Public Sub CheckForUpdates()
@@ -68,7 +71,7 @@ Public Class MainFrm
                 s = dr("No").ToString
 
                 R = rn.Next(1, S)
-                rndno.Text = R
+                NumberRnd = R
             End If
             Conn.Close()
         Catch ex As Exception
@@ -100,12 +103,12 @@ Public Class MainFrm
             Dim cmd1 As New OleDbCommand
             cmd1 = Conn.CreateCommand
 
-            cmd1.Parameters.AddWithValue("@id", rndno.Text)
+            cmd1.Parameters.AddWithValue("@id", NumberRnd.ToString())
             cmd1.CommandText = "SELECT * from [NameWaifu] where [No] =@id"
             Dim dr1 As OleDbDataReader = cmd1.ExecuteReader(CommandBehavior.SingleResult)
 
             If dr1.Read Then
-                Label2.Text = dr1("NameWaifu").ToString
+                Hasilnya = dr1("NameWaifu").ToString
             End If
             Conn.Close()
         Catch ex As Exception
@@ -145,10 +148,7 @@ Public Class MainFrm
             Names = Form1.TextBox1.Text
         End If
 
-        TextBox1.ReadOnly = True
-        RichTextBox1.ReadOnly = True
-
-        RichTextBox1.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
+        Label3.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
         Label1.Text = "Waifu " + Names + " adalah?"
 
         If InternetGetConnectedState(Out, 0) = True Then
@@ -177,7 +177,7 @@ Public Class MainFrm
             ToolStripProgressBar1.Value = "100"
         ElseIf ToolStripProgressBar1.Value = "100" Then
             Timer1.Enabled = False
-            TextBox1.Text = Label2.Text
+            Label2.Text = Hasilnya.ToString()
             Button1.Enabled = True
         End If
     End Sub
