@@ -12,12 +12,15 @@ Public Class FrmUpdate
     Dim updates As Integer = 0
     Dim fol As New CreateFolder()
     Dim filedownload As String = fol.appDataFMW & "\_data\updates\update.zip"
+    Dim Curent As String
 
     Dim check As Boolean = False
+    Dim majorOnline, mirorOnline, bulidOnline, revisionOnline As String
 
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Public Sub CheckForUpdates()
+
         If InternetGetConnectedState(Out, 0) = True Then
             Try
                 Dim ver As String = ""
@@ -33,21 +36,55 @@ Public Class FrmUpdate
                     If xmlUpdate.Name = "description" Then
                         desc = xmlUpdate.ReadInnerXml.ToString()
                     End If
+
+                    If xmlUpdate.Name = "major" Then
+                        majorOnline = xmlUpdate.ReadInnerXml.ToString()
+                    ElseIf xmlUpdate.Name = "miror" Then
+                        mirorOnline = xmlUpdate.ReadInnerXml.ToString()
+                    ElseIf xmlUpdate.Name = "bulid" Then
+                        bulidOnline = xmlUpdate.ReadInnerXml.ToString()
+                    ElseIf xmlUpdate.Name = "revision" Then
+                        revisionOnline = xmlUpdate.ReadInnerXml.ToString()
+                    End If
                 End While
 
                 Label2.Text = "Update Ver.: " + newver
-                Dim lastver As String = Application.ProductVersion
+
                 updates = 1
                 Button1.Text = "Update"
 
-                If newver < lastver Then
+                If revisionOnline > My.Application.Info.Version.Revision.ToString Then
                     RichTextBox1.Text = desc
-                    Label3.Text = ""
+                    Label3.Text = "Update Avaiable"
                 Else
-                    Label3.Text = "Sudah Terupdate"
-                    RichTextBox1.Text = "Versi anda sudah yang terbaru"
-                    Button1.Enabled = False
+                    If bulidOnline > My.Application.Info.Version.Build.ToString Then
+                        RichTextBox1.Text = desc
+                        Label3.Text = "Update Avaiable"
+                    Else
+                        If mirorOnline > My.Application.Info.Version.Minor.ToString Then
+                            RichTextBox1.Text = desc
+                            Label3.Text = "Update Avaiable"
+                        Else
+                            If majorOnline > My.Application.Info.Version.Major.ToString Then
+                                RichTextBox1.Text = desc
+                                Label3.Text = "Update Avaiable"
+                            Else
+                                Label3.Text = "Sudah Terupdate"
+                                RichTextBox1.Text = "Versi anda sudah yang terbaru"
+                                Button1.Enabled = False
+                            End If
+                        End If
+                    End If
                 End If
+
+                'If newver > lastver Then
+                '    RichTextBox1.Text = desc
+                '    Label3.Text = ""
+                'Else
+                '    Label3.Text = "Sudah Terupdate"
+                '    RichTextBox1.Text = "Versi anda sudah yang terbaru"
+                '    Button1.Enabled = False
+                'End If
             Catch ex As Exception
                 Label3.Text = ""
                 updates = 0
@@ -63,6 +100,10 @@ Public Class FrmUpdate
     End Sub
 
     Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Curent = String.Format("{0}.{1}.{2}.{3}", My.Application.Info.Version.Major.ToString,
+                                                My.Application.Info.Version.Minor.ToString,
+                                                My.Application.Info.Version.Build.ToString,
+                                                My.Application.Info.Version.Revision.ToString)
         ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
         Dim create As New CreateFolder()
         If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data")) Then
@@ -78,7 +119,7 @@ Public Class FrmUpdate
 
         RichTextBox1.ReadOnly = True
         RichTextBox1.BackColor = ColorTranslator.FromHtml("#f3f3f3")
-        Label1.Text = "Curent ver.: " + Application.ProductVersion
+        Label1.Text = "Curent ver.: " + Curent.ToString
         CheckForUpdates()
 
     End Sub
