@@ -36,7 +36,7 @@ Public Class FrmUpdate
                 End While
 
                 Label2.Text = "Update Ver.: " + newver
-                Dim lastver As String = "0.0.0.8" 'Application.ProductVersion
+                Dim lastver As String = Application.ProductVersion
                 updates = 1
                 Button1.Text = "Update"
 
