@@ -1,15 +1,23 @@
-﻿Imports System.IO, System.Net, System.Web
+﻿Imports System.IO, System.Net, System.Web, Newtonsoft.Json, Newtonsoft.Json.Linq
 
 Public Class SettingsFrm
 
     ReadOnly create As New CreateFolder()
-    Dim dirTheme = create.appDataFMW & "\theme"
-    Dim dirChibi = create.appDataFMW & "\chibi"
+    Dim dirTheme As String = create.appDataFMW & "\theme"
+    Dim dirChibi As String = create.appDataFMW & "\chibi"
+    Dim file As String
+
+    Dim xsiColor As JObject
+    Dim CusTheme As String
+
     Public Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
-        If ComboTheme.Text = "Dark" Then
-            My.Settings.Theme = "Dark"
-        ElseIf ComboTheme.Text = "Default" Then
-            My.Settings.Theme = "Default"
+        My.Settings.Theme = ComboTheme.Text
+        If My.Settings.Theme = "Default" Or My.Settings.Theme = "Dark" Or My.Settings.Theme = "Light" Then
+            My.Settings.CustomTheme = False
+
+        Else
+
+            My.Settings.CustomTheme = True
         End If
 
         Dim theme As New ClassTheme()
@@ -46,12 +54,13 @@ Public Class SettingsFrm
         ComboTheme.DisplayMember = "Text"
 
         ComboTheme.Items.Add("Default")
+        ComboTheme.Items.Add("Light")
         ComboTheme.Items.Add("Dark")
-        Try
-            For Each file As String In System.IO.Directory.GetFiles(dirTheme, "*.xsi")
-                ComboTheme.Items.Add(System.IO.Path.GetFileNameWithoutExtension(file))
-            Next
 
+        Try
+            For Each files As String In System.IO.Directory.GetFiles(dirTheme, "*.jsnx")
+                ComboTheme.Items.Add("Custom - " + System.IO.Path.GetFileNameWithoutExtension(files))
+            Next
         Catch ex As Exception
 
         End Try
@@ -69,6 +78,7 @@ Public Class SettingsFrm
         End Try
 
         ComboTheme.SelectedItem = My.Settings.Theme
+
         ComboChibi.SelectedItem = My.Settings.Chibi
 
         If My.Settings.AutoUpdate = True Then
@@ -151,17 +161,40 @@ Public Class SettingsFrm
         BtnSave.Enabled = True
         BtnSaveExit.Enabled = True
 
+        If Not (ComboTheme.SelectedItem = "Default" Or ComboTheme.SelectedItem = "Light" Or ComboTheme.SelectedItem = "Dark") Then
+            CusTheme = ComboTheme.SelectedItem.ToString.Replace("Custom - ", "")
+        End If
+
         Dim Colors As New ClassTheme()
         Colors.previewtheme()
-        ToolStrip1.BackColor = Colors.ToolbarColor
-        ToolStrip1.ForeColor = Colors.ToolbarText
-        ToolStripButton1.Image = Colors.toolbarConIcon
+        If (ComboTheme.SelectedItem = "Default" Or ComboTheme.SelectedItem = "Light" Or ComboTheme.SelectedItem = "Dark") Then
+            ToolStrip1.BackColor = Colors.ToolbarColor
+            ToolStrip1.ForeColor = Colors.ToolbarText
+            ToolStripButton1.Image = Colors.toolbarConIcon
 
-        GroupBox2.BackColor = Colors.BackgroundColor
-        GroupBox2.ForeColor = Colors.MainColor
+            GroupBox2.BackColor = Colors.BackgroundColor
+            GroupBox2.ForeColor = Colors.MainColor
 
-        StatusStrip1.BackColor = Colors.StatusColor
-        StatusStrip1.ForeColor = Colors.StatusText
+            StatusStrip1.BackColor = Colors.StatusColor
+            StatusStrip1.ForeColor = Colors.StatusText
+        Else
+
+            Dim ReadJson As String = System.IO.File.ReadAllText(dirTheme & "\" & CusTheme & ".jsnx")
+            Dim JsonObject As JObject = JObject.Parse(ReadJson.ToString)
+
+            xsiColor = JObject.Parse(JsonObject.SelectToken("color").ToString)
+
+            ToolStrip1.BackColor = ColorTranslator.FromHtml("#" + xsiColor.SelectToken("toolbar").ToString)
+            ToolStrip1.ForeColor = ColorTranslator.FromHtml("#" + xsiColor.SelectToken("toolbartext").ToString)
+            ToolStripButton1.Image = Colors.toolbarConIcon
+
+            GroupBox2.BackColor = ColorTranslator.FromHtml("#" + xsiColor.SelectToken("form").ToString)
+            GroupBox2.ForeColor = ColorTranslator.FromHtml("#" + xsiColor.SelectToken("formtext").ToString)
+
+            StatusStrip1.BackColor = ColorTranslator.FromHtml("#" + xsiColor.SelectToken("status").ToString)
+            StatusStrip1.ForeColor = ColorTranslator.FromHtml("#" + xsiColor.SelectToken("statustext").ToString)
+        End If
+
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckUpdate.CheckedChanged
@@ -175,5 +208,9 @@ Public Class SettingsFrm
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         Process.Start(create.appDataFMW & "\chibi")
+    End Sub
+
+    Private Sub ComboChibi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboChibi.SelectedIndexChanged
+
     End Sub
 End Class

@@ -18,28 +18,33 @@
 
     Public Sub changetheme()
         If My.Settings.Theme = "Default" Then
-            Colordefaults()
+            ColorDefault()
+        ElseIf my.Settings.Theme = "Light" Then
+            ColorLight()
         ElseIf My.Settings.Theme = "Dark" Then
             ColorDark()
         Else
-
+            CustomColor()
         End If
         Call ChoiceColor()
     End Sub
 
     Public Sub previewtheme()
         If SettingsFrm.ComboTheme.SelectedItem = "Default" Then
-            Colordefaults()
+            ColorDefault()
+        ElseIf SettingsFrm.ComboTheme.SelectedItem = "Light" Then
+            ColorLight()
         ElseIf SettingsFrm.ComboTheme.SelectedItem = "Dark" Then
             ColorDark()
         Else
-
+            'CustomColor()
         End If
     End Sub
 
     Public Sub ChoiceColor()
         MainFrm.ToolStrip2.BackColor = ToolbarColor
         MainFrm.ToolStrip2.ForeColor = ToolbarText
+        MainFrm.ToolStripSplitButton1.ForeColor = ToolbarText
 
         MainFrm.ToolStripSplitButton1.Image = toolbarMenuIcon
 
@@ -51,9 +56,9 @@
 
     End Sub
 
-    Private Sub Colordefaults()
+    Private Sub ColorLight()
         ToolbarColor = Color.FromArgb(224, 224, 224)
-        ToolbarText = Color.Black
+        ToolbarText = Color.FromArgb(54, 54, 54)
 
         toolbarMenuIcon = toolbarMenuBlack
         toolbarConIcon = toolbarConBlack
@@ -62,6 +67,7 @@
         MainColor = Color.Black
 
         StatusColor = Color.White
+        StatusText = Color.Black
     End Sub
     Private Sub ColorDark()
         ToolbarColor = Color.FromArgb(66, 66, 66)
@@ -74,5 +80,35 @@
         MainColor = Color.Black
 
         StatusColor = Color.FromArgb(189, 189, 189)
+    End Sub
+
+    Private Sub ColorDefault()
+        ToolbarColor = Color.FromKnownColor(KnownColor.Info)
+        ToolbarText = Color.FromKnownColor(KnownColor.ControlText)
+
+        toolbarMenuIcon = toolbarMenuBlack
+        toolbarConIcon = toolbarConBlack
+
+        BackgroundColor = Color.FromKnownColor(KnownColor.Control)
+        MainColor = Color.FromKnownColor(KnownColor.ControlText)
+
+        StatusColor = Color.FromKnownColor(KnownColor.Control)
+    End Sub
+
+    Private Sub CustomColor()
+        Dim Colorings As New ThemePreview()
+
+        Call Colorings.Coloring()
+        ToolbarColor = ColorTranslator.FromHtml("#" + Colorings.BGtoolbarColor.ToString())
+        ToolbarText = ColorTranslator.FromHtml("#" + Colorings.TXtoolbarColor.ToString())
+
+        toolbarMenuIcon = toolbarMenuBlack
+        toolbarConIcon = toolbarConBlack
+
+        BackgroundColor = ColorTranslator.FromHtml("#" + Colorings.BGformColor.ToString())
+        MainColor = ColorTranslator.FromHtml("#" + Colorings.TXformColor.ToString())
+
+        StatusColor = ColorTranslator.FromHtml("#" + Colorings.BGstatusColor.ToString())
+        StatusText = ColorTranslator.FromHtml("#" + Colorings.TXstatusColor.ToString())
     End Sub
 End Class

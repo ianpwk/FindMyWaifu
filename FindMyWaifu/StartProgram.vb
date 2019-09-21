@@ -5,6 +5,8 @@ Public Class StartProgram
     Dim DataDownload As String = ""
     Dim msg As String = ""
 
+    Dim closings As Boolean = False
+
     Public Sub DownloadEngine()
         DataFile = New WebClient()
 
@@ -42,18 +44,21 @@ Public Class StartProgram
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Process.Start("AccessEngine.exe")
         Timer1.Enabled = False
-
+        closings = True
         Me.Close()
     End Sub
 
     Private Sub StartProgram_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Dim result As Integer = MsgBox("Anda yakin mau stop progges ini?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Yakin???")
-        If result = DialogResult.Yes Then
-            e.Cancel = False
-            DataFile.CancelAsync()
-            Me.Close()
-        Else
-            e.Cancel = True
+        If closings = False Then
+            Dim result As Integer = MsgBox("Anda yakin mau stop progges ini?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Yakin???")
+            If result = DialogResult.Yes Then
+                e.Cancel = False
+                DataFile.CancelAsync()
+                closings = True
+                Me.Close()
+            Else
+                e.Cancel = True
+            End If
         End If
     End Sub
 End Class

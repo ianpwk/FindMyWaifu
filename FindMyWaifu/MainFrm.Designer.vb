@@ -24,6 +24,7 @@ Partial Class MainFrm
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.Kasumi = New System.Windows.Forms.PictureBox()
         Me.KasumiGo = New System.Windows.Forms.PictureBox()
         Me.KasumiFail = New System.Windows.Forms.PictureBox()
@@ -39,11 +40,10 @@ Partial Class MainFrm
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,15 +54,25 @@ Partial Class MainFrm
         '
         'Panel1
         '
-        Me.Panel1.BackColor = System.Drawing.Color.Silver
+        Me.Panel1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Kasumi)
         Me.Panel1.Controls.Add(Me.KasumiGo)
         Me.Panel1.Controls.Add(Me.KasumiFail)
+        Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(395, 247)
         Me.Panel1.TabIndex = 0
+        '
+        'Label3
+        '
+        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label3.Location = New System.Drawing.Point(60, 9)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(268, 37)
+        Me.Label3.TabIndex = 2
+        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Kasumi
         '
@@ -124,16 +134,16 @@ Partial Class MainFrm
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 295)
+        Me.Label1.Location = New System.Drawing.Point(12, 282)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(117, 13)
+        Me.Label1.Size = New System.Drawing.Size(371, 13)
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Waifu Anda Adalah???"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(221, 330)
+        Me.Button1.Location = New System.Drawing.Point(158, 340)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 5
@@ -147,7 +157,7 @@ Partial Class MainFrm
         'Label2
         '
         Me.Label2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label2.Location = New System.Drawing.Point(135, 288)
+        Me.Label2.Location = New System.Drawing.Point(70, 303)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(248, 26)
         Me.Label2.TabIndex = 7
@@ -160,7 +170,7 @@ Partial Class MainFrm
         '
         'ToolStrip2
         '
-        Me.ToolStrip2.BackColor = System.Drawing.Color.DimGray
+        Me.ToolStrip2.BackColor = System.Drawing.SystemColors.Info
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip2.Name = "ToolStrip2"
@@ -170,56 +180,46 @@ Partial Class MainFrm
         '
         'ToolStripSplitButton1
         '
-        Me.ToolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripSplitButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.ToolStripSeparator3, Me.AboutToolStripMenuItem1, Me.UpdateToolStripMenuItem})
+        Me.ToolStripSplitButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SettingsToolStripMenuItem, Me.UpdateToolStripMenuItem, Me.ToolStripSeparator3, Me.AboutToolStripMenuItem1})
+        Me.ToolStripSplitButton1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.ToolStripSplitButton1.Image = Global.FindMyWaifu.My.Resources.Resources.menu
         Me.ToolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripSplitButton1.Name = "ToolStripSplitButton1"
-        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(32, 22)
+        Me.ToolStripSplitButton1.Size = New System.Drawing.Size(70, 22)
         Me.ToolStripSplitButton1.Text = "Menu"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.SettingsToolStripMenuItem.Text = "&Settings"
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(113, 6)
-        '
-        'AboutToolStripMenuItem1
-        '
-        Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
-        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(116, 22)
-        Me.AboutToolStripMenuItem1.Text = "&About"
         '
         'UpdateToolStripMenuItem
         '
         Me.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem"
-        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(116, 22)
+        Me.UpdateToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.UpdateToolStripMenuItem.Text = "&Update"
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(177, 6)
+        '
+        'AboutToolStripMenuItem1
+        '
+        Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.AboutToolStripMenuItem1.Text = "&About"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
         Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
-        'Label3
-        '
-        Me.Label3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Label3.Location = New System.Drawing.Point(60, 9)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(268, 37)
-        Me.Label3.TabIndex = 2
-        Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(395, 391)
         Me.Controls.Add(Me.ToolStrip2)
         Me.Controls.Add(Me.Label2)

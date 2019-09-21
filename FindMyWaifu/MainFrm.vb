@@ -78,7 +78,6 @@ Public Class MainFrm
             Timer1.Enabled = False
 
             msg = ex.Message.ToString()
-            MsgBox(msg)
             If msg = "The 'Microsoft.ACE.OLEDB.12.0' provider is not registered on the local machine." Then
                 Dim msg1 As String = MsgBox("Module yang dibutuhkan di program ini belum di install" + Chr(13) + "Silahkan install modulenya", MsgBoxStyle.Exclamation + MsgBoxStyle.OkCancel, "Error")
                 If msg1 = DialogResult.OK Then
@@ -88,6 +87,7 @@ Public Class MainFrm
                     Kasumi.Visible = False
                     KasumiGo.Visible = False
                     KasumiFail.Visible = True
+                    Button1.Enabled = True
                 End If
             End If
         End Try

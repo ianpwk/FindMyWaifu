@@ -69,6 +69,27 @@
   <PropertyGroup>
     <ApplicationIcon>tumblr_pscuevC86h1wxengv_540~4.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>FindMyWaifu.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>FindMyWaifu.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DotNetUpdater">
       <HintPath>..\..\..\..\..\Downloads\Compressed\DotNetUpdater.dll</HintPath>
@@ -121,6 +142,12 @@
     <Compile Include="FrmAbout.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmError.Designer.vb">
+      <DependentUpon>FrmError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmError.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FrmUpdate.Designer.vb">
       <DependentUpon>FrmUpdate.vb</DependentUpon>
     </Compile>
@@ -161,6 +188,7 @@
     <Compile Include="StartProgram.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ThemePreview.vb" />
     <Compile Include="waifudataDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -176,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAbout.resx">
       <DependentUpon>FrmAbout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmError.resx">
+      <DependentUpon>FrmError.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdate.resx">
       <DependentUpon>FrmUpdate.vb</DependentUpon>
