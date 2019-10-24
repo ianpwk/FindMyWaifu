@@ -52,17 +52,12 @@ Module Module1
             Unzip()
 
             If File.Exists(FileToCopy) = True Then
-                If File.Exists(NewCopy) Then
-                    File.Delete(NewCopy)
-                    File.Delete(NewCopy2)
-                    File.Delete(NewCopy3)
-                End If
-                File.Copy(FileToCopy, NewCopy)
-                File.Copy(FileToCopy2, NewCopy2)
-                File.Copy(FileToCopy3, NewCopy3)
+                File.Copy(FileToCopy, NewCopy, True)
+                File.Copy(FileToCopy2, NewCopy2, True)
+                File.Copy(FileToCopy3, NewCopy3, True)
 
                 delete()
-
+                File.Delete(appDataFMW + "\updates\update.zip")
             Else
                 Console.WriteLine("File Update tidak Ditemukan atau versi program sudah yang terbaru.")
                 Threading.Thread.Sleep(3000)
@@ -82,18 +77,22 @@ Module Module1
     End Sub
 
     Private Sub Unzip()
+        If File.Exists(appDataFMW + "\updates\update.zip") Then
+            If Directory.Exists(appDataFMW & "\updates\data") Then
+                delete()
+            End If
 
-        If Directory.Exists(appDataFMW & "\updates\data") Then
-            delete()
+            Directory.CreateDirectory(appDataFMW & "\updates\data")
+
+            Dim sc As New Shell32.Shell()
+            Dim output As Shell32.Folder = sc.NameSpace(appDataFMW + "\updates\data")
+            Dim input As Shell32.Folder = sc.NameSpace(appDataFMW + "\updates\update.zip")
+
+            output.CopyHere(input.Items, 4)
+        Else
+            Console.WriteLine("File tidak ada")
+            Threading.Thread.Sleep(3000)
         End If
-
-        Directory.CreateDirectory(appDataFMW & "\updates\data")
-
-        Dim sc As New Shell32.Shell()
-        Dim output As Shell32.Folder = sc.NameSpace(appDataFMW + "\updates\data")
-        Dim input As Shell32.Folder = sc.NameSpace(appDataFMW + "\updates\update.zip")
-
-        output.CopyHere(input.Items, 4)
     End Sub
 
     Private Sub delete()
