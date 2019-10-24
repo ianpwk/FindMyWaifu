@@ -6,7 +6,7 @@ Hello elcome to "fun" Program
 Feature
 - Find Waifu
 - Result with image (Coming soon)
-- change theme (only light and dark, custom coming soon)
+- change theme
 - edit database (coming soon)
 - change chibi (coming soon)
 - And more
