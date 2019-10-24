@@ -42,7 +42,7 @@ Public Class FrmUpdate
                     ElseIf xmlUpdate.Name = "bulid" Then
                         bulidOnline = xmlUpdate.ReadInnerXml.ToString()
                     ElseIf xmlUpdate.Name = "revision" Then
-                        revisionOnline = 3
+                        revisionOnline = xmlUpdate.ReadInnerXml.ToString()
                     End If
                 End While
 
