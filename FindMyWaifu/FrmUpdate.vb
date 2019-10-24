@@ -4,7 +4,7 @@ Public Class FrmUpdate
     Delegate Sub DownloadComplateSafe(ByVal cancelled As Boolean)
     Delegate Sub ChangeTextSafe(ByVal lenght As Long, ByVal position As Integer, ByVal percent As Integer, ByVal speed As Double)
 
-    Dim DataDownload As String = "https://github.com/ianpwk/FindMyWaifu/releases/download/latest/FindMyWaifuPortable.zip" 'Files Update
+    Dim DataDownload As String = "https://github.com/yansaan/FindMyWaifu/releases/latest/download/FindMyWaifuPortable.zip" 'Files Update
     Dim Out As Integer
     Dim updates As Integer = 0
     Dim fol As New CreateFolder()
@@ -42,7 +42,7 @@ Public Class FrmUpdate
                     ElseIf xmlUpdate.Name = "bulid" Then
                         bulidOnline = xmlUpdate.ReadInnerXml.ToString()
                     ElseIf xmlUpdate.Name = "revision" Then
-                        revisionOnline = xmlUpdate.ReadInnerXml.ToString()
+                        revisionOnline = 3
                     End If
                 End While
 
@@ -145,6 +145,7 @@ Public Class FrmUpdate
     Private Sub Installing()
         Dim process As New Process()
         Try
+            Button1.Enabled = False
             process.StartInfo.FileName = "UpdateMyWaifu.exe"
             process.StartInfo.Verb = "runas"
             process.StartInfo.UseShellExecute = True

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FindMyWaifu", "FindMyWaifu\FindMyWaifu.vbproj", "{EF7E0788-92DC-4D7B-AD73-F6884B170843}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UpdateMyWaifu", "UpdateMyWaifu\UpdateMyWaifu.vbproj", "{C1BE2007-C30E-4C43-AB46-68CF720813E2}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "UpdateMyWaifu", "UpdateMyWaifu\UpdateMyWaifu.vbproj", "{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{EF7E0788-92DC-4D7B-AD73-F6884B170843}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EF7E0788-92DC-4D7B-AD73-F6884B170843}.Release|x86.ActiveCfg = Release|x86
 		{EF7E0788-92DC-4D7B-AD73-F6884B170843}.Release|x86.Build.0 = Release|x86
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Debug|x86.Build.0 = Debug|Any CPU
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Release|x86.ActiveCfg = Release|x86
-		{C1BE2007-C30E-4C43-AB46-68CF720813E2}.Release|x86.Build.0 = Release|x86
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Debug|x86.Build.0 = Debug|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Release|x86.ActiveCfg = Release|Any CPU
+		{4E70E9E2-4577-4F48-813C-C2CE4C1453B0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

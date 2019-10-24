@@ -10,19 +10,26 @@ Module Module1
     Dim NewCopy2 As String
     Dim NewCopy3 As String
     Dim appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu\_data"
+    Dim unziper As String = appDataFMW & "\updates\data"
     Sub Main()
+
         Dim identity = WindowsIdentity.GetCurrent()
         Dim principal = New WindowsPrincipal(identity)
         Dim isElevated As Boolean = principal.IsInRole(WindowsBuiltInRole.Administrator)
         If isElevated Then
 
+            Dim myAssemblyPath As String
+            Dim a As Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
+            myAssemblyPath = a.Location.Substring(0, InStrRev(a.Location, "\"))
 
-            FileToCopy = appDataFMW & "\FindMyWaifu.exe"
-            FileToCopy2 = appDataFMW & "\FindMyWaifu.exe.config"
-            FileToCopy3 = appDataFMW & "\waifudata.mdb"
+
+            FileToCopy = unziper & "\FindMyWaifu.exe"
+            FileToCopy2 = unziper & "\FindMyWaifu.exe.config"
+            FileToCopy3 = unziper & "\waifudata.mdb"
+
             NewCopy = "FindMyWaifu.exe"
             NewCopy2 = "FindMyWaifu.exe.config"
-            NewCopy2 = "waifudata.mdb"
+            NewCopy3 = "waifudata.mdb"
 
             Console.WriteLine("Closing Program....")
             Threading.Thread.Sleep(3000)
@@ -37,30 +44,25 @@ Module Module1
             Console.WriteLine("Upgading file...")
             Threading.Thread.Sleep(3000)
 
-            If (Not System.IO.Directory.Exists(appDataFMW)) Then
-                System.IO.Directory.CreateDirectory(appDataFMW)
+            If (Not Directory.Exists(appDataFMW)) Then
+                Directory.CreateDirectory(appDataFMW)
             End If
 
 
             Unzip()
 
-            If System.IO.File.Exists(FileToCopy) = True Then
-                If System.IO.File.Exists(NewCopy) Then
-                    System.IO.File.Delete(NewCopy)
-                    System.IO.File.Delete(NewCopy2)
-                    System.IO.File.Delete(NewCopy3)
+            If File.Exists(FileToCopy) = True Then
+                If File.Exists(NewCopy) Then
+                    File.Delete(NewCopy)
+                    File.Delete(NewCopy2)
+                    File.Delete(NewCopy3)
                 End If
-                System.IO.File.Copy(FileToCopy, NewCopy)
-                System.IO.File.Copy(FileToCopy2, NewCopy2)
-                System.IO.File.Copy(FileToCopy3, NewCopy3)
-                For Each Deletes In Directory.GetFiles(appDataFMW)
-                    Try
-                        System.IO.File.Delete(Deletes)
-                    Catch ex As Exception
+                File.Copy(FileToCopy, NewCopy)
+                File.Copy(FileToCopy2, NewCopy2)
+                File.Copy(FileToCopy3, NewCopy3)
 
-                    End Try
+                delete()
 
-                Next
             Else
                 Console.WriteLine("File Update tidak Ditemukan atau versi program sudah yang terbaru.")
                 Threading.Thread.Sleep(3000)
@@ -80,13 +82,31 @@ Module Module1
     End Sub
 
     Private Sub Unzip()
-        System.IO.Directory.CreateDirectory(appDataFMW)
+
+        If Directory.Exists(appDataFMW & "\updates\data") Then
+            delete()
+        End If
+
+        Directory.CreateDirectory(appDataFMW & "\updates\data")
 
         Dim sc As New Shell32.Shell()
-        Dim output As Shell32.Folder = sc.NameSpace(appDataFMW)
+        Dim output As Shell32.Folder = sc.NameSpace(appDataFMW + "\updates\data")
         Dim input As Shell32.Folder = sc.NameSpace(appDataFMW + "\updates\update.zip")
 
         output.CopyHere(input.Items, 4)
+    End Sub
+
+    Private Sub delete()
+        For Each Deletes In Directory.GetFiles(unziper)
+            Try
+                File.Delete(Deletes)
+            Catch ex As Exception
+
+            End Try
+        Next
+
+        Directory.Delete(appDataFMW & "\updates\data")
+
     End Sub
 
 End Module
