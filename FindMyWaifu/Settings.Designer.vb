@@ -25,18 +25,25 @@ Partial Class SettingsFrm
         Me.components = New System.ComponentModel.Container()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.RadioButton6 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.OpenFThemeBtn = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -61,13 +68,17 @@ Partial Class SettingsFrm
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.chbiPreview = New System.Windows.Forms.PictureBox()
         Me.def_chibi = New System.Windows.Forms.RadioButton()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.BtnSave = New System.Windows.Forms.Button()
         Me.BtnSaveExit = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
@@ -95,8 +106,10 @@ Partial Class SettingsFrm
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.GroupBox4)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
-        Me.TabPage1.Controls.Add(Me.Button7)
+        Me.TabPage1.Controls.Add(Me.Label7)
+        Me.TabPage1.Controls.Add(Me.Button5)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -104,6 +117,55 @@ Partial Class SettingsFrm
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "General"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.Button8)
+        Me.GroupBox4.Controls.Add(Me.Button6)
+        Me.GroupBox4.Controls.Add(Me.Button1)
+        Me.GroupBox4.Controls.Add(Me.Button7)
+        Me.GroupBox4.Location = New System.Drawing.Point(9, 108)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(311, 73)
+        Me.GroupBox4.TabIndex = 16
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Settings"
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(175, 44)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(130, 23)
+        Me.Button8.TabIndex = 15
+        Me.Button8.Text = "Reset settings"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(14, 44)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(155, 23)
+        Me.Button6.TabIndex = 15
+        Me.Button6.Text = "Restore Settings"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(14, 19)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(155, 23)
+        Me.Button1.TabIndex = 15
+        Me.Button1.Text = "Backup Settings"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(175, 19)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(130, 23)
+        Me.Button7.TabIndex = 13
+        Me.Button7.Text = "Reset Nama"
+        Me.Button7.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -113,7 +175,7 @@ Partial Class SettingsFrm
         Me.GroupBox1.Controls.Add(Me.RadioButton2)
         Me.GroupBox1.Location = New System.Drawing.Point(8, 6)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(204, 142)
+        Me.GroupBox1.Size = New System.Drawing.Size(312, 96)
         Me.GroupBox1.TabIndex = 14
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Bahasa"
@@ -121,7 +183,7 @@ Partial Class SettingsFrm
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(2, 117)
+        Me.LinkLabel1.Location = New System.Drawing.Point(110, 73)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(196, 13)
         Me.LinkLabel1.TabIndex = 3
@@ -132,7 +194,7 @@ Partial Class SettingsFrm
         '
         Me.RadioButton6.AutoSize = True
         Me.RadioButton6.Enabled = False
-        Me.RadioButton6.Location = New System.Drawing.Point(15, 66)
+        Me.RadioButton6.Location = New System.Drawing.Point(157, 19)
         Me.RadioButton6.Name = "RadioButton6"
         Me.RadioButton6.Size = New System.Drawing.Size(60, 17)
         Me.RadioButton6.TabIndex = 3
@@ -155,34 +217,44 @@ Partial Class SettingsFrm
         'RadioButton2
         '
         Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(15, 42)
+        Me.RadioButton2.Location = New System.Drawing.Point(92, 19)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(59, 17)
         Me.RadioButton2.TabIndex = 2
         Me.RadioButton2.Text = "English"
         Me.RadioButton2.UseVisualStyleBackColor = True
         '
-        'Button7
+        'Label7
         '
-        Me.Button7.Location = New System.Drawing.Point(13, 154)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(199, 23)
-        Me.Button7.TabIndex = 13
-        Me.Button7.Text = "Reset Nama"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(20, 199)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(58, 13)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "Databases"
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(84, 194)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(75, 23)
+        Me.Button5.TabIndex = 0
+        Me.Button5.Text = "Edit"
+        Me.Button5.UseVisualStyleBackColor = True
         '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label8)
+        Me.TabPage2.Controls.Add(Me.ComboBox1)
         Me.TabPage2.Controls.Add(Me.CheckUpdate)
         Me.TabPage2.Controls.Add(Me.Label6)
-        Me.TabPage2.Controls.Add(Me.Label7)
-        Me.TabPage2.Controls.Add(Me.Button5)
+        Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage2.Size = New System.Drawing.Size(328, 230)
         Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Database"
+        Me.TabPage2.Text = "Update"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
         'CheckUpdate
@@ -205,26 +277,19 @@ Partial Class SettingsFrm
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Update Program"
         '
-        'Label7
+        'Button4
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(35, 105)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(58, 13)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Databases"
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(36, 127)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 0
-        Me.Button5.Text = "Edit"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button4.Location = New System.Drawing.Point(259, 201)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(61, 23)
+        Me.Button4.TabIndex = 0
+        Me.Button4.Text = "Update"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.Button10)
+        Me.TabPage3.Controls.Add(Me.Button9)
         Me.TabPage3.Controls.Add(Me.Label4)
         Me.TabPage3.Controls.Add(Me.OpenFThemeBtn)
         Me.TabPage3.Controls.Add(Me.GroupBox2)
@@ -238,14 +303,32 @@ Partial Class SettingsFrm
         Me.TabPage3.Text = "Theme"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(89, 200)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(75, 23)
+        Me.Button10.TabIndex = 18
+        Me.Button10.Text = "Export"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(11, 200)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(75, 23)
+        Me.Button9.TabIndex = 18
+        Me.Button9.Text = "Import"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(22, 39)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(243, 13)
+        Me.Label4.Size = New System.Drawing.Size(249, 13)
         Me.Label4.TabIndex = 17
-        Me.Label4.Text = "Anda dapat mengubah warna tema dengan file xsl"
+        Me.Label4.Text = "Anda dapat mengubah warna tema dengan file jsnx"
         '
         'OpenFThemeBtn
         '
@@ -265,7 +348,7 @@ Partial Class SettingsFrm
         Me.GroupBox2.Controls.Add(Me.ToolStrip1)
         Me.GroupBox2.Location = New System.Drawing.Point(8, 56)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(312, 152)
+        Me.GroupBox2.Size = New System.Drawing.Size(312, 140)
         Me.GroupBox2.TabIndex = 15
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Preview"
@@ -273,7 +356,7 @@ Partial Class SettingsFrm
         'TextBox1
         '
         Me.TextBox1.Enabled = False
-        Me.TextBox1.Location = New System.Drawing.Point(229, 71)
+        Me.TextBox1.Location = New System.Drawing.Point(229, 61)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(56, 20)
         Me.TextBox1.TabIndex = 4
@@ -283,7 +366,7 @@ Partial Class SettingsFrm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(36, 74)
+        Me.Label1.Location = New System.Drawing.Point(36, 64)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(34, 13)
         Me.Label1.TabIndex = 3
@@ -293,7 +376,7 @@ Partial Class SettingsFrm
         '
         Me.Panel1.BackColor = System.Drawing.Color.Silver
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Location = New System.Drawing.Point(108, 56)
+        Me.Panel1.Location = New System.Drawing.Point(108, 46)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(82, 52)
         Me.Panel1.TabIndex = 2
@@ -310,7 +393,7 @@ Partial Class SettingsFrm
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripProgressBar1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(3, 127)
+        Me.StatusStrip1.Location = New System.Drawing.Point(3, 115)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(306, 22)
         Me.StatusStrip1.TabIndex = 1
@@ -467,15 +550,6 @@ Partial Class SettingsFrm
         Me.def_chibi.Text = "Default"
         Me.def_chibi.UseVisualStyleBackColor = True
         '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(263, 262)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(61, 23)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Update"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
         'BtnSave
         '
         Me.BtnSave.Enabled = False
@@ -496,6 +570,28 @@ Partial Class SettingsFrm
         Me.BtnSaveExit.Text = "Save And Close"
         Me.BtnSaveExit.UseVisualStyleBackColor = True
         '
+        'OpenFileDialog1
+        '
+        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.Enabled = False
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(34, 86)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(231, 21)
+        Me.ComboBox1.TabIndex = 5
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(36, 67)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(114, 13)
+        Me.Label8.TabIndex = 6
+        Me.Label8.Text = "Backup Settings when"
+        '
         'SettingsFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -504,7 +600,6 @@ Partial Class SettingsFrm
         Me.Controls.Add(Me.BtnSaveExit)
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.Button4)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.MinimizeBox = False
@@ -513,6 +608,8 @@ Partial Class SettingsFrm
         Me.Text = "Settings"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        Me.TabPage1.PerformLayout()
+        Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
@@ -543,8 +640,6 @@ Partial Class SettingsFrm
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton1 As RadioButton
     Friend WithEvents Label6 As Label
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Button5 As Button
     Friend WithEvents Button4 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents CheckUpdate As CheckBox
@@ -578,4 +673,16 @@ Partial Class SettingsFrm
     Friend WithEvents Button3 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents Label5 As Label
+    Friend WithEvents GroupBox4 As GroupBox
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Button5 As Button
+    Friend WithEvents Button10 As Button
+    Friend WithEvents Button9 As Button
+    Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents OpenFileDialog1 As OpenFileDialog
+    Friend WithEvents Label8 As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

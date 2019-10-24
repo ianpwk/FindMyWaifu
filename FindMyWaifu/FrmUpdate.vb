@@ -4,14 +4,12 @@ Public Class FrmUpdate
     Delegate Sub DownloadComplateSafe(ByVal cancelled As Boolean)
     Delegate Sub ChangeTextSafe(ByVal lenght As Long, ByVal position As Integer, ByVal percent As Integer, ByVal speed As Double)
 
-
-    Dim DataFile As WebClient
-    Dim DataDownload As String = "https://github.com/ianpwk/FindMyWaifu/releases/download/latest/FindMyWaifuPortable.zip"
-    Dim msg As String = ""
+    Dim DataDownload As String = "https://github.com/ianpwk/FindMyWaifu/releases/download/latest/FindMyWaifuPortable.zip" 'Files Update
     Dim Out As Integer
     Dim updates As Integer = 0
     Dim fol As New CreateFolder()
-    Dim filedownload As String = fol.appDataFMW & "\_data\updates\update.zip"
+    Dim filedownload As String = fol.appDataFMW & "\_data\updates\update.zip" 'Location
+    Dim readXml As String = "https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21815&authkey=APPoahifAoJiGZo" 'Update Checker
     Dim Curent As String
 
     Dim check As Boolean = False
@@ -24,7 +22,7 @@ Public Class FrmUpdate
         If InternetGetConnectedState(Out, 0) = True Then
             Try
                 Dim ver As String = ""
-                Dim xmlUpdate As New XmlTextReader("https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21815&authkey=APPoahifAoJiGZo")
+                Dim xmlUpdate As New XmlTextReader(readXml)
                 Dim newver As String = ""
                 Dim desc As String = ""
 
@@ -106,19 +104,12 @@ Public Class FrmUpdate
                                                 My.Application.Info.Version.Revision.ToString)
         ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
         Dim create As New CreateFolder()
-        If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data")) Then
-            System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data")
-        End If
 
         If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data\updates")) Then
             System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data\updates")
         End If
 
-        IO.File.SetAttributes(create.appDataFMW & "\_data", IO.FileAttributes.Hidden Or
-                                  IO.FileAttributes.System)
-
         RichTextBox1.ReadOnly = True
-        RichTextBox1.BackColor = ColorTranslator.FromHtml("#f3f3f3")
         Label1.Text = "Curent ver.: " + Curent.ToString
         CheckForUpdates()
 
@@ -159,7 +150,7 @@ Public Class FrmUpdate
             process.StartInfo.UseShellExecute = True
             process.Start()
 
-            Form1.Close()
+            FormSplash.Close()
         Catch ex As Exception
 
         End Try

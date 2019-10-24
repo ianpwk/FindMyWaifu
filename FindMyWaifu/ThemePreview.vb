@@ -23,9 +23,9 @@ Public Class ThemePreview
         End Try
 
         Try
-                jsnxName = JsonObject.SelectToken("name").ToString
-            Catch ex As Exception
-                jsnxName = ""
+            jsnxName = JsonObject.SelectToken("name").ToString
+        Catch ex As Exception
+            jsnxName = ""
             End Try
         Try
             jsnxCredit = JsonObject.SelectToken("credit").ToString
@@ -83,9 +83,12 @@ Public Class ThemePreview
         If Not errors = 0 Then
             FrmError.ShowDialog()
         End If
-        MainFrm.Show()
-        Form1.Hide()
-        FormSplash.Close()
+        If My.Settings.start = True Then
+
+            'Else
+            MainFrm.Show()
+            FormSplash.Hide()
+        End If
     End Sub
 
 End Class

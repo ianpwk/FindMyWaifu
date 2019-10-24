@@ -9,8 +9,6 @@ Public Class FormSplash
 
             If My.Settings.CustomTheme = True Then
                 Call FileExist.XsiExist()
-
-
                 If FileExist.errors = False Then
                     If FileExist.jsnxName = "" Then
                         If FileExist.jsnxCredit = "" Then
@@ -27,20 +25,27 @@ Public Class FormSplash
             End If
 
             Call FileExist.DetectionError()
-        ElseIf ProgressBar1.Value = 10 Then
-                Form1.Hide()
         End If
 
     End Sub
 
     Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim create As New CreateFolder()
+        If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data")) Then
+            System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data")
+
+            IO.File.SetAttributes(create.appDataFMW & "\_data", IO.FileAttributes.Hidden Or
+                                  IO.FileAttributes.System)
+        End If
+
+
         Label1.ForeColor = ColorTranslator.FromHtml("#ea5959")
         Label1.Text = "v" + Application.ProductVersion
     End Sub
 
     Private Sub FormSplash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If Not Application.OpenForms().OfType(Of MainFrm).Any Then
-            Form1.Close()
+            'FromName.Close()
         End If
     End Sub
 End Class

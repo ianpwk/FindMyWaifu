@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Form1
+Partial Class FromName
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -86,7 +86,7 @@ Partial Class Form1
         Me.Label2.TabIndex = 5
         Me.Label2.Text = "Hanya huruf yang dperbolehkan"
         '
-        'Form1
+        'FromName
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -100,7 +100,7 @@ Partial Class Form1
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "FromName"
         Me.ShowIcon = False
         Me.ResumeLayout(False)
         Me.PerformLayout()

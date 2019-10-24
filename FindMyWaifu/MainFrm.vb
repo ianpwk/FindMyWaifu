@@ -124,8 +124,8 @@ Public Class MainFrm
     Private Sub MainFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Dim result As Integer = MsgBox("Anda yakin mau mengclose program ini?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Yakin???")
         If result = DialogResult.Yes Then
-            e.Cancel = False
-            Form1.Close()
+            My.Settings.Save()
+            FormSplash.Close()
         Else
             e.Cancel = True
         End If
@@ -145,7 +145,7 @@ Public Class MainFrm
             Names = My.Settings.name
 
         Else
-            Names = Form1.TextBox1.Text
+            Names = FromName.TextBox1.Text
         End If
 
         Label3.Text = "Hai " + Names + ", senang berjumpa denganmu!!"

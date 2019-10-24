@@ -1,5 +1,5 @@
 ﻿Imports System.Environment, System.IO
-Public Class Form1
+Public Class FromName
 
     Public appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu"
 
@@ -30,12 +30,12 @@ Public Class Form1
         Dim create As New CreateFolder()
         Call create.CreateFolderFMW()
 
+        My.Settings.Reload()
+
         If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
             MsgBox("Program ini sudah berjalan", MsgBoxStyle.Critical + vbOKOnly, "Error")
             Application.Exit()
         End If
-
-
 
         If My.Settings.NameRemember = True Then
             Me.KeyPreview = True

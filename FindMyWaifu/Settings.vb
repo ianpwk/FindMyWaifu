@@ -28,6 +28,11 @@ Public Class SettingsFrm
         Else
             My.Settings.AutoUpdate = False
         End If
+        My.Settings.Save()
+
+        Dim save As New SettingsSaver()
+        Call save.Settings()
+
         BtnSave.Enabled = False
         BtnSaveExit.Enabled = False
     End Sub
