@@ -83,9 +83,10 @@ Public Class ThemePreview
         If Not errors = 0 Then
             FrmError.ShowDialog()
         End If
-        If My.Settings.start = True Then
-
-            'Else
+        If My.Settings.NameRemember = False Then
+            FromName.Show()
+            FormSplash.Hide()
+        Else
             MainFrm.Show()
             FormSplash.Hide()
         End If

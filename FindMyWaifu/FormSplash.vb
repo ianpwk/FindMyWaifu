@@ -1,6 +1,14 @@
 ﻿Imports System.ComponentModel
-
+Imports Newtonsoft.Json, Newtonsoft.Json.Linq
 Public Class FormSplash
+    Dim DataFolder As New CreateFolder
+    Dim savejson As String = DataFolder.appDataFMW & "\_data\settings\backup.json"
+
+    Dim ReadJson As String
+    Dim xsiColorString As String
+    Public JsonObject As JObject
+    Public xsiColor As JObject
+
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         ProgressBar1.Value = ProgressBar1.Value + 10
         If ProgressBar1.Value = ProgressBar1.Maximum Then
@@ -30,7 +38,14 @@ Public Class FormSplash
     End Sub
 
     Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
+            MsgBox("Program ini sudah berjalan", MsgBoxStyle.Critical + vbOKOnly, "Error")
+            Application.Exit()
+        End If
+
         Dim create As New CreateFolder()
+        Call create.CreateFolderFMW()
+
         If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data")) Then
             System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data")
 
@@ -38,14 +53,30 @@ Public Class FormSplash
                                   IO.FileAttributes.System)
         End If
 
+        If My.Settings.load = True Then
+            Try
+                If System.IO.File.Exists(savejson) Then
+                    ReadJson = System.IO.File.ReadAllText(savejson)
+                    JsonObject = JObject.Parse(ReadJson.ToString)
+
+                    My.Settings.name = JsonObject.SelectToken("name").ToString
+                    My.Settings.NameRemember = JsonObject.SelectToken("name_save")
+                    My.Settings.Theme = JsonObject.SelectToken("theme").ToString
+                    My.Settings.CustomTheme = JsonObject.SelectToken("custom_theme")
+                    My.Settings.Chibi = JsonObject.SelectToken("chibi").ToString
+                    My.Settings.Bahasa = JsonObject.SelectToken("lang").ToString
+                    My.Settings.AutoUpdate = JsonObject.SelectToken("auto_update")
+                End If
+            Catch ex As Exception
+
+            End Try
+        End If
 
         Label1.ForeColor = ColorTranslator.FromHtml("#ea5959")
         Label1.Text = "v" + Application.ProductVersion
     End Sub
 
     Private Sub FormSplash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If Not Application.OpenForms().OfType(Of MainFrm).Any Then
-            'FromName.Close()
-        End If
+
     End Sub
 End Class

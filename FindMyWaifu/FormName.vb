@@ -3,60 +3,28 @@ Public Class FromName
 
     Public appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu"
 
-    Private Const CP_NOCLOSE_BUTTON As Integer = &H200
-    Protected Overrides ReadOnly Property CreateParams() As Windows.Forms.CreateParams
-        Get
-            Dim mdiCp As Windows.Forms.CreateParams = MyBase.CreateParams
-            mdiCp.ClassStyle = mdiCp.ClassStyle Or CP_NOCLOSE_BUTTON
-            Return mdiCp
-        End Get
-    End Property
+    'Private Const CP_NOCLOSE_BUTTON As Integer = &H200
+    'Protected Overrides ReadOnly Property CreateParams() As Windows.Forms.CreateParams
+    '    Get
+    '        Dim mdiCp As Windows.Forms.CreateParams = MyBase.CreateParams
+    '        mdiCp.ClassStyle = mdiCp.ClassStyle Or CP_NOCLOSE_BUTTON
+    '        Return mdiCp
+    '    End Get
+    'End Property
     Private Sub BtnMasuk_Click(sender As Object, e As EventArgs) Handles BtnMasuk.Click
-
         If CheckBox1.Checked = True Then
-            My.Settings.name = TextBox1.Text
             My.Settings.NameRemember = True
         End If
-
-        Me.Hide()
-        FormSplash.ShowDialog()
+        My.Settings.name = TextBox1.Text
+        MainFrm.Show()
+        Me.Close()
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
 
     End Sub
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim create As New CreateFolder()
-        Call create.CreateFolderFMW()
-
-        My.Settings.Reload()
-
-        If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
-            MsgBox("Program ini sudah berjalan", MsgBoxStyle.Critical + vbOKOnly, "Error")
-            Application.Exit()
-        End If
-
-        If My.Settings.NameRemember = True Then
-            Me.KeyPreview = True
-            Me.Hide()
-            FormSplash.Show()
-
-            TextBox1.Text = My.Settings.name
-            CheckBox1.Checked = True
-
-            TextBox1.Enabled = False
-            BtnMasuk.Enabled = False
-            Button1.Enabled = False
-
-            CheckBox1.Enabled = False
-        End If
-
-
-    End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Me.Close()
+        FormSplash.Close()
     End Sub
 
     Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
@@ -77,6 +45,12 @@ Public Class FromName
                     e.Handled = True
                 End If
             End If
+        End If
+    End Sub
+
+    Private Sub FromName_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        If Not Application.OpenForms().OfType(Of MainFrm).Any Then
+            FormSplash.Close()
         End If
     End Sub
 End Class

@@ -39,7 +39,6 @@ Partial Class SettingsFrm
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
         Me.Button10 = New System.Windows.Forms.Button()
@@ -74,8 +73,8 @@ Partial Class SettingsFrm
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.backupCheck = New System.Windows.Forms.CheckBox()
+        Me.loadCheck = New System.Windows.Forms.CheckBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -244,10 +243,9 @@ Partial Class SettingsFrm
         '
         'TabPage2
         '
-        Me.TabPage2.Controls.Add(Me.Label8)
-        Me.TabPage2.Controls.Add(Me.ComboBox1)
+        Me.TabPage2.Controls.Add(Me.loadCheck)
+        Me.TabPage2.Controls.Add(Me.backupCheck)
         Me.TabPage2.Controls.Add(Me.CheckUpdate)
-        Me.TabPage2.Controls.Add(Me.Label6)
         Me.TabPage2.Controls.Add(Me.Button4)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -260,22 +258,13 @@ Partial Class SettingsFrm
         'CheckUpdate
         '
         Me.CheckUpdate.AutoSize = True
-        Me.CheckUpdate.Location = New System.Drawing.Point(36, 40)
+        Me.CheckUpdate.Location = New System.Drawing.Point(17, 39)
         Me.CheckUpdate.Name = "CheckUpdate"
         Me.CheckUpdate.Size = New System.Drawing.Size(236, 17)
         Me.CheckUpdate.TabIndex = 3
         Me.CheckUpdate.Text = "Automatic Update, when Internet connected"
         Me.ToolTip1.SetToolTip(Me.CheckUpdate, "Jika diaktifkan, program akan freeze sebentar saat memulai")
         Me.CheckUpdate.UseVisualStyleBackColor = True
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(33, 19)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(84, 13)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Update Program"
         '
         'Button4
         '
@@ -574,23 +563,25 @@ Partial Class SettingsFrm
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'ComboBox1
+        'backupCheck
         '
-        Me.ComboBox1.Enabled = False
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(34, 86)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(231, 21)
-        Me.ComboBox1.TabIndex = 5
+        Me.backupCheck.AutoSize = True
+        Me.backupCheck.Location = New System.Drawing.Point(17, 63)
+        Me.backupCheck.Name = "backupCheck"
+        Me.backupCheck.Size = New System.Drawing.Size(284, 17)
+        Me.backupCheck.TabIndex = 4
+        Me.backupCheck.Text = "Backup Setting after click SAVE button or exit program"
+        Me.backupCheck.UseVisualStyleBackColor = True
         '
-        'Label8
+        'loadCheck
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(36, 67)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(114, 13)
-        Me.Label8.TabIndex = 6
-        Me.Label8.Text = "Backup Settings when"
+        Me.loadCheck.AutoSize = True
+        Me.loadCheck.Location = New System.Drawing.Point(17, 87)
+        Me.loadCheck.Name = "loadCheck"
+        Me.loadCheck.Size = New System.Drawing.Size(202, 17)
+        Me.loadCheck.TabIndex = 5
+        Me.loadCheck.Text = "Load backup when open this pogram"
+        Me.loadCheck.UseVisualStyleBackColor = True
         '
         'SettingsFrm
         '
@@ -639,7 +630,6 @@ Partial Class SettingsFrm
     Friend WithEvents BtnSaveExit As Button
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents Label6 As Label
     Friend WithEvents Button4 As Button
     Friend WithEvents Timer1 As Timer
     Friend WithEvents CheckUpdate As CheckBox
@@ -683,6 +673,6 @@ Partial Class SettingsFrm
     Friend WithEvents Button9 As Button
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
-    Friend WithEvents Label8 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents loadCheck As CheckBox
+    Friend WithEvents backupCheck As CheckBox
 End Class

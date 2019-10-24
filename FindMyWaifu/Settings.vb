@@ -20,8 +20,22 @@ Public Class SettingsFrm
             My.Settings.CustomTheme = True
         End If
 
-        Dim theme As New ClassTheme()
-        theme.changetheme()
+        If backupCheck.Checked = True Then
+            My.Settings.backup = True
+        Else
+            My.Settings.backup = False
+        End If
+
+        If loadCheck.Checked = True Then
+            My.Settings.load = True
+        Else
+            My.Settings.load = False
+        End If
+
+        If My.Settings.backup = True Then
+            Dim theme As New ClassTheme()
+            theme.changetheme()
+        End If
 
         If CheckUpdate.Checked = True Then
             My.Settings.AutoUpdate = True
@@ -100,6 +114,14 @@ Public Class SettingsFrm
         End If
         def_chibi.Checked = True
         chbiPreview.Image = My.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
+
+        If My.Settings.load = True Then
+            loadCheck.Checked = True
+        End If
+
+        If My.Settings.backup = True Then
+            backupCheck.Checked = True
+        End If
 
         BtnSave.Enabled = False
         BtnSaveExit.Enabled = False

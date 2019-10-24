@@ -151,12 +151,24 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property start() As Boolean
+        Public Property backup() As Boolean
             Get
-                Return CType(Me("start"),Boolean)
+                Return CType(Me("backup"),Boolean)
             End Get
             Set
-                Me("start") = value
+                Me("backup") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property load() As Boolean
+            Get
+                Return CType(Me("load"),Boolean)
+            End Get
+            Set
+                Me("load") = value
             End Set
         End Property
     End Class

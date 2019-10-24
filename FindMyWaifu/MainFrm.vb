@@ -124,7 +124,14 @@ Public Class MainFrm
     Private Sub MainFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Dim result As Integer = MsgBox("Anda yakin mau mengclose program ini?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Yakin???")
         If result = DialogResult.Yes Then
+            If My.Settings.NameRemember = False Then
+                My.Settings.name = ""
+            End If
             My.Settings.Save()
+            If My.Settings.backup = True Then
+                Dim save As New SettingsSaver()
+                save.Settings()
+            End If
             FormSplash.Close()
         Else
             e.Cancel = True
@@ -139,14 +146,14 @@ Public Class MainFrm
     End Sub
 
     Private Sub MainFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If FromName.CheckBox1.Checked = True Then
+
+        End If
+
         Dim Names As String
         ToolStripStatusLabel2.Visible = False
-        If My.Settings.NameRemember = True Then
-            Names = My.Settings.name
 
-        Else
-            Names = FromName.TextBox1.Text
-        End If
+        Names = My.Settings.name
 
         Label3.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
         Label1.Text = "Waifu " + Names + " adalah?"
