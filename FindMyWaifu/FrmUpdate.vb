@@ -15,6 +15,8 @@ Public Class FrmUpdate
     Dim check As Boolean = False
     Dim majorOnline, mirorOnline, bulidOnline, revisionOnline As String
 
+    Dim security As Boolean = False
+
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Public Sub CheckForUpdates()
@@ -84,16 +86,34 @@ Public Class FrmUpdate
                 '    Button1.Enabled = False
                 'End If
             Catch ex As Exception
+                Dim osVer As Version = Environment.OSVersion.Version
+
+                If osVer.Major > 6 Then
+                    Label3.Text = ""
+                    updates = 0
+                    RichTextBox1.Text = "Internet sedang gangguan, kilk Retry untuk menyambung ulang"
+                    Button1.Text = "Retry"
+                Else
+                    Label3.Text = ""
+                    updates = -1
+                    RichTextBox1.Text = "OS kamu belum support auto update, tapi anda dapat mengupdate secara manual"
+                    Button1.Text = "Update manual"
+                End If
+            End Try
+        Else
+            Dim osVer As Version = Environment.OSVersion.Version
+
+            If osVer.Major >= 6 Then
                 Label3.Text = ""
                 updates = 0
                 RichTextBox1.Text = "Internet sedang gangguan, kilk Retry untuk menyambung ulang"
                 Button1.Text = "Retry"
-            End Try
-        Else
-            Label3.Text = ""
-            updates = 0
-            RichTextBox1.Text = "Internet belum terkoneksi, kilk Retry untuk menyambung ulang"
-            Button1.Text = "Retry"
+            Else
+                Label3.Text = ""
+                updates = -1
+                RichTextBox1.Text = "OS kamu belum support auto update, tapi anda dapat mengupdate secara manual"
+                Button1.Text = "Update manual"
+            End If
         End If
     End Sub
 
@@ -102,7 +122,11 @@ Public Class FrmUpdate
                                                 My.Application.Info.Version.Minor.ToString,
                                                 My.Application.Info.Version.Build.ToString,
                                                 My.Application.Info.Version.Revision.ToString)
-        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Try
+            ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+        Catch ex As Exception
+            security = True
+        End Try
         Dim create As New CreateFolder()
 
         If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data\updates")) Then
@@ -117,24 +141,37 @@ Public Class FrmUpdate
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim fileDetail = My.Computer.FileSystem.GetFileInfo(filedownload)
-        If updates = 0 Then
+        If updates = -1 Then
+            Process.Start("https://github.com/yansaan/FindMyWaifu/releases/latest/")
+        ElseIf updates = 0 Then
             CheckForUpdates()
         ElseIf updates = 1 Then
-            If Not File.Exists(filedownload) Then
-                BackgroundWorker1.RunWorkerAsync()
-            Else
-                If fileDetail.Length = 0 Then
+
+            If security = False Then
+                If Not File.Exists(filedownload) Then
                     BackgroundWorker1.RunWorkerAsync()
-                    Button1.Text = "Cencel"
                 Else
-                    Dim hasil As String = MessageBox.Show("File Telah terdownload. Klik yes untuk install," & ControlChars.CrLf &
-                            " No untuk download ulang, dan cencel untuk menutup pesan ini", "error", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
-                    If hasil = Windows.Forms.DialogResult.Yes Then
-                        Installing()
-                    ElseIf hasil = Windows.Forms.DialogResult.No Then
+                    If fileDetail.Length = 0 Then
                         BackgroundWorker1.RunWorkerAsync()
                         Button1.Text = "Cencel"
+                    Else
+                        Dim hasil As String = MessageBox.Show("File Telah terdownload. Klik yes untuk install," & ControlChars.CrLf &
+                            " No untuk download ulang, dan cencel untuk menutup pesan ini", "Info", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+                        If hasil = Windows.Forms.DialogResult.Yes Then
+                            Installing()
+                        ElseIf hasil = Windows.Forms.DialogResult.No Then
+                            BackgroundWorker1.RunWorkerAsync()
+                            Button1.Text = "Cencel"
+                        End If
                     End If
+                End If
+            Else
+                Dim hasil As String = MessageBox.Show("Untuk bisa update langsung dari program ini, dibutuhkan Net framework 4.5" & ControlChars.CrLf &
+                            "Atau anda bisa download manual via browser jika klick no", "Info", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+                If hasil = Windows.Forms.DialogResult.Yes Then
+                    Process.Start("https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
+                ElseIf hasil = Windows.Forms.DialogResult.No Then
+                    Process.Start("https://github.com/yansaan/FindMyWaifu/releases/latest/")
                 End If
             End If
         ElseIf updates = 2 Then

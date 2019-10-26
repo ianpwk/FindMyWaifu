@@ -121,6 +121,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
     <Compile Include="ClassTheme.vb" />
     <Compile Include="CreateFolder.vb" />
     <Compile Include="FormName.vb">

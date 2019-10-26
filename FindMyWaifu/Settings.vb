@@ -46,6 +46,7 @@ Public Class SettingsFrm
 
         Dim save As New SettingsSaver()
         Call save.Settings()
+        Call MainFrm.ThemeInfo()
 
         BtnSave.Enabled = False
         BtnSaveExit.Enabled = False
@@ -225,8 +226,15 @@ Public Class SettingsFrm
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckUpdate.CheckedChanged
-        BtnSave.Enabled = True
-        BtnSaveExit.Enabled = True
+        Dim osVer As Version = Environment.OSVersion.Version
+
+        If Not osVer.Major >= 6 Then
+            MsgBox("Auto Update belum support untuk versi ini", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+            CheckUpdate.Checked = False
+        ElseIf osVer.Major >= 6 Then
+            BtnSave.Enabled = True
+            BtnSaveExit.Enabled = True
+        End If
     End Sub
 
     Private Sub OpenFThemeBtn_Click(sender As Object, e As EventArgs) Handles OpenFThemeBtn.Click

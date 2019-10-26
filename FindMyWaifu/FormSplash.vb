@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports Newtonsoft.Json, Newtonsoft.Json.Linq
+Imports System.IO
 Public Class FormSplash
     Dim DataFolder As New CreateFolder
     Dim savejson As String = DataFolder.appDataFMW & "\_data\settings\backup.json"
@@ -8,39 +9,11 @@ Public Class FormSplash
     Dim xsiColorString As String
     Public JsonObject As JObject
     Public xsiColor As JObject
-
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
-        ProgressBar1.Value = ProgressBar1.Value + 10
-        If ProgressBar1.Value = ProgressBar1.Maximum Then
-            Timer1.Enabled = False
-            Dim FileExist As New ThemePreview
-
-            If My.Settings.CustomTheme = True Then
-                Call FileExist.XsiExist()
-                If FileExist.errors = False Then
-                    If FileExist.jsnxName = "" Then
-                        If FileExist.jsnxCredit = "" Then
-                            MsgBox(System.IO.Path.GetFileName(FileExist.FindJsons), vbInformation + vbOKOnly, "Credit Theme")
-                        Else
-                            MsgBox(System.IO.Path.GetFileName(FileExist.FindJsons) + Chr(13) + "Credit by: " + FileExist.jsnxCredit, vbInformation + vbOKOnly, "Credit Theme")
-                        End If
-                    ElseIf Not FileExist.jsnxName = "" And Not FileExist.jsnxCredit = "" Then
-                        MsgBox(FileExist.jsnxName + Chr(13) + "Credit by: " + FileExist.jsnxCredit, vbInformation + vbOKOnly, "Credit Theme")
-                    Else
-                        MsgBox(FileExist.jsnxName, vbInformation + vbOKOnly, "Credit Theme")
-                    End If
-                End If
-            End If
-
-            Call FileExist.DetectionError()
-        End If
-
-    End Sub
+    Dim openfile As String
 
     Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
-            MsgBox("Program ini sudah berjalan", MsgBoxStyle.Critical + vbOKOnly, "Error")
-            Application.Exit()
+        If (My.Application.CommandLineArgs.Count > 0) Then
+            openfile = My.Application.CommandLineArgs(0).ToString
         End If
 
         Dim create As New CreateFolder()
@@ -52,6 +25,58 @@ Public Class FormSplash
             IO.File.SetAttributes(create.appDataFMW & "\_data", IO.FileAttributes.Hidden Or
                                   IO.FileAttributes.System)
         End If
+
+        If Not Directory.Exists(create.appDataFMW & "\theme") Then
+            Directory.CreateDirectory(create.appDataFMW & "\theme")
+        End If
+
+        If Not Directory.Exists(create.appDataFMW & "\chibi") Then
+            Directory.CreateDirectory(create.appDataFMW & "\chibi")
+        End If
+
+        Dim osVer As Version = Environment.OSVersion.Version
+
+        If osVer.Major < 6 Then
+            My.Settings.AutoUpdate = False
+        End If
+
+        If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
+            If My.Application.CommandLineArgs.Count > 0 Then
+                Timer1.Enabled = False
+                Dim settheme As Boolean = False
+
+                If Not openfile = "" Then
+                    Dim theme As New CreateFolder()
+                    Dim checks As String = Path.GetExtension(openfile.ToString)
+                    Dim checkfile As String = Path.GetFileName(openfile.ToString)
+                    Dim checksource As String = theme.appDataFMW & "\theme\" & checkfile
+                    If checks = ".jsnx" Then
+                        If File.Exists(checksource) Then
+                            Dim duplikat As String = MessageBox.Show("Theme yang ditambahkan sudah ditambahkan sebelumnya" & ControlChars.CrLf &
+                                "Klik yes untuk menimpa, no untuk menutup aplikasi ini, cencel untuk membatalkan", "Theme", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                            If duplikat = Windows.Forms.DialogResult.Yes Then
+                                File.Copy(openfile, checksource, True)
+                                settheme = True
+                            End If
+                        Else
+                            File.Copy(openfile, checksource)
+                            settheme = True
+                        End If
+
+                        If settheme = True Then
+                            Dim hasil As String = MessageBox.Show("Theme telah ditambahkan", "Theme", MessageBoxButtons.OK, MessageBoxIcon.Question)
+                            Application.Exit()
+                        End If
+                        'elseifchibi
+                    End If
+                    openfile = ""
+                End If
+            Else
+                MsgBox("Program ini sudah berjalan", MsgBoxStyle.Critical + vbOKOnly, "Error")
+                Application.Exit()
+            End If
+        End If
+
 
         If My.Settings.load = True Then
             Try
@@ -74,6 +99,53 @@ Public Class FormSplash
 
         Label1.ForeColor = ColorTranslator.FromHtml("#ea5959")
         Label1.Text = "v" + Application.ProductVersion
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        Dim settheme As Boolean = False
+
+        ProgressBar1.Value = ProgressBar1.Value + 10
+        If ProgressBar1.Value = ProgressBar1.Maximum Then
+            Timer1.Enabled = False
+            Dim FileExist As New ThemePreview
+
+            If Not openfile = "" Then
+                Dim theme As New CreateFolder()
+                Dim checks As String = Path.GetExtension(openfile.ToString)
+                Dim checkfile As String = Path.GetFileName(openfile.ToString)
+                Dim checksource As String = theme.appDataFMW & "\theme\" & checkfile
+                If checks = ".jsnx" Then
+                    If File.Exists(checksource) Then
+                        Dim duplikat As String = MessageBox.Show("Theme yang ditambahkan sudah ditambahkan sebelumnya" & ControlChars.CrLf &
+                            "Klik yes untuk menimpa, no untuk menutup aplikasi ini, cencel untuk membatalkan", "Theme", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        If duplikat = Windows.Forms.DialogResult.Yes Then
+                            File.Copy(openfile, checksource, True)
+                            settheme = True
+                        End If
+                    Else
+                        File.Copy(openfile, checksource)
+                        settheme = True
+                    End If
+
+                    If settheme = True Then
+                        Dim hasil As String = MessageBox.Show("Theme telah ditambahkan" & ControlChars.CrLf &
+                            "Apakah ingin menggunakannya?", "Theme", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        If hasil = Windows.Forms.DialogResult.Yes Then
+                            My.Settings.CustomTheme = True
+                            My.Settings.Theme = "Custom - " & Path.GetFileNameWithoutExtension(openfile).ToString
+                        End If
+                    End If
+                    'elseifchibi
+                End If
+                openfile = ""
+            End If
+            If FileExist.errors = False Then
+
+            End If
+
+            Call FileExist.DetectionError()
+        End If
+
     End Sub
 
     Private Sub FormSplash_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
