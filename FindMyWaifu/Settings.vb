@@ -5,7 +5,6 @@ Public Class SettingsFrm
     ReadOnly create As New CreateFolder()
     Dim dirTheme As String = create.appDataFMW & "\theme"
     Dim dirChibi As String = create.appDataFMW & "\chibi"
-    Dim file As String
 
     Dim xsiColor As JObject
     Dim CusTheme As String
@@ -50,14 +49,6 @@ Public Class SettingsFrm
 
         BtnSave.Enabled = False
         BtnSaveExit.Enabled = False
-    End Sub
-
-    Public Sub CheckForUpdates()
-        Try
-
-        Catch ex As Exception
-
-        End Try
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -247,5 +238,38 @@ Public Class SettingsFrm
 
     Private Sub ComboChibi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboChibi.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub BKsettings_Click(sender As Object, e As EventArgs) Handles BKsettings.Click
+        SaveFileDialog1.Filter = "Settings Package|*.bkp|Json Settings Only|*.jsns"
+        SaveFileDialog1.Title = "Save your settings"
+        SaveFileDialog1.FileName = "Settings"
+        If SaveFileDialog1.ShowDialog = DialogResult.OK Then
+            'My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, txtTeks.Text, True)
+            MsgBox(SaveFileDialog1.FileName.ToString)
+        End If
+
+    End Sub
+
+    Private Sub RSsettings_Click(sender As Object, e As EventArgs) Handles RSsettings.Click
+        OpenFileDialog1.Filter = "Settings Package|*.bkp|Json Settings Only|*.jsns"
+        OpenFileDialog1.Title = "Open backup settings"
+        OpenFileDialog1.FileName = ""
+
+        If OpenFileDialog1.ShowDialog = DialogResult.OK Then
+            MsgBox(OpenFileDialog1.FileName.ToString)
+        End If
+    End Sub
+
+    Private Sub RSsetting_Click(sender As Object, e As EventArgs) Handles RSsetting.Click
+        Dim hasil As String = MessageBox.Show("Mereset setting akan mengembalikan ke setting default" & ControlChars.CrLf &
+                            "Apakah ingin melanjutkan? (Reboot program diperlukan)", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If hasil = Windows.Forms.DialogResult.Yes Then
+            If File.Exists(create.appDataFMW & "\_data\settings\backup.json") Then
+                File.Delete(create.appDataFMW & "\_data\settings\backup.json")
+            End If
+            My.Settings.Reset()
+            FormSplash.Close()
+        End If
     End Sub
 End Class

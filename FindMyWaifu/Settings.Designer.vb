@@ -26,9 +26,9 @@ Partial Class SettingsFrm
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.RSsetting = New System.Windows.Forms.Button()
+        Me.RSsettings = New System.Windows.Forms.Button()
+        Me.BKsettings = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
@@ -38,6 +38,8 @@ Partial Class SettingsFrm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.loadCheck = New System.Windows.Forms.CheckBox()
+        Me.backupCheck = New System.Windows.Forms.CheckBox()
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
@@ -73,8 +75,11 @@ Partial Class SettingsFrm
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.backupCheck = New System.Windows.Forms.CheckBox()
-        Me.loadCheck = New System.Windows.Forms.CheckBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.shop = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -108,6 +113,7 @@ Partial Class SettingsFrm
         Me.TabPage1.Controls.Add(Me.GroupBox4)
         Me.TabPage1.Controls.Add(Me.GroupBox1)
         Me.TabPage1.Controls.Add(Me.Label7)
+        Me.TabPage1.Controls.Add(Me.shop)
         Me.TabPage1.Controls.Add(Me.Button5)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
@@ -119,9 +125,9 @@ Partial Class SettingsFrm
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.Button8)
-        Me.GroupBox4.Controls.Add(Me.Button6)
-        Me.GroupBox4.Controls.Add(Me.Button1)
+        Me.GroupBox4.Controls.Add(Me.RSsetting)
+        Me.GroupBox4.Controls.Add(Me.RSsettings)
+        Me.GroupBox4.Controls.Add(Me.BKsettings)
         Me.GroupBox4.Controls.Add(Me.Button7)
         Me.GroupBox4.Location = New System.Drawing.Point(9, 108)
         Me.GroupBox4.Name = "GroupBox4"
@@ -130,32 +136,32 @@ Partial Class SettingsFrm
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Settings"
         '
-        'Button8
+        'RSsetting
         '
-        Me.Button8.Location = New System.Drawing.Point(175, 44)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(130, 23)
-        Me.Button8.TabIndex = 15
-        Me.Button8.Text = "Reset settings"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.RSsetting.Location = New System.Drawing.Point(175, 44)
+        Me.RSsetting.Name = "RSsetting"
+        Me.RSsetting.Size = New System.Drawing.Size(130, 23)
+        Me.RSsetting.TabIndex = 15
+        Me.RSsetting.Text = "Reset settings"
+        Me.RSsetting.UseVisualStyleBackColor = True
         '
-        'Button6
+        'RSsettings
         '
-        Me.Button6.Location = New System.Drawing.Point(14, 44)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(155, 23)
-        Me.Button6.TabIndex = 15
-        Me.Button6.Text = "Restore Settings"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.RSsettings.Location = New System.Drawing.Point(14, 44)
+        Me.RSsettings.Name = "RSsettings"
+        Me.RSsettings.Size = New System.Drawing.Size(155, 23)
+        Me.RSsettings.TabIndex = 15
+        Me.RSsettings.Text = "Restore Settings"
+        Me.RSsettings.UseVisualStyleBackColor = True
         '
-        'Button1
+        'BKsettings
         '
-        Me.Button1.Location = New System.Drawing.Point(14, 19)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(155, 23)
-        Me.Button1.TabIndex = 15
-        Me.Button1.Text = "Backup Settings"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BKsettings.Location = New System.Drawing.Point(14, 19)
+        Me.BKsettings.Name = "BKsettings"
+        Me.BKsettings.Size = New System.Drawing.Size(155, 23)
+        Me.BKsettings.TabIndex = 15
+        Me.BKsettings.Text = "Backup Settings"
+        Me.BKsettings.UseVisualStyleBackColor = True
         '
         'Button7
         '
@@ -255,6 +261,26 @@ Partial Class SettingsFrm
         Me.TabPage2.Text = "Update"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'loadCheck
+        '
+        Me.loadCheck.AutoSize = True
+        Me.loadCheck.Location = New System.Drawing.Point(17, 87)
+        Me.loadCheck.Name = "loadCheck"
+        Me.loadCheck.Size = New System.Drawing.Size(202, 17)
+        Me.loadCheck.TabIndex = 5
+        Me.loadCheck.Text = "Load backup when open this pogram"
+        Me.loadCheck.UseVisualStyleBackColor = True
+        '
+        'backupCheck
+        '
+        Me.backupCheck.AutoSize = True
+        Me.backupCheck.Location = New System.Drawing.Point(17, 63)
+        Me.backupCheck.Name = "backupCheck"
+        Me.backupCheck.Size = New System.Drawing.Size(284, 17)
+        Me.backupCheck.TabIndex = 4
+        Me.backupCheck.Text = "Backup Setting after click SAVE button or exit program"
+        Me.backupCheck.UseVisualStyleBackColor = True
+        '
         'CheckUpdate
         '
         Me.CheckUpdate.AutoSize = True
@@ -277,6 +303,7 @@ Partial Class SettingsFrm
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.Button1)
         Me.TabPage3.Controls.Add(Me.Button10)
         Me.TabPage3.Controls.Add(Me.Button9)
         Me.TabPage3.Controls.Add(Me.Label4)
@@ -436,6 +463,9 @@ Partial Class SettingsFrm
         '
         'TabPage4
         '
+        Me.TabPage4.Controls.Add(Me.Button6)
+        Me.TabPage4.Controls.Add(Me.Button8)
+        Me.TabPage4.Controls.Add(Me.Button11)
         Me.TabPage4.Controls.Add(Me.Button3)
         Me.TabPage4.Controls.Add(Me.Button2)
         Me.TabPage4.Controls.Add(Me.Label5)
@@ -563,25 +593,50 @@ Partial Class SettingsFrm
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'backupCheck
+        'Button1
         '
-        Me.backupCheck.AutoSize = True
-        Me.backupCheck.Location = New System.Drawing.Point(17, 63)
-        Me.backupCheck.Name = "backupCheck"
-        Me.backupCheck.Size = New System.Drawing.Size(284, 17)
-        Me.backupCheck.TabIndex = 4
-        Me.backupCheck.Text = "Backup Setting after click SAVE button or exit program"
-        Me.backupCheck.UseVisualStyleBackColor = True
+        Me.Button1.Location = New System.Drawing.Point(167, 200)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 18
+        Me.Button1.Text = "Shop"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'loadCheck
+        'Button6
         '
-        Me.loadCheck.AutoSize = True
-        Me.loadCheck.Location = New System.Drawing.Point(17, 87)
-        Me.loadCheck.Name = "loadCheck"
-        Me.loadCheck.Size = New System.Drawing.Size(202, 17)
-        Me.loadCheck.TabIndex = 5
-        Me.loadCheck.Text = "Load backup when open this pogram"
-        Me.loadCheck.UseVisualStyleBackColor = True
+        Me.Button6.Location = New System.Drawing.Point(164, 201)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 25
+        Me.Button6.Text = "Shop"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(86, 201)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 26
+        Me.Button8.Text = "Export"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(8, 201)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(75, 23)
+        Me.Button11.TabIndex = 27
+        Me.Button11.Text = "Import"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'shop
+        '
+        Me.shop.Location = New System.Drawing.Point(165, 194)
+        Me.shop.Name = "shop"
+        Me.shop.Size = New System.Drawing.Size(75, 23)
+        Me.shop.TabIndex = 0
+        Me.shop.Text = "Shop"
+        Me.shop.UseVisualStyleBackColor = True
         '
         'SettingsFrm
         '
@@ -664,9 +719,9 @@ Partial Class SettingsFrm
     Friend WithEvents Button2 As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents GroupBox4 As GroupBox
-    Friend WithEvents Button8 As Button
-    Friend WithEvents Button6 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents RSsetting As Button
+    Friend WithEvents RSsettings As Button
+    Friend WithEvents BKsettings As Button
     Friend WithEvents Label7 As Label
     Friend WithEvents Button5 As Button
     Friend WithEvents Button10 As Button
@@ -675,4 +730,9 @@ Partial Class SettingsFrm
     Friend WithEvents OpenFileDialog1 As OpenFileDialog
     Friend WithEvents loadCheck As CheckBox
     Friend WithEvents backupCheck As CheckBox
+    Friend WithEvents shop As Button
+    Friend WithEvents Button1 As Button
+    Friend WithEvents Button6 As Button
+    Friend WithEvents Button8 As Button
+    Friend WithEvents Button11 As Button
 End Class

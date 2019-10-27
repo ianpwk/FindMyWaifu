@@ -311,10 +311,6 @@ Public Class MainFrm
         ToolStripSplitButton1.ShowDropDown()
     End Sub
 
-    Private Sub Timer2_Tick(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub UpdateToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UpdateToolStripMenuItem.Click
         FrmUpdate.ShowDialog()
     End Sub

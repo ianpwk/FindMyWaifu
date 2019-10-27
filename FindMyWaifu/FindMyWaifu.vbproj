@@ -67,7 +67,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>tumblr_pscuevC86h1wxengv_540~4.ico</ApplicationIcon>
+    <ApplicationIcon>favicon%281%29.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -322,6 +322,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\splash.png" />
+    <Content Include="favicon%281%29.ico" />
     <Content Include="tumblr_pscuevC86h1wxengv_540~4.ico" />
     <Content Include="waifudata.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
