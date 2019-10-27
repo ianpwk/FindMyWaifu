@@ -4,9 +4,11 @@ Imports System.Security.Principal
 
 Module Module1
     Dim FileToCopy As String
+    Dim FileToCopy1 As String
     Dim FileToCopy2 As String
     Dim FileToCopy3 As String
     Dim NewCopy As String
+    Dim NewCopy1 As String
     Dim NewCopy2 As String
     Dim NewCopy3 As String
     Dim appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu\_data"
@@ -29,10 +31,12 @@ Module Module1
             myAssemblyPath = a.Location.Substring(0, InStrRev(a.Location, "\"))
 
             FileToCopy = unziper & "\FindMyWaifu.exe"
+            FileToCopy1 = unziper & "\UpdateMyWaifu.exe"
             FileToCopy2 = unziper & "\FindMyWaifu.exe.config"
             FileToCopy3 = unziper & "\waifudata.mdb"
 
             NewCopy = "FindMyWaifu.exe"
+            NewCopy1 = "UpdateMyWaifu.exe"
             NewCopy2 = "FindMyWaifu.exe.config"
             NewCopy3 = "waifudata.mdb"
 
@@ -63,6 +67,7 @@ Module Module1
 
             If File.Exists(FileToCopy) = True Then
                 File.Copy(FileToCopy, NewCopy, True)
+                File.Copy(FileToCopy1, NewCopy1, True)
                 File.Copy(FileToCopy2, NewCopy2, True)
                 File.Copy(FileToCopy3, NewCopy3, True)
 

@@ -43,23 +43,31 @@ Public Class MainFrm
             End While
 
             ToolStripStatusLabel2.Text = ""
-            If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
-                ToolStripStatusLabel2.Visible = False
-            Else
-                If bulidOnline <= My.Application.Info.Version.Build.ToString Then
-                    ToolStripStatusLabel2.Visible = False
-                Else
-                    If mirorOnline <= My.Application.Info.Version.Minor.ToString Then
-                        ToolStripStatusLabel2.Visible = False
-                    Else
-                        If majorOnline <= My.Application.Info.Version.Major.ToString Then
+
+            If majorOnline = My.Application.Info.Version.Major.ToString Then
+                If bulidOnline = My.Application.Info.Version.Build.ToString Then
+                    If mirorOnline = My.Application.Info.Version.Minor.ToString Then
+                        If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
                             ToolStripStatusLabel2.Visible = False
                         Else
                             Call notifUpdate()
                         End If
+                    ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
+                        ToolStripStatusLabel2.Visible = False
+                    Else
+                        Call notifUpdate()
                     End If
+                ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
+                    ToolStripStatusLabel2.Visible = False
+                Else
+                    Call notifUpdate()
                 End If
+            ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
+                ToolStripStatusLabel2.Visible = False
+            Else
+                Call notifUpdate()
             End If
+
         Catch ex As Exception
             Dim osVer As Version = Environment.OSVersion.Version
 

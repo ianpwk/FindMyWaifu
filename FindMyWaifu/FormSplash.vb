@@ -119,7 +119,12 @@ Public Class FormSplash
                         Dim duplikat As String = MessageBox.Show("Theme yang ditambahkan sudah ditambahkan sebelumnya" & ControlChars.CrLf &
                             "Klik yes untuk menimpa, no untuk menutup aplikasi ini, cencel untuk membatalkan", "Theme", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                         If duplikat = Windows.Forms.DialogResult.Yes Then
-                            File.Copy(openfile, checksource, True)
+                            Try
+                                File.Copy(openfile, checksource, True)
+                            Catch ex As Exception
+                                File.Delete(checksource)
+                                File.Copy(openfile, checksource)
+                            End Try
                             settheme = True
                         End If
                     Else

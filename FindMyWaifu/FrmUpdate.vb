@@ -17,16 +17,17 @@ Public Class FrmUpdate
 
     Dim security As Boolean = False
 
+    Dim ver As String = ""
+    Dim newver As String = ""
+    Dim desc As String = ""
+
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Public Sub CheckForUpdates()
 
         If InternetGetConnectedState(Out, 0) = True Then
             Try
-                Dim ver As String = ""
                 Dim xmlUpdate As New XmlTextReader(readXml)
-                Dim newver As String = ""
-                Dim desc As String = ""
 
                 While xmlUpdate.Read()
                     Dim type = xmlUpdate.NodeType
@@ -47,37 +48,36 @@ Public Class FrmUpdate
                         revisionOnline = xmlUpdate.ReadInnerXml.ToString()
                     End If
                 End While
+                bulidOnline = 2
+                revisionOnline = 5
 
                 Label2.Text = "Update Ver.: " + newver
 
                 updates = 1
                 Button1.Text = "Update"
 
-                If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
-                    Label3.Text = "Sudah Terupdate"
-                    RichTextBox1.Text = "Versi anda sudah yang terbaru"
-                    Button1.Enabled = False
-                Else
-                    If bulidOnline <= My.Application.Info.Version.Build.ToString Then
-                        Label3.Text = "Sudah Terupdate"
-                        RichTextBox1.Text = "Versi anda sudah yang terbaru"
-                        Button1.Enabled = False
-                    Else
-                        If mirorOnline <= My.Application.Info.Version.Minor.ToString Then
-                            Label3.Text = "Sudah Terupdate"
-                            RichTextBox1.Text = "Versi anda sudah yang terbaru"
-                            Button1.Enabled = False
-                        Else
-                            If majorOnline <= My.Application.Info.Version.Major.ToString Then
-                                Label3.Text = "Sudah Terupdate"
-                                RichTextBox1.Text = "Versi anda sudah yang terbaru"
-                                Button1.Enabled = False
+                If majorOnline = My.Application.Info.Version.Major.ToString Then
+                    If bulidOnline = My.Application.Info.Version.Build.ToString Then
+                        If mirorOnline = My.Application.Info.Version.Minor.ToString Then
+                            If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
+                                NoUpdate()
                             Else
-                                RichTextBox1.Text = desc
-                                Label3.Text = "Update Avaiable"
+                                thisUpdate()
                             End If
+                        ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
+                            NoUpdate()
+                        Else
+                            thisUpdate()
                         End If
+                    ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
+                        NoUpdate()
+                    Else
+                        thisUpdate()
                     End If
+                ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
+                    NoUpdate()
+                Else
+                    thisUpdate()
                 End If
 
                 'If newver > lastver Then
@@ -118,6 +118,17 @@ Public Class FrmUpdate
                 Button1.Text = "Update manual"
             End If
         End If
+    End Sub
+
+    Sub NoUpdate()
+        Label3.Text = "Sudah Terupdate"
+        RichTextBox1.Text = "Versi anda sudah yang terbaru"
+        Button1.Enabled = False
+    End Sub
+
+    Sub thisUpdate()
+        RichTextBox1.Text = desc
+        Label3.Text = "Update Avaiable"
     End Sub
 
     Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
