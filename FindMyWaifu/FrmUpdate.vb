@@ -53,25 +53,28 @@ Public Class FrmUpdate
                 updates = 1
                 Button1.Text = "Update"
 
-                If revisionOnline > My.Application.Info.Version.Revision.ToString Then
-                    RichTextBox1.Text = desc
-                    Label3.Text = "Update Avaiable"
+                If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
+                    Label3.Text = "Sudah Terupdate"
+                    RichTextBox1.Text = "Versi anda sudah yang terbaru"
+                    Button1.Enabled = False
                 Else
-                    If bulidOnline > My.Application.Info.Version.Build.ToString Then
-                        RichTextBox1.Text = desc
-                        Label3.Text = "Update Avaiable"
+                    If bulidOnline <= My.Application.Info.Version.Build.ToString Then
+                        Label3.Text = "Sudah Terupdate"
+                        RichTextBox1.Text = "Versi anda sudah yang terbaru"
+                        Button1.Enabled = False
                     Else
-                        If mirorOnline > My.Application.Info.Version.Minor.ToString Then
-                            RichTextBox1.Text = desc
-                            Label3.Text = "Update Avaiable"
+                        If mirorOnline <= My.Application.Info.Version.Minor.ToString Then
+                            Label3.Text = "Sudah Terupdate"
+                            RichTextBox1.Text = "Versi anda sudah yang terbaru"
+                            Button1.Enabled = False
                         Else
-                            If majorOnline > My.Application.Info.Version.Major.ToString Then
-                                RichTextBox1.Text = desc
-                                Label3.Text = "Update Avaiable"
-                            Else
+                            If majorOnline <= My.Application.Info.Version.Major.ToString Then
                                 Label3.Text = "Sudah Terupdate"
                                 RichTextBox1.Text = "Versi anda sudah yang terbaru"
                                 Button1.Enabled = False
+                            Else
+                                RichTextBox1.Text = desc
+                                Label3.Text = "Update Avaiable"
                             End If
                         End If
                     End If

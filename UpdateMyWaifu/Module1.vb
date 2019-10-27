@@ -11,8 +11,14 @@ Module Module1
     Dim NewCopy3 As String
     Dim appDataFMW As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\FindMyWaifu\_data"
     Dim unziper As String = appDataFMW & "\updates\data"
-    Sub Main()
+    Dim reg As Object = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\WOW6432Node\ardIANsyah", True)
+    Dim regChange = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\WOW6432Node\ardIANsyah\FindMyWaifu", True)
 
+    Private Function GetFileVersionInfo(ByVal filename As String) As Version
+        Return Version.Parse(FileVersionInfo.GetVersionInfo(filename).FileVersion)
+    End Function
+
+    Sub Main()
         Dim identity = WindowsIdentity.GetCurrent()
         Dim principal = New WindowsPrincipal(identity)
         Dim isElevated As Boolean = principal.IsInRole(WindowsBuiltInRole.Administrator)
@@ -21,7 +27,6 @@ Module Module1
             Dim myAssemblyPath As String
             Dim a As Reflection.Assembly = System.Reflection.Assembly.GetExecutingAssembly()
             myAssemblyPath = a.Location.Substring(0, InStrRev(a.Location, "\"))
-
 
             FileToCopy = unziper & "\FindMyWaifu.exe"
             FileToCopy2 = unziper & "\FindMyWaifu.exe.config"
@@ -43,6 +48,11 @@ Module Module1
 
             Console.WriteLine("Upgading file...")
             Threading.Thread.Sleep(3000)
+
+            If Not reg Is Nothing Then
+                Dim ver = GetFileVersionInfo(FileToCopy).ToString
+                regChange.SetValue("Version", ver)
+            End If
 
             If (Not Directory.Exists(appDataFMW)) Then
                 Directory.CreateDirectory(appDataFMW)
@@ -70,7 +80,7 @@ Module Module1
                 myprocess.Start()
             End Using
             Threading.Thread.Sleep(1000)
-        Else
+            Else
             Console.WriteLine("Anda bukan admin")
             Threading.Thread.Sleep(3000)
         End If
@@ -92,6 +102,7 @@ Module Module1
         Else
             Console.WriteLine("File tidak ada")
             Threading.Thread.Sleep(3000)
+            Environment.Exit(0)
         End If
     End Sub
 

@@ -43,19 +43,19 @@ Public Class MainFrm
             End While
 
             ToolStripStatusLabel2.Text = ""
-            If revisionOnline > My.Application.Info.Version.Revision.ToString Then
-                Call notifUpdate()
+            If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
+                ToolStripStatusLabel2.Visible = False
             Else
-                If bulidOnline > My.Application.Info.Version.Build.ToString Then
-                    Call notifUpdate()
+                If bulidOnline <= My.Application.Info.Version.Build.ToString Then
+                    ToolStripStatusLabel2.Visible = False
                 Else
-                    If mirorOnline > My.Application.Info.Version.Minor.ToString Then
-                        Call notifUpdate()
+                    If mirorOnline <= My.Application.Info.Version.Minor.ToString Then
+                        ToolStripStatusLabel2.Visible = False
                     Else
-                        If majorOnline > My.Application.Info.Version.Major.ToString Then
-                            Call notifUpdate()
-                        Else
+                        If majorOnline <= My.Application.Info.Version.Major.ToString Then
                             ToolStripStatusLabel2.Visible = False
+                        Else
+                            Call notifUpdate()
                         End If
                     End If
                 End If

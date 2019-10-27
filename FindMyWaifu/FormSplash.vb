@@ -140,9 +140,8 @@ Public Class FormSplash
                 openfile = ""
             End If
             If FileExist.errors = False Then
-
+                'nothing
             End If
-
             Call FileExist.DetectionError()
         End If
 
