@@ -33,12 +33,12 @@ Module Module1
             FileToCopy = unziper & "\FindMyWaifu.exe"
             FileToCopy1 = unziper & "\UpdateMyWaifu.exe"
             FileToCopy2 = unziper & "\FindMyWaifu.exe.config"
-            FileToCopy3 = unziper & "\waifudata.mdb"
+            'FileToCopy3 = unziper & "\waifudata.mdb"
 
             NewCopy = "FindMyWaifu.exe"
             NewCopy1 = "UpdateMyWaifu.exe"
             NewCopy2 = "FindMyWaifu.exe.config"
-            NewCopy3 = "waifudata.mdb"
+            'NewCopy3 = "waifudata.mdb"
 
             Console.WriteLine("Closing Program....")
             Threading.Thread.Sleep(3000)
@@ -69,7 +69,7 @@ Module Module1
                 File.Copy(FileToCopy, NewCopy, True)
                 File.Copy(FileToCopy1, NewCopy1, True)
                 File.Copy(FileToCopy2, NewCopy2, True)
-                File.Copy(FileToCopy3, NewCopy3, True)
+                'File.Copy(FileToCopy3, NewCopy3, True)
 
                 delete()
                 File.Delete(appDataFMW + "\updates\update.zip")
