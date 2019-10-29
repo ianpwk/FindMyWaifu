@@ -8,6 +8,7 @@ Public Class ThemePreview
     Dim xsiColorString As String
     Public JsonObject As JObject
     Public xsiColor As JObject
+    Public toolbarmenu As Image
 
     Private Sub CheckthemeJson()
         Try
@@ -43,11 +44,36 @@ Public Class ThemePreview
     Public Sub XsiExist()
         If Not System.IO.File.Exists(FindJsons) Then
             errors += 1
-            FrmError.ListBox1.Items.Add("Error S5: File Not Found")
+            FrmError.ListBox1.Items.Add("Error S5: Theme Not Found")
             My.Settings.Theme = "Default"
             My.Settings.CustomTheme = False
         Else
             Call Coloring()
+        End If
+    End Sub
+
+    Sub CheckChibi()
+        If My.Settings.CustomChibi = True Then
+            Dim ChibiFolder = My.Settings.Chibi.Replace("Custom - ", "")
+            Dim folder = DataFolder.appDataFMW & "\chibi\" & ChibiFolder
+
+            If System.IO.Directory.Exists(folder) Then
+                If System.IO.File.Exists(folder & "set-default.png") And
+                   System.IO.File.Exists(folder & "set-fail.png") And
+                   System.IO.File.Exists(folder & "set-happy.png") Then
+
+                Else
+                    errors += 1
+                    FrmError.ListBox1.Items.Add("Error S4: Theme Not Found")
+                    My.Settings.Chibi = "Default"
+                    My.Settings.CustomChibi = False
+                End If
+            Else
+                errors += 1
+                FrmError.ListBox1.Items.Add("Error S5: Chibi Not Found")
+                My.Settings.Chibi = "Default"
+                My.Settings.CustomChibi = False
+            End If
         End If
     End Sub
 
@@ -56,12 +82,8 @@ Public Class ThemePreview
 
         Try
             BGtoolbarColor = xsiColor.SelectToken("toolbar").ToString
-            TXtoolbarColor = xsiColor.SelectToken("toolbartext").ToString
             BGformColor = xsiColor.SelectToken("form").ToString
-            TXformColor = xsiColor.SelectToken("formtext").ToString
             BGstatusColor = xsiColor.SelectToken("status").ToString
-            TXstatusColor = xsiColor.SelectToken("statustext").ToString
-
         Catch ex2 As Exception
             Dim validColorBGT As String = "#" + xsiColor.SelectToken("toolbar").ToString + " is not a valid value for Int32."
             Dim invalidname As String = "Object reference not set to an instance of an object."
@@ -72,11 +94,83 @@ Public Class ThemePreview
                 errors += 1
                 FrmError.ListBox1.Items.Add("Error A2: Valiable not found (Color)")
             End If
+            My.Settings.Theme = "Default"
+            My.Settings.CustomTheme = False
         End Try
 
+        Try
+            TXtoolbarColor = xsiColor.SelectToken("toolbartext").ToString
+            TXformColor = xsiColor.SelectToken("formtext").ToString
+            TXstatusColor = xsiColor.SelectToken("statustext").ToString
+        Catch ex As Exception
 
+        End Try
 
+        If TXformColor = "" Then
+            Dim Red = Val("&H" & Mid(BGformColor, 1, 2))
+            Dim Green = Val("&H" & Mid(BGformColor, 3, 2))
+            Dim Blue = Val("&H" & Mid(BGformColor, 5, 2))
 
+            Dim IsDark As Boolean = (Red <= 128) Or
+                                    (Green <= 128) Or
+                                    (Blue <= 128) Or
+                                    (BGformColor = "000")
+
+            If IsDark Then
+                TXformColor = "FFFFFF"
+            Else
+                TXformColor = "000"
+            End If
+        End If
+
+        If TXtoolbarColor = "" Then
+            Dim Red = Val("&H" & Mid(BGtoolbarColor, 1, 2))
+            Dim Green = Val("&H" & Mid(BGtoolbarColor, 3, 2))
+            Dim Blue = Val("&H" & Mid(BGtoolbarColor, 5, 2))
+
+            Dim IsDark As Boolean = (Red <= 128) Or
+                                    (Green <= 128) Or
+                                    (Blue <= 128) Or
+                                    (BGtoolbarColor = "000")
+
+            If IsDark Then
+                TXtoolbarColor = "FFFFFF"
+            Else
+                TXtoolbarColor = "000"
+            End If
+        End If
+
+        If TXstatusColor = "" Then
+            Dim Red = Val("&H" & Mid(BGstatusColor, 1, 2))
+            Dim Green = Val("&H" & Mid(BGstatusColor, 3, 2))
+            Dim Blue = Val("&H" & Mid(BGstatusColor, 5, 2))
+
+            Dim IsDark As Boolean = (Red <= 128) Or
+                                    (Green <= 128) Or
+                                    (Blue <= 128) Or
+                                    (BGstatusColor = "000")
+
+            If IsDark Then
+                TXstatusColor = "FFFFFF"
+            Else
+                TXstatusColor = "000"
+            End If
+        End If
+
+        Dim TBred = Val("&H" & Mid(BGtoolbarColor, 1, 2))
+        Dim TBgreen = Val("&H" & Mid(BGtoolbarColor, 3, 2))
+        Dim TBblue = Val("&H" & Mid(BGtoolbarColor, 5, 2))
+
+        Dim TBIsDark As Boolean = (TBred <= 128) Or
+                                (TBgreen <= 128) Or
+                                (TBblue <= 128) Or
+                                (BGtoolbarColor = "000")
+
+        If TBIsDark Then
+            toolbarmenu = My.Resources.white_menu
+        Else
+            toolbarmenu = My.Resources.menu
+        End If
     End Sub
 
     Public Sub DetectionError()

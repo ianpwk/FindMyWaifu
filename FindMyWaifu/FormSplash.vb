@@ -91,6 +91,7 @@ Public Class FormSplash
                     My.Settings.Chibi = JsonObject.SelectToken("chibi").ToString
                     My.Settings.Bahasa = JsonObject.SelectToken("lang").ToString
                     My.Settings.AutoUpdate = JsonObject.SelectToken("auto_update")
+                    My.Settings.CustomChibi = JsonObject.SelectToken("custom_chibi")
                 End If
             Catch ex As Exception
 

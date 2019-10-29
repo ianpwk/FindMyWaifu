@@ -13,12 +13,16 @@ Public Class MainFrm
     Dim rn As New Random
     Dim LokasNomorB As String
     Dim Out As Integer
+    Public RestartPaksa As Boolean = False
 
     Dim NumberRnd As String = ""
     Dim Hasilnya As String = ""
     Dim newver As String = ""
 
     Dim majorOnline, mirorOnline, bulidOnline, revisionOnline As String
+
+    Dim Default_Chibi, Fail_Chibi, Happy_Chibi As Image
+    Dim DefaultChibi, FailChibi, HappyChibi As String
     Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
     Public Sub CheckForUpdates()
@@ -129,9 +133,7 @@ Public Class MainFrm
                     StartProgram.ShowDialog()
                     StartProgram.DownloadEngine()
                 Else
-                    Kasumi.Visible = False
-                    KasumiGo.Visible = False
-                    KasumiFail.Visible = True
+                    Chibis.Image = Fail_Chibi
                     Button1.Enabled = True
                 End If
             End If
@@ -176,29 +178,28 @@ Public Class MainFrm
         Catch ex As Exception
             Timer1.Enabled = False
             MessageBox.Show(ex.Message)
-            Kasumi.Visible = False
-            KasumiGo.Visible = False
-            KasumiFail.Visible = True
+            Chibis.Image = Fail_Chibi
         End Try
     End Sub
     'Akhir
 
     Private Sub MainFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        Dim result As Integer = MsgBox("Anda yakin mau mengclose program ini?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Yakin???")
-        If result = DialogResult.Yes Then
-            If My.Settings.NameRemember = False Then
-                My.Settings.name = ""
+        If RestartPaksa = False Then
+            Dim result As Integer = MsgBox("Anda yakin mau mengclose program ini?", MsgBoxStyle.Information + MsgBoxStyle.YesNo, "Yakin???")
+            If result = DialogResult.Yes Then
+                If My.Settings.NameRemember = False Then
+                    My.Settings.name = ""
+                End If
+                My.Settings.Save()
+                If My.Settings.backup = True Then
+                    Dim save As New SettingsSaver()
+                    save.Settings()
+                End If
+                FormSplash.Close()
+            Else
+                e.Cancel = True
             End If
-            My.Settings.Save()
-            If My.Settings.backup = True Then
-                Dim save As New SettingsSaver()
-                save.Settings()
-            End If
-            FormSplash.Close()
-        Else
-            e.Cancel = True
         End If
-
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -251,13 +252,37 @@ Public Class MainFrm
         End If
         Dim Colors As New ClassTheme()
         Colors.changetheme()
+
+        ChibiLoad()
+    End Sub
+
+    Public Sub ChibiLoad()
+        Dim foldata As New CreateFolder()
+        Dim folChibi As String = foldata.appDataFMW & "\chibi\"
+
+        If My.Settings.Chibi = "Default" Then
+            Default_Chibi = My.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
+            Fail_Chibi = My.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
+            Happy_Chibi = My.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
+        Else
+            Dim CusChibi = My.Settings.Chibi.Replace("Custom - ", "")
+
+            DefaultChibi = folChibi & CusChibi & "\set-default.png"
+            Default_Chibi = Image.FromFile(DefaultChibi)
+
+            FailChibi = folChibi & CusChibi & "\set-fail.png"
+            Fail_Chibi = Image.FromFile(FailChibi)
+
+            HappyChibi = folChibi & CusChibi & "\set-happy.png"
+            Happy_Chibi = Image.FromFile(HappyChibi)
+        End If
+
+        Chibis.Image = Default_Chibi
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         If ToolStripProgressBar1.Value = "0" Then
-            Kasumi.Visible = True
-            KasumiGo.Visible = False
-            KasumiFail.Visible = False
+            Chibis.Image = Default_Chibi
             ToolStripProgressBar1.Value = "30"
         ElseIf ToolStripProgressBar1.Value = "30" Then
             Hitung()
@@ -267,9 +292,7 @@ Public Class MainFrm
         ElseIf ToolStripProgressBar1.Value = "100" Then
             Timer1.Enabled = False
             Label2.Text = Hasilnya.ToString()
-            Kasumi.Visible = False
-            KasumiGo.Visible = True
-            KasumiFail.Visible = False
+            Chibis.Image = Happy_Chibi
             Button1.Enabled = True
         End If
     End Sub

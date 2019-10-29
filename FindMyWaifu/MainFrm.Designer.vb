@@ -25,9 +25,7 @@ Partial Class MainFrm
         Me.components = New System.ComponentModel.Container()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Kasumi = New System.Windows.Forms.PictureBox()
-        Me.KasumiGo = New System.Windows.Forms.PictureBox()
-        Me.KasumiFail = New System.Windows.Forms.PictureBox()
+        Me.Chibis = New System.Windows.Forms.PictureBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
@@ -45,9 +43,7 @@ Partial Class MainFrm
         Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1.SuspendLayout()
-        CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.KasumiFail, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Chibis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.ToolStrip2.SuspendLayout()
         Me.SuspendLayout()
@@ -56,9 +52,7 @@ Partial Class MainFrm
         '
         Me.Panel1.BackColor = System.Drawing.SystemColors.ControlDark
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.Kasumi)
-        Me.Panel1.Controls.Add(Me.KasumiGo)
-        Me.Panel1.Controls.Add(Me.KasumiFail)
+        Me.Panel1.Controls.Add(Me.Chibis)
         Me.Panel1.ForeColor = System.Drawing.SystemColors.ControlText
         Me.Panel1.Location = New System.Drawing.Point(0, 25)
         Me.Panel1.Name = "Panel1"
@@ -74,37 +68,15 @@ Partial Class MainFrm
         Me.Label3.TabIndex = 2
         Me.Label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'Kasumi
+        'Chibis
         '
-        Me.Kasumi.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
-        Me.Kasumi.Location = New System.Drawing.Point(117, 54)
-        Me.Kasumi.Name = "Kasumi"
-        Me.Kasumi.Size = New System.Drawing.Size(165, 172)
-        Me.Kasumi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.Kasumi.TabIndex = 1
-        Me.Kasumi.TabStop = False
-        '
-        'KasumiGo
-        '
-        Me.KasumiGo.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
-        Me.KasumiGo.Location = New System.Drawing.Point(117, 54)
-        Me.KasumiGo.Name = "KasumiGo"
-        Me.KasumiGo.Size = New System.Drawing.Size(165, 172)
-        Me.KasumiGo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.KasumiGo.TabIndex = 1
-        Me.KasumiGo.TabStop = False
-        Me.KasumiGo.Visible = False
-        '
-        'KasumiFail
-        '
-        Me.KasumiFail.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
-        Me.KasumiFail.Location = New System.Drawing.Point(117, 54)
-        Me.KasumiFail.Name = "KasumiFail"
-        Me.KasumiFail.Size = New System.Drawing.Size(165, 172)
-        Me.KasumiFail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.KasumiFail.TabIndex = 1
-        Me.KasumiFail.TabStop = False
-        Me.KasumiFail.Visible = False
+        Me.Chibis.Image = Global.FindMyWaifu.My.Resources.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
+        Me.Chibis.Location = New System.Drawing.Point(12, 58)
+        Me.Chibis.Name = "Chibis"
+        Me.Chibis.Size = New System.Drawing.Size(371, 172)
+        Me.Chibis.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.Chibis.TabIndex = 1
+        Me.Chibis.TabStop = False
         '
         'StatusStrip1
         '
@@ -232,9 +204,7 @@ Partial Class MainFrm
         Me.Name = "MainFrm"
         Me.Text = "Cari Waifu"
         Me.Panel1.ResumeLayout(False)
-        CType(Me.Kasumi, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KasumiGo, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.KasumiFail, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Chibis, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.ToolStrip2.ResumeLayout(False)
@@ -247,12 +217,10 @@ Partial Class MainFrm
     Friend WithEvents Panel1 As Panel
     Friend WithEvents StatusStrip1 As StatusStrip
     Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
-    Friend WithEvents Kasumi As PictureBox
+    Friend WithEvents Chibis As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents ToolStripStatusLabel2 As ToolStripStatusLabel
-    Friend WithEvents KasumiGo As PictureBox
-    Friend WithEvents KasumiFail As PictureBox
     Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
     Friend WithEvents Timer1 As Timer
     Friend WithEvents Label2 As Label

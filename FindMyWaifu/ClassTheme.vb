@@ -13,8 +13,8 @@
     Dim toolbarMenuWhite As Image = My.Resources.white_menu
     Dim toolbarMenuBlack As Image = My.Resources.menu
 
-    Dim toolbarConWhite As Image = My.Resources.white_connect
-    Dim toolbarConBlack As Image = My.Resources.connect
+    Public toolbarConWhite As Image = My.Resources.white_connect
+    Public toolbarConBlack As Image = My.Resources.connect
 
     Public Sub changetheme()
         If My.Settings.Theme = "Default" Then
@@ -101,9 +101,7 @@
         Call Colorings.Coloring()
         ToolbarColor = ColorTranslator.FromHtml("#" + Colorings.BGtoolbarColor.ToString())
         ToolbarText = ColorTranslator.FromHtml("#" + Colorings.TXtoolbarColor.ToString())
-
-        toolbarMenuIcon = toolbarMenuBlack
-        toolbarConIcon = toolbarConBlack
+        toolbarMenuIcon = Colorings.toolbarmenu
 
         BackgroundColor = ColorTranslator.FromHtml("#" + Colorings.BGformColor.ToString())
         MainColor = ColorTranslator.FromHtml("#" + Colorings.TXformColor.ToString())

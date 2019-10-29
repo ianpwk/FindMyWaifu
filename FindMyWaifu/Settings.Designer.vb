@@ -36,6 +36,7 @@ Partial Class SettingsFrm
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.shop = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.loadCheck = New System.Windows.Forms.CheckBox()
@@ -43,6 +44,7 @@ Partial Class SettingsFrm
         Me.CheckUpdate = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.Button10 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -60,8 +62,11 @@ Partial Class SettingsFrm
         Me.ComboTheme = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.ChibiSearchFol = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.fai_chibi = New System.Windows.Forms.RadioButton()
         Me.hap_chibi = New System.Windows.Forms.RadioButton()
@@ -75,11 +80,6 @@ Partial Class SettingsFrm
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Button11 = New System.Windows.Forms.Button()
-        Me.shop = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -238,6 +238,15 @@ Partial Class SettingsFrm
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Databases"
         '
+        'shop
+        '
+        Me.shop.Location = New System.Drawing.Point(165, 194)
+        Me.shop.Name = "shop"
+        Me.shop.Size = New System.Drawing.Size(75, 23)
+        Me.shop.TabIndex = 0
+        Me.shop.Text = "Shop"
+        Me.shop.UseVisualStyleBackColor = True
+        '
         'Button5
         '
         Me.Button5.Location = New System.Drawing.Point(84, 194)
@@ -318,6 +327,15 @@ Partial Class SettingsFrm
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Theme"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(167, 200)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 18
+        Me.Button1.Text = "Shop"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'Button10
         '
@@ -467,7 +485,7 @@ Partial Class SettingsFrm
         Me.TabPage4.Controls.Add(Me.Button8)
         Me.TabPage4.Controls.Add(Me.Button11)
         Me.TabPage4.Controls.Add(Me.Button3)
-        Me.TabPage4.Controls.Add(Me.Button2)
+        Me.TabPage4.Controls.Add(Me.ChibiSearchFol)
         Me.TabPage4.Controls.Add(Me.Label5)
         Me.TabPage4.Controls.Add(Me.fai_chibi)
         Me.TabPage4.Controls.Add(Me.hap_chibi)
@@ -482,6 +500,33 @@ Partial Class SettingsFrm
         Me.TabPage4.Text = "Chibi"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(164, 201)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(75, 23)
+        Me.Button6.TabIndex = 25
+        Me.Button6.Text = "Shop"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(86, 201)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 26
+        Me.Button8.Text = "Export"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(8, 201)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(75, 23)
+        Me.Button11.TabIndex = 27
+        Me.Button11.Text = "Import"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(245, 201)
@@ -491,14 +536,14 @@ Partial Class SettingsFrm
         Me.Button3.Text = "Help..."
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'Button2
+        'ChibiSearchFol
         '
-        Me.Button2.Location = New System.Drawing.Point(226, 20)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 23
-        Me.Button2.Text = "Buka Folder"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.ChibiSearchFol.Location = New System.Drawing.Point(226, 20)
+        Me.ChibiSearchFol.Name = "ChibiSearchFol"
+        Me.ChibiSearchFol.Size = New System.Drawing.Size(75, 23)
+        Me.ChibiSearchFol.TabIndex = 23
+        Me.ChibiSearchFol.Text = "Buka Folder"
+        Me.ChibiSearchFol.UseVisualStyleBackColor = True
         '
         'Label5
         '
@@ -593,51 +638,6 @@ Partial Class SettingsFrm
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(167, 200)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 18
-        Me.Button1.Text = "Shop"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(164, 201)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 25
-        Me.Button6.Text = "Shop"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button8
-        '
-        Me.Button8.Location = New System.Drawing.Point(86, 201)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(75, 23)
-        Me.Button8.TabIndex = 26
-        Me.Button8.Text = "Export"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button11
-        '
-        Me.Button11.Location = New System.Drawing.Point(8, 201)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(75, 23)
-        Me.Button11.TabIndex = 27
-        Me.Button11.Text = "Import"
-        Me.Button11.UseVisualStyleBackColor = True
-        '
-        'shop
-        '
-        Me.shop.Location = New System.Drawing.Point(165, 194)
-        Me.shop.Name = "shop"
-        Me.shop.Size = New System.Drawing.Size(75, 23)
-        Me.shop.TabIndex = 0
-        Me.shop.Text = "Shop"
-        Me.shop.UseVisualStyleBackColor = True
-        '
         'SettingsFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -650,6 +650,7 @@ Partial Class SettingsFrm
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "SettingsFrm"
+        Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.Text = "Settings"
         Me.TabControl1.ResumeLayout(False)
@@ -716,7 +717,7 @@ Partial Class SettingsFrm
     Friend WithEvents Label4 As Label
     Friend WithEvents OpenFThemeBtn As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents ChibiSearchFol As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents GroupBox4 As GroupBox
     Friend WithEvents RSsetting As Button

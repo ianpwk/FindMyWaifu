@@ -18,7 +18,7 @@ Public Class SettingsSaver
                                                       New JProperty("theme", My.Settings.Theme.ToString),
                                                       New JProperty("custom_theme", My.Settings.CustomTheme),
                                                       New JProperty("chibi", My.Settings.Chibi.ToString),
-                                                      New JProperty("custom_chibi", False),
+                                                      New JProperty("custom_chibi", My.Settings.CustomChibi),
                                                       New JProperty("lang", My.Settings.Bahasa.ToString),
                                                       New JProperty("custom_lang", False),
                                                       New JProperty("auto_update", My.Settings.AutoUpdate)

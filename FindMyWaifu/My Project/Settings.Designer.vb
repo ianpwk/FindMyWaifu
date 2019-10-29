@@ -171,6 +171,18 @@ Namespace My
                 Me("load") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property CustomChibi() As Boolean
+            Get
+                Return CType(Me("CustomChibi"),Boolean)
+            End Get
+            Set
+                Me("CustomChibi") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
