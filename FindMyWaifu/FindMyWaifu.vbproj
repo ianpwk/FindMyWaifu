@@ -323,6 +323,7 @@
   <ItemGroup>
     <None Include="Resources\splash.png" />
     <Content Include="favicon%281%29.ico" />
+    <None Include="Resources\chibi-none.png" />
     <Content Include="tumblr_pscuevC86h1wxengv_540~4.ico" />
     <Content Include="waifudata.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

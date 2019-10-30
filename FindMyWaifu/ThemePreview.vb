@@ -64,7 +64,7 @@ Public Class ThemePreview
 
                 Else
                     errors += 1
-                    FrmError.ListBox1.Items.Add("Error S4: Theme Not Found")
+                    FrmError.ListBox1.Items.Add("Error S4: Chibi is Broken")
                     My.Settings.Chibi = "Default"
                     My.Settings.CustomChibi = False
                 End If

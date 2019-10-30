@@ -13,6 +13,8 @@ Public Class SettingsFrm
     Dim Set_happy, Set_fail, Set_Default As Image
     Dim Sets_happy, Sets_fail, Sets_Default As String
     Dim TB, TBT, FR, FRT, ST, STT As String
+    Dim saveenabled As Integer
+    Dim errortheme, errorchibi As Boolean
 
 
     Public Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
@@ -64,7 +66,11 @@ Public Class SettingsFrm
     End Sub
 
     Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Label6.Text = ""
         RadioButton2.Enabled = False
+        saveenabled = 0
+        errortheme = False
+        errorchibi = False
 
         If (Not System.IO.Directory.Exists(create.appDataFMW & "\theme")) Then
             System.IO.Directory.CreateDirectory(create.appDataFMW & "\theme")
@@ -184,6 +190,14 @@ Public Class SettingsFrm
         chbiPreview.Image = Set_Default
     End Sub
 
+    Private Sub backupCheck_CheckedChanged(sender As Object, e As EventArgs) Handles backupCheck.CheckedChanged
+        saved()
+    End Sub
+
+    Private Sub loadCheck_CheckedChanged(sender As Object, e As EventArgs) Handles loadCheck.CheckedChanged
+        saved()
+    End Sub
+
     Private Sub fai_chibi_CheckedChanged(sender As Object, e As EventArgs) Handles fai_chibi.CheckedChanged
         If def_chibi.Checked = True Or hap_chibi.Checked = True Then
             def_chibi.Checked = False
@@ -194,9 +208,30 @@ Public Class SettingsFrm
         chbiPreview.Image = Set_fail
     End Sub
 
+    Sub saved()
+        If saveenabled < 0 Then
+            BtnSave.Enabled = False
+            BtnSaveExit.Enabled = False
+            Label6.Text = "Tidak dapat disimpan karena kesalahan"
+            Label6.ForeColor = Color.Red
+        Else
+            BtnSave.Enabled = True
+            BtnSaveExit.Enabled = True
+            Label6.Text = "Semua baik baik saja"
+            Label6.ForeColor = Color.Green
+        End If
+    End Sub
+
     Private Sub ComboTheme_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTheme.SelectedIndexChanged
-        BtnSave.Enabled = True
-        BtnSaveExit.Enabled = True
+        If errorchibi = True Then
+            If saveenabled < -1 Then
+                saveenabled += 1
+            End If
+        Else
+            If saveenabled < 0 Then
+                saveenabled += 1
+            End If
+        End If
 
         If Not (ComboTheme.SelectedItem = "Default" Or ComboTheme.SelectedItem = "Light" Or ComboTheme.SelectedItem = "Dark") Then
             CusTheme = ComboTheme.SelectedItem.ToString.Replace("Custom - ", "")
@@ -214,19 +249,36 @@ Public Class SettingsFrm
 
             StatusStrip1.BackColor = Colors.StatusColor
             StatusStrip1.ForeColor = Colors.StatusText
+
+            errortheme = False
+            saved()
         Else
 
             Dim ReadJson As String = System.IO.File.ReadAllText(dirTheme & "\" & CusTheme & ".jsnx")
             Dim JsonObject As JObject = JObject.Parse(ReadJson.ToString)
 
             xsiColor = JObject.Parse(JsonObject.SelectToken("color").ToString)
-
             Try
+                errortheme = False
                 TB = xsiColor.SelectToken("toolbar").ToString
                 FR = xsiColor.SelectToken("form").ToString
                 ST = xsiColor.SelectToken("status").ToString
+                saved()
             Catch ex As Exception
-                'eror
+                If errorchibi = True Then
+                    If saveenabled >= -2 Then
+                        saveenabled -= 1
+                    End If
+                Else
+                    If saveenabled >= -1 Then
+                        saveenabled -= 1
+                    End If
+                End If
+                errortheme = True
+                saved()
+                TB = "FFF"
+                FR = "FFF"
+                ST = "FFF"
             End Try
 
             Try
@@ -305,13 +357,13 @@ Public Class SettingsFrm
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckUpdate.CheckedChanged
         Dim osVer As Version = Environment.OSVersion.Version
-
-        If Not osVer.Major >= 6 Then
-            MsgBox("Auto Update belum support untuk versi ini", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
-            CheckUpdate.Checked = False
-        ElseIf osVer.Major >= 6 Then
-            BtnSave.Enabled = True
-            BtnSaveExit.Enabled = True
+        If CheckUpdate.Checked = True Then
+            If Not osVer.Major >= 6 Then
+                MsgBox("Auto Update belum support untuk OS ini", MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, "Error")
+                CheckUpdate.Checked = False
+            ElseIf osVer.Major >= 6 Then
+                saved()
+            End If
         End If
     End Sub
 
@@ -324,8 +376,6 @@ Public Class SettingsFrm
     End Sub
 
     Private Sub ComboChibi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboChibi.SelectedIndexChanged
-        BtnSave.Enabled = True
-        BtnSaveExit.Enabled = True
 
         If Not (ComboChibi.SelectedItem = "Default") Then
             CusChibi = ComboChibi.SelectedItem.ToString.Replace("Custom - ", "")
@@ -338,17 +388,66 @@ Public Class SettingsFrm
             Set_Default = My.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
             Set_fail = My.Resources.Kasumi_Toyama_Power_chibi_NFOyKG
             Set_happy = My.Resources.Kasumi_Toyama_Power_chibi_rWnUUV
+
+            errorchibi = False
+            If errortheme = True Then
+                If saveenabled < -1 Then
+                    saveenabled += 1
+                End If
+            Else
+                If saveenabled < 0 Then
+                    saveenabled += 1
+                End If
+            End If
         Else
             Sets_Default = folChibi & CusChibi & "\set-default.png"
-            Set_Default = Image.FromFile(Sets_Default)
-
             Sets_fail = folChibi & CusChibi & "\set-fail.png"
-            Set_fail = Image.FromFile(Sets_fail)
-
             Sets_happy = folChibi & CusChibi & "\set-happy.png"
-            Set_happy = Image.FromFile(Sets_happy)
+
+            If File.Exists(Sets_Default) Then
+                Set_Default = Image.FromFile(Sets_Default)
+            Else
+                Set_Default = My.Resources.chibi_none
+            End If
+
+            If File.Exists(Sets_fail) Then
+                Set_fail = Image.FromFile(Sets_fail)
+            Else
+                Set_fail = My.Resources.chibi_none
+            End If
+
+            If File.Exists(Sets_happy) Then
+                Set_happy = Image.FromFile(Sets_happy)
+            Else
+                Set_happy = My.Resources.chibi_none
+            End If
+
+            If (File.Exists(Sets_Default) And File.Exists(Sets_fail) And File.Exists(Sets_happy)) Then
+                errorchibi = False
+                If errortheme = True Then
+                    If saveenabled < -1 Then
+                        saveenabled += 1
+                    End If
+                Else
+                    If saveenabled < 0 Then
+                        saveenabled += 1
+                    End If
+                End If
+            Else
+                errorchibi = True
+                If errortheme = True Then
+                    If saveenabled >= -2 Then
+                        saveenabled -= 1
+                    End If
+                Else
+                    If saveenabled >= -1 Then
+                        saveenabled -= 1
+                    End If
+                End If
+            End If
         End If
 
+        saved()
         If def_chibi.Checked = True Then
             chbiPreview.Image = Set_Default
         ElseIf hap_chibi.Checked = True Then
@@ -359,37 +458,39 @@ Public Class SettingsFrm
     End Sub
 
     Private Sub BKsettings_Click(sender As Object, e As EventArgs) Handles BKsettings.Click
-        SaveFileDialog1.Filter = "Settings Package|*.bkp|Json Settings Only|*.jsns"
-        SaveFileDialog1.Title = "Save your settings"
-        SaveFileDialog1.FileName = "Settings"
-        If SaveFileDialog1.ShowDialog = DialogResult.OK Then
-            'My.Computer.FileSystem.WriteAllText(SaveFileDialog1.FileName, txtTeks.Text, True)
-            Dim pathsave As String = Path.GetExtension(SaveFileDialog1.FileName.ToString)
+        If saveenabled >= 0 Then
+            SaveFileDialog1.Filter = "Settings Package|*.bkp|Json Settings Only|*.jsns"
+            SaveFileDialog1.Title = "Save your settings"
+            SaveFileDialog1.FileName = "Settings"
+            If SaveFileDialog1.ShowDialog = DialogResult.OK Then
+                Dim pathsave As String = Path.GetExtension(SaveFileDialog1.FileName.ToString)
 
-            If pathsave = ".jsns" Then
-                BtnSave_Click(sender, e)
-                Dim videogameRatings As JObject = New JObject(New JProperty("name", My.Settings.name.ToString),
-                                                      New JProperty("name_save", My.Settings.NameRemember),
-                                                      New JProperty("theme", My.Settings.Theme.ToString),
-                                                      New JProperty("custom_theme", My.Settings.CustomTheme),
-                                                      New JProperty("chibi", My.Settings.Chibi.ToString),
-                                                      New JProperty("custom_chibi", My.Settings.CustomChibi),
-                                                      New JProperty("lang", My.Settings.Bahasa.ToString),
-                                                      New JProperty("custom_lang", False),
-                                                      New JProperty("auto_update", My.Settings.AutoUpdate)
-                                                     )
-                System.IO.File.WriteAllText(SaveFileDialog1.FileName.ToString, videogameRatings.ToString)
+                If pathsave = ".jsns" Then
+                    BtnSave_Click(sender, e)
+                    Dim videogameRatings As JObject = New JObject(New JProperty("name", My.Settings.name.ToString),
+                                                                  New JProperty("name_save", My.Settings.NameRemember),
+                                                                  New JProperty("theme", My.Settings.Theme.ToString),
+                                                                  New JProperty("custom_theme", My.Settings.CustomTheme),
+                                                                  New JProperty("chibi", My.Settings.Chibi.ToString),
+                                                                  New JProperty("custom_chibi", My.Settings.CustomChibi),
+                                                                  New JProperty("lang", My.Settings.Bahasa.ToString),
+                                                                  New JProperty("custom_lang", False),
+                                                                  New JProperty("auto_update", My.Settings.AutoUpdate)
+                                                                 )
+                    System.IO.File.WriteAllText(SaveFileDialog1.FileName.ToString, videogameRatings.ToString)
+                End If
+                'MsgBox(SaveFileDialog1.FileName.ToString)
             End If
-            'MsgBox(SaveFileDialog1.FileName.ToString)
+        Else
+            MessageBox.Show("Ada bagian yang Error, Coba Periksa lagi", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-
     End Sub
 
     Private Sub RSsettings_Click(sender As Object, e As EventArgs) Handles RSsettings.Click
         Dim themeNotFound As Boolean = False
         Dim chibiNotFound As Boolean = False
 
-        OpenFileDialog1.Filter = "Settings Package|*.bkp|Json Settings Only|*.jsns"
+        OpenFileDialog1.Filter = "All Backups|*.jsns;*.bkp|Settings Package|*.bkp|Json Settings Only|*.jsns"
         OpenFileDialog1.Title = "Open backup settings"
         OpenFileDialog1.FileName = ""
 
@@ -404,7 +505,7 @@ Public Class SettingsFrm
                     File.Copy(OpenFileDialog1.FileName.ToString, create.appDataFMW & "\_data\settings\backup.json")
                 End Try
 
-                Dim ReadJson As String = System.IO.File.ReadAllText(create.appDataFMW & "\_data\settings\backup.json")
+                Dim ReadJson As String = File.ReadAllText(create.appDataFMW & "\_data\settings\backup.json")
                 Dim JsonObject As JObject = JObject.Parse(ReadJson.ToString)
 
                 Dim CustomThemes As String = JsonObject.SelectToken("theme")
@@ -417,6 +518,16 @@ Public Class SettingsFrm
 
                     If Not File.Exists(dirTheme & "\" & Themes & ".jsnx") Then
                         themeNotFound = True
+                    Else
+                        Dim folder As JObject = JObject.Parse(File.ReadAllText(dirTheme & "\" & Themes & ".jsnx"))
+                        Dim xsiColors As JObject = JObject.Parse(folder.SelectToken("color"))
+                        Try
+                            TB = xsiColors.SelectToken("toolbar").ToString
+                            FR = xsiColors.SelectToken("form").ToString
+                            ST = xsiColors.SelectToken("status").ToString
+                        Catch ex As Exception
+                            themeNotFound = True
+                        End Try
                     End If
                 End If
 

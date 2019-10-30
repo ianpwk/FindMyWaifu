@@ -80,6 +80,7 @@ Partial Class SettingsFrm
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -105,7 +106,7 @@ Partial Class SettingsFrm
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(336, 256)
+        Me.TabControl1.Size = New System.Drawing.Size(336, 258)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
@@ -118,7 +119,7 @@ Partial Class SettingsFrm
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(328, 230)
+        Me.TabPage1.Size = New System.Drawing.Size(328, 232)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "General"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -265,7 +266,7 @@ Partial Class SettingsFrm
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(328, 230)
+        Me.TabPage2.Size = New System.Drawing.Size(328, 232)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Update"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -323,7 +324,7 @@ Partial Class SettingsFrm
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(328, 230)
+        Me.TabPage3.Size = New System.Drawing.Size(328, 232)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Theme"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -495,7 +496,7 @@ Partial Class SettingsFrm
         Me.TabPage4.Location = New System.Drawing.Point(4, 22)
         Me.TabPage4.Name = "TabPage4"
         Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(328, 230)
+        Me.TabPage4.Size = New System.Drawing.Size(328, 232)
         Me.TabPage4.TabIndex = 3
         Me.TabPage4.Text = "Chibi"
         Me.TabPage4.UseVisualStyleBackColor = True
@@ -617,7 +618,7 @@ Partial Class SettingsFrm
         'BtnSave
         '
         Me.BtnSave.Enabled = False
-        Me.BtnSave.Location = New System.Drawing.Point(12, 262)
+        Me.BtnSave.Location = New System.Drawing.Point(12, 286)
         Me.BtnSave.Name = "BtnSave"
         Me.BtnSave.Size = New System.Drawing.Size(75, 23)
         Me.BtnSave.TabIndex = 1
@@ -627,7 +628,7 @@ Partial Class SettingsFrm
         'BtnSaveExit
         '
         Me.BtnSaveExit.Enabled = False
-        Me.BtnSaveExit.Location = New System.Drawing.Point(93, 262)
+        Me.BtnSaveExit.Location = New System.Drawing.Point(93, 286)
         Me.BtnSaveExit.Name = "BtnSaveExit"
         Me.BtnSaveExit.Size = New System.Drawing.Size(117, 23)
         Me.BtnSaveExit.TabIndex = 2
@@ -638,11 +639,21 @@ Partial Class SettingsFrm
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
+        'Label6
+        '
+        Me.Label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Label6.Location = New System.Drawing.Point(8, 258)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(323, 23)
+        Me.Label6.TabIndex = 19
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'SettingsFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(336, 297)
+        Me.ClientSize = New System.Drawing.Size(336, 321)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.BtnSaveExit)
         Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.TabControl1)
@@ -736,4 +747,5 @@ Partial Class SettingsFrm
     Friend WithEvents Button6 As Button
     Friend WithEvents Button8 As Button
     Friend WithEvents Button11 As Button
+    Friend WithEvents Label6 As Label
 End Class
