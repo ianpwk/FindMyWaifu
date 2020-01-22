@@ -14,71 +14,51 @@ Public Class FrmUpdate
   Dim Curent As String
 
   Dim check As Boolean = False
-  Dim majorOnline, mirorOnline, bulidOnline, revisionOnline As String
 
   Dim security As Boolean = False
-
-  Dim ver As String = ""
-  Dim newver As String = ""
-  Dim desc As String = ""
 
   Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
   Private Sub BackgroundWorker2_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker2.DoWork
     Dim osVer As Version = Environment.OSVersion.Version
-    If osVer.Major >= 6 Then
-      Try
-        Dim xmlUpdate As New XmlTextReader(readXml)
+    Try
+      Dim xmlUpdate As New XmlTextReader(readXml)
 
-        While xmlUpdate.Read()
-          Dim type = xmlUpdate.NodeType
-          If xmlUpdate.Name = "version" Then
-            newver = xmlUpdate.ReadInnerXml.ToString()
-          End If
-          If xmlUpdate.Name = "description" Then
-            desc = xmlUpdate.ReadInnerXml.ToString()
-          End If
+      While xmlUpdate.Read()
+        Dim type = xmlUpdate.NodeType
+        If xmlUpdate.Name = "version" Then
+          newver = xmlUpdate.ReadInnerXml.ToString()
+        End If
+        If xmlUpdate.Name = "description" Then
+          desc = xmlUpdate.ReadInnerXml.ToString()
+        End If
 
-          If xmlUpdate.Name = "major" Then
-            majorOnline = xmlUpdate.ReadInnerXml.ToString()
-          ElseIf xmlUpdate.Name = "miror" Then
-            mirorOnline = xmlUpdate.ReadInnerXml.ToString()
-          ElseIf xmlUpdate.Name = "bulid" Then
-            bulidOnline = xmlUpdate.ReadInnerXml.ToString()
-          ElseIf xmlUpdate.Name = "revision" Then
-            revisionOnline = xmlUpdate.ReadInnerXml.ToString()
-          End If
-        End While
+        If xmlUpdate.Name = "major" Then
+          majorOnline = xmlUpdate.ReadInnerXml.ToString()
+        ElseIf xmlUpdate.Name = "miror" Then
+          mirorOnline = xmlUpdate.ReadInnerXml.ToString()
+        ElseIf xmlUpdate.Name = "bulid" Then
+          bulidOnline = xmlUpdate.ReadInnerXml.ToString()
+        ElseIf xmlUpdate.Name = "revision" Then
+          revisionOnline = xmlUpdate.ReadInnerXml.ToString()
+        End If
+      End While
 
-        Dim updateComplate As New UpdatesLog(AddressOf CheckForUpdates)
-        Me.Invoke(updateComplate, False)
-      Catch ex As Exception
-        Dim updateCancelled As New UpdatesLog(AddressOf CheckForUpdates)
-        Me.Invoke(updateCancelled, True)
-      End Try
-
-    Else
+      Dim updateComplate As New UpdatesLog(AddressOf CheckForUpdates)
+      Me.Invoke(updateComplate, False)
+    Catch ex As Exception
       Dim updateCancelled As New UpdatesLog(AddressOf CheckForUpdates)
       Me.Invoke(updateCancelled, True)
-    End If
+    End Try
   End Sub
 
   Public Sub CheckForUpdates(ByVal cancelled As Boolean)
     If cancelled Then
       ProgressBar1.Style = ProgressBarStyle.Blocks
-      Dim osVer As Version = Environment.OSVersion.Version
-      If osVer.Major >= 6 Then
-        Label3.Text = ""
+      Label3.Text = ""
         updates = 0
-        RichTextBox1.Text = "Internet sedang gangguan, kilk Retry untuk menyambung ulang"
-        Button1.Text = "Retry"
-      Else
-        Label3.Text = ""
-        updates = 0
-        RichTextBox1.Text = "Update online tidak dapat dilakukan karena OS anda Belum Support, tapi anda dapat upadte secara manual dengan browse file zip Release dari website"
-        Button1.Text = "Retry"
-        Button1.Enabled = False
-      End If
+      RichTextBox1.Text = "Internet sedang gangguan, kilk Retry untuk menyambung ulang"
+      Button1.Text = "Retry"
     Else
       ProgressBar1.Style = ProgressBarStyle.Blocks
       Label2.Text = "Update Ver.: " + newver
@@ -117,6 +97,12 @@ Public Class FrmUpdate
     Label3.Text = "Sudah Terupdate"
     RichTextBox1.Text = "Versi anda sudah yang terbaru"
     Button1.Enabled = False
+
+    updateversion = False
+    statusUpdate = 1
+
+    MessageBox.Show("Versi Sudah diperbaharui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    Me.Close()
   End Sub
 
   Sub thisUpdate()
@@ -125,10 +111,6 @@ Public Class FrmUpdate
   End Sub
 
   Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    Curent = String.Format("{0}.{1}.{2}.{3}", My.Application.Info.Version.Major.ToString,
-                                            My.Application.Info.Version.Minor.ToString,
-                                            My.Application.Info.Version.Build.ToString,
-                                            My.Application.Info.Version.Revision.ToString)
     Try
       ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
     Catch ex As Exception
@@ -141,7 +123,7 @@ Public Class FrmUpdate
     End If
 
     RichTextBox1.ReadOnly = True
-    Label1.Text = "Curent ver.: " + Curent.ToString
+    Label1.Text = "Curent ver.: " + ver
 
     If InternetGetConnectedState(Out, 0) = True Then
       If majorOnline = "" And bulidOnline = "" And bulidOnline = "" And revisionOnline = "" Then
@@ -152,11 +134,42 @@ Public Class FrmUpdate
 
         BackgroundWorker2.RunWorkerAsync()
       Else
-
+        UpdatefromUtama()
       End If
     Else
-        MessageBox.Show("Pastikan internet terkoneksi untuk update online", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+      MessageBox.Show("Pastikan internet terkoneksi untuk update online", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
       Me.Close()
+    End If
+  End Sub
+
+  Sub UpdatefromUtama()
+    Label2.Text = "Update Ver.: " + newver
+
+    updates = 1
+    Button1.Text = "Update"
+
+    If majorOnline = My.Application.Info.Version.Major.ToString Then
+      If bulidOnline = My.Application.Info.Version.Build.ToString Then
+        If mirorOnline = My.Application.Info.Version.Minor.ToString Then
+          If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
+            NoUpdate()
+          Else
+            thisUpdate()
+          End If
+        ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
+          NoUpdate()
+        Else
+          thisUpdate()
+        End If
+      ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
+        NoUpdate()
+      Else
+        thisUpdate()
+      End If
+    ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
+      NoUpdate()
+    Else
+      thisUpdate()
     End If
   End Sub
 
@@ -193,7 +206,7 @@ Public Class FrmUpdate
         End If
       Else
         Dim hasil As String = MessageBox.Show("Untuk bisa update langsung dari program ini, dibutuhkan Net framework 4.5" & ControlChars.CrLf &
-                    "Atau anda bisa download manual via browser jika klick no", "Info", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
+                    "Atau anda bisa download manual via browser jika klik MO", "Info", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question)
         If hasil = Windows.Forms.DialogResult.Yes Then
           Process.Start("https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe")
         ElseIf hasil = Windows.Forms.DialogResult.No Then

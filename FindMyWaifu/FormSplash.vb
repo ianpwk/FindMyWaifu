@@ -12,6 +12,17 @@ Public Class FormSplash
   Dim openfile As String
 
   Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Dim osVer As Version = Environment.OSVersion.Version
+    If Not osVer.Major >= 6 Then
+      My.Settings.AutoUpdate = False
+
+      My.Settings.OsSupport = False
+      updateversion = False
+      statusUpdate = 3
+    Else
+      My.Settings.OsSupport = True
+    End If
+
     If (My.Application.CommandLineArgs.Count > 0) Then
       openfile = My.Application.CommandLineArgs(0).ToString
     End If
@@ -32,12 +43,6 @@ Public Class FormSplash
 
     If Not Directory.Exists(create.appDataFMW & "\chibi") Then
       Directory.CreateDirectory(create.appDataFMW & "\chibi")
-    End If
-
-    Dim osVer As Version = Environment.OSVersion.Version
-
-    If osVer.Major < 6 Then
-      My.Settings.AutoUpdate = False
     End If
 
     If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then

@@ -11,6 +11,11 @@ Module Connection
   Public updateversion As Boolean
   Public statusUpdate As Integer
 
+  Public majorOnline, mirorOnline, bulidOnline, revisionOnline As String
+  Public ver As String = Application.ProductVersion.ToString
+  Public newver As String = ""
+  Public desc As String = ""
+
   Sub Koneksi()
 
     'LokasNomorB = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=data.accdb"
@@ -28,6 +33,8 @@ Module Connection
         MessageBox.Show("Versi Sudah diperbaharui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
       ElseIf statusUpdate = 2 Then
         MessageBox.Show("Connection is offline", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+      ElseIf statusUpdate = 3 Then
+        MessageBox.Show("Your OS not Support for auto Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
       End If
     Else
       FrmUpdate.ShowDialog()

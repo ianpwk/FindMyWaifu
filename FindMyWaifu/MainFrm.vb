@@ -16,12 +16,6 @@ Public Class MainFrm
   Dim NumberRnd As String = ""
   Dim Hasilnya As String = ""
 
-  Dim ver As String = ""
-  Dim newver As String = ""
-  Dim desc As String = ""
-
-  Dim majorOnline, mirorOnline, bulidOnline, revisionOnline As String
-
   Dim Default_Chibi, Fail_Chibi, Happy_Chibi As Image
   Dim DefaultChibi, FailChibi, HappyChibi As String
 
@@ -30,53 +24,42 @@ Public Class MainFrm
 
   Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
     Dim osVer As Version = Environment.OSVersion.Version
-    If osVer.Major >= 6 Then
-      Try
-        Dim xmlUpdate As New XmlTextReader(readXML)
+    Try
+      Dim xmlUpdate As New XmlTextReader(readXML)
 
-        While xmlUpdate.Read()
-          Dim type = xmlUpdate.NodeType
-          If xmlUpdate.Name = "version" Then
-            newver = xmlUpdate.ReadInnerXml.ToString()
-          End If
-          If xmlUpdate.Name = "description" Then
-            desc = xmlUpdate.ReadInnerXml.ToString()
-          End If
+      While xmlUpdate.Read()
+        Dim type = xmlUpdate.NodeType
+        If xmlUpdate.Name = "version" Then
+          newver = xmlUpdate.ReadInnerXml.ToString()
+        End If
+        If xmlUpdate.Name = "description" Then
+          desc = xmlUpdate.ReadInnerXml.ToString()
+        End If
 
-          If xmlUpdate.Name = "major" Then
-            majorOnline = xmlUpdate.ReadInnerXml.ToString()
-          ElseIf xmlUpdate.Name = "miror" Then
-            mirorOnline = xmlUpdate.ReadInnerXml.ToString()
-          ElseIf xmlUpdate.Name = "bulid" Then
-            bulidOnline = xmlUpdate.ReadInnerXml.ToString()
-          ElseIf xmlUpdate.Name = "revision" Then
-            revisionOnline = xmlUpdate.ReadInnerXml.ToString()
-          End If
-        End While
+        If xmlUpdate.Name = "major" Then
+          majorOnline = xmlUpdate.ReadInnerXml.ToString()
+        ElseIf xmlUpdate.Name = "miror" Then
+          mirorOnline = xmlUpdate.ReadInnerXml.ToString()
+        ElseIf xmlUpdate.Name = "bulid" Then
+          bulidOnline = xmlUpdate.ReadInnerXml.ToString()
+        ElseIf xmlUpdate.Name = "revision" Then
+          revisionOnline = xmlUpdate.ReadInnerXml.ToString()
+        End If
+      End While
 
-        Dim updateComplate As New UpdatesLog(AddressOf CheckForUpdates)
-        Me.Invoke(updateComplate, False)
-      Catch ex As Exception
-        Dim updateCancelled As New UpdatesLog(AddressOf CheckForUpdates)
-        Me.Invoke(updateCancelled, True)
-      End Try
-
-    Else
+      Dim updateComplate As New UpdatesLog(AddressOf CheckForUpdates)
+      Me.Invoke(updateComplate, False)
+    Catch ex As Exception
       Dim updateCancelled As New UpdatesLog(AddressOf CheckForUpdates)
       Me.Invoke(updateCancelled, True)
-    End If
+    End Try
   End Sub
 
   Public Sub CheckForUpdates(ByVal cancelled As Boolean)
     If cancelled Then
       Dim osVer As Version = Environment.OSVersion.Version
-      If osVer.Major >= 6 Then
-        ToolStripStatusLabel2.Text = "v" + Application.ProductVersion + " (Update Error)"
-        ToolStripStatusLabel2.ForeColor = Color.Red
-      Else
-        ToolStripStatusLabel2.Text = "v" + Application.ProductVersion + " (OS not Supported)"
-        ToolStripStatusLabel2.ForeColor = Color.Red
-      End If
+      ToolStripStatusLabel2.Text = "v" + ver + " (Update Error)"
+      ToolStripStatusLabel2.ForeColor = Color.Red
     Else
       If majorOnline = My.Application.Info.Version.Major.ToString Then
         If bulidOnline = My.Application.Info.Version.Build.ToString Then
@@ -105,7 +88,7 @@ Public Class MainFrm
   End Sub
 
   Sub NoUpdate()
-    ToolStripStatusLabel2.Text = "v" + Application.ProductVersion + " (Latest)"
+    ToolStripStatusLabel2.Text = "v" + ver + " (Latest)"
     ToolStripStatusLabel2.ForeColor = Color.CornflowerBlue
     updateversion = False
     statusUpdate = 1
@@ -118,7 +101,8 @@ Public Class MainFrm
     End If
     ToolStripStatusLabel2.ForeColor = Color.Green
     ToolStripStatusLabel2.Visible = True
-    ToolStripStatusLabel2.Text = String.Format("v{0} (Update to v{1}.{2}.{3}.{4})", Application.ProductVersion, majorOnline, bulidOnline, mirorOnline, revisionOnline)
+    ToolStripStatusLabel2.Text = String.Format("v{0} (Update to v{1}.{2}.{3}.{4})", ver, majorOnline, bulidOnline, mirorOnline, revisionOnline)
+    updateversion = True
   End Sub
   Public Sub Hitung()
     Try
@@ -259,22 +243,27 @@ Public Class MainFrm
 
     Label3.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
     Label1.Text = "Waifu " + Names + " adalah?"
+    If My.Settings.OsSupport = True Then
+      If InternetGetConnectedState(Out, 0) = True Then
+        If My.Settings.AutoUpdate = True Then
+          ToolStripStatusLabel2.ForeColor = Color.Green
+          ToolStripStatusLabel2.Text = "Checking Update..."
 
-    If InternetGetConnectedState(Out, 0) = True Then
-      If My.Settings.AutoUpdate = True Then
-        ToolStripStatusLabel2.ForeColor = Color.Green
-        ToolStripStatusLabel2.Text = "Checking Update..."
-
-        BackgroundWorker1.RunWorkerAsync()
+          BackgroundWorker1.RunWorkerAsync()
+        Else
+          ToolStripStatusLabel2.Text = "v" + ver + " (Auto Update Disabled)"
+          ToolStripStatusLabel2.ForeColor = Color.CornflowerBlue
+          updateversion = True
+        End If
       Else
-        ToolStripStatusLabel2.Text = "v" + Application.ProductVersion + " (Auto Update Disabled)"
-        ToolStripStatusLabel2.ForeColor = Color.CornflowerBlue
+        ToolStripStatusLabel2.Text = "v" + ver + " (Disconnect)"
+        ToolStripStatusLabel2.ForeColor = Color.Red
+        updateversion = False
+        statusUpdate = 2
       End If
     Else
-      ToolStripStatusLabel2.Text = "v" + Application.ProductVersion + " (Disconnect)"
+      ToolStripStatusLabel2.Text = "v" + ver + " (OS not Supported)"
       ToolStripStatusLabel2.ForeColor = Color.Red
-      updateversion = False
-      statusUpdate = 2
     End If
 
     ProgressBar1.Visible = False
@@ -293,7 +282,26 @@ Public Class MainFrm
   End Sub
 
   Private Sub ToolStripStatusLabel2_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel2.Click
+    If Not ToolStripStatusLabel2.Text = "Checking Update..." Then
+      If updateversion = True Then
 
+      Else
+        If statusUpdate = 2 Then
+          If InternetGetConnectedState(Out, 0) = True Then
+            ToolStripStatusLabel2.ForeColor = Color.Green
+            ToolStripStatusLabel2.Text = "Checking Update..."
+
+            BackgroundWorker1.RunWorkerAsync()
+          Else
+            MsgBox("Pstikan interet anda terconnect", vbExclamation, "Error")
+          End If
+        ElseIf statusUpdate = 1 Then
+          MessageBox.Show("Versi Sudah diperbaharui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ElseIf statusUpdate = 3 Then
+          MessageBox.Show("Your OS not Support for auto Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+      End If
+    End If
   End Sub
 
   Public Sub ChibiLoad()
