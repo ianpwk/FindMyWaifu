@@ -2,6 +2,7 @@
 Public Class FrmUpdate
 
   Delegate Sub DownloadComplateSafe(ByVal cancelled As Boolean)
+  Delegate Sub UpdatesLog(ByVal cancelled As Boolean)
   Delegate Sub ChangeTextSafe(ByVal lenght As Long, ByVal position As Integer, ByVal percent As Integer, ByVal speed As Double)
 
   Dim DataDownload As String = "https://github.com/yansaan/FindMyWaifu/releases/latest/download/FindMyWaifuPortable.zip" 'Files Update
@@ -23,8 +24,7 @@ Public Class FrmUpdate
 
   Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
 
-  Public Sub CheckForUpdates()
-
+  Private Sub BackgroundWorker2_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker2.DoWork
     Dim osVer As Version = Environment.OSVersion.Version
     If osVer.Major >= 6 Then
       Try
@@ -49,60 +49,68 @@ Public Class FrmUpdate
             revisionOnline = xmlUpdate.ReadInnerXml.ToString()
           End If
         End While
-        bulidOnline = 2
-        revisionOnline = 5
 
-        Label2.Text = "Update Ver.: " + newver
-
-        updates = 1
-        Button1.Text = "Update"
-
-        If majorOnline = My.Application.Info.Version.Major.ToString Then
-          If bulidOnline = My.Application.Info.Version.Build.ToString Then
-            If mirorOnline = My.Application.Info.Version.Minor.ToString Then
-              If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
-                NoUpdate()
-              Else
-                thisUpdate()
-              End If
-            ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
-              NoUpdate()
-            Else
-              thisUpdate()
-            End If
-          ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
-            NoUpdate()
-          Else
-            thisUpdate()
-          End If
-        ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
-          NoUpdate()
-        Else
-          thisUpdate()
-        End If
-
-        'If newver > lastver Then
-        '    RichTextBox1.Text = desc
-        '    Label3.Text = ""
-        'Else
-        '    Label3.Text = "Sudah Terupdate"
-        '    RichTextBox1.Text = "Versi anda sudah yang terbaru"
-        '    Button1.Enabled = False
-        'End If
+        Dim updateComplate As New UpdatesLog(AddressOf CheckForUpdates)
+        Me.Invoke(updateComplate, False)
       Catch ex As Exception
+        Dim updateCancelled As New UpdatesLog(AddressOf CheckForUpdates)
+        Me.Invoke(updateCancelled, True)
+      End Try
 
+    Else
+      Dim updateCancelled As New UpdatesLog(AddressOf CheckForUpdates)
+      Me.Invoke(updateCancelled, True)
+    End If
+  End Sub
+
+  Public Sub CheckForUpdates(ByVal cancelled As Boolean)
+    If cancelled Then
+      ProgressBar1.Style = ProgressBarStyle.Blocks
+      Dim osVer As Version = Environment.OSVersion.Version
+      If osVer.Major >= 6 Then
         Label3.Text = ""
         updates = 0
         RichTextBox1.Text = "Internet sedang gangguan, kilk Retry untuk menyambung ulang"
         Button1.Text = "Retry"
-      End Try
-
+      Else
+        Label3.Text = ""
+        updates = 0
+        RichTextBox1.Text = "Update online tidak dapat dilakukan karena OS anda Belum Support, tapi anda dapat upadte secara manual dengan browse file zip Release dari website"
+        Button1.Text = "Retry"
+        Button1.Enabled = False
+      End If
     Else
-      Label3.Text = ""
-      updates = 0
-      RichTextBox1.Text = "Update online tidak dapat dilakukan karena OS anda Belum Support, tapi anda dapat upadte secara manual dengan browse file zip Release dari website"
-      Button1.Text = "Retry"
+      ProgressBar1.Style = ProgressBarStyle.Blocks
+      Label2.Text = "Update Ver.: " + newver
+
+      updates = 1
+      Button1.Text = "Update"
+
+      If majorOnline = My.Application.Info.Version.Major.ToString Then
+        If bulidOnline = My.Application.Info.Version.Build.ToString Then
+          If mirorOnline = My.Application.Info.Version.Minor.ToString Then
+            If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
+              NoUpdate()
+            Else
+              thisUpdate()
+            End If
+          ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
+            NoUpdate()
+          Else
+            thisUpdate()
+          End If
+        ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
+          NoUpdate()
+        Else
+          thisUpdate()
+        End If
+      ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
+        NoUpdate()
+      Else
+        thisUpdate()
+      End If
     End If
+
   End Sub
 
   Sub NoUpdate()
@@ -136,9 +144,18 @@ Public Class FrmUpdate
     Label1.Text = "Curent ver.: " + Curent.ToString
 
     If InternetGetConnectedState(Out, 0) = True Then
-      CheckForUpdates()
+      If majorOnline = "" And bulidOnline = "" And bulidOnline = "" And revisionOnline = "" Then
+        Label2.Text = "Update Ver.: 0"
+        Label3.Text = "Plase Wait..."
+        ProgressBar1.Style = ProgressBarStyle.Marquee
+        Button1.Enabled = False
+
+        BackgroundWorker2.RunWorkerAsync()
+      Else
+
+      End If
     Else
-      MessageBox.Show("Pastikan internet terkoneksi untuk update online", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        MessageBox.Show("Pastikan internet terkoneksi untuk update online", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
       Me.Close()
     End If
   End Sub
@@ -148,7 +165,12 @@ Public Class FrmUpdate
     If updates = -1 Then
       Process.Start("https://github.com/yansaan/FindMyWaifu/releases/latest/")
     ElseIf updates = 0 Then
-      CheckForUpdates()
+      Label2.Text = "Update Ver.: 0"
+      Label3.Text = "Plase Wait..."
+      ProgressBar1.Style = ProgressBarStyle.Marquee
+      Button1.Enabled = False
+
+      BackgroundWorker2.RunWorkerAsync()
     ElseIf updates = 1 Then
 
       If security = False Then

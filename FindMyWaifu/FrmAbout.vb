@@ -4,7 +4,7 @@
   End Sub
 
   Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-    FrmUpdate.ShowDialog()
+    bukaUpdate()
   End Sub
 
   Private Sub GithubLink_Click(sender As Object, e As EventArgs) Handles GithubLink.Click

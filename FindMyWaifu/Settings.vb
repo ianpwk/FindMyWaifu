@@ -144,7 +144,7 @@ Public Class SettingsFrm
   End Sub
 
   Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-    FrmUpdate.ShowDialog()
+    bukaUpdate()
   End Sub
 
   Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BtnSaveExit.Click
@@ -200,6 +200,10 @@ Public Class SettingsFrm
 
   Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
 
+  End Sub
+
+  Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    EditDatabase.ShowDialog()
   End Sub
 
   Private Sub fai_chibi_CheckedChanged(sender As Object, e As EventArgs) Handles fai_chibi.CheckedChanged
