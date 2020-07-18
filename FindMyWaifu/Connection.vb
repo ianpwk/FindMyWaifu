@@ -10,6 +10,8 @@ Module Connection
   Public Out As Integer
   Public updateversion As Boolean
   Public statusUpdate As Integer
+  Public osSupport As Boolean
+  Public NameModule As String
 
   Public majorOnline, mirorOnline, bulidOnline, revisionOnline As String
   Public ver As String = Application.ProductVersion.ToString
@@ -28,16 +30,16 @@ Module Connection
   End Sub
 
   Sub bukaUpdate()
-    If updateversion = False Then
-      If statusUpdate = 1 Then
-        MessageBox.Show("Versi Sudah diperbaharui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
-      ElseIf statusUpdate = 2 Then
-        MessageBox.Show("Connection is offline", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-      ElseIf statusUpdate = 3 Then
-        MessageBox.Show("Your OS not Support for auto Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-      End If
-    Else
-      FrmUpdate.ShowDialog()
-    End If
+    'If updateversion = False Then
+    '  If statusUpdate = 1 Then
+    '    MessageBox.Show("Versi Sudah diperbaharui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    '  ElseIf statusUpdate = 2 Then
+    '    MessageBox.Show("Connection is offline", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '  ElseIf statusUpdate = 3 Then
+    '    MessageBox.Show("Your OS not Support for auto Update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '  End If
+    'Else
+    FrmUpdate.ShowDialog()
+    'End If
   End Sub
 End Module

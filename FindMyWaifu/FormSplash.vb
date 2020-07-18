@@ -13,14 +13,13 @@ Public Class FormSplash
 
   Private Sub FormSplash_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     Dim osVer As Version = Environment.OSVersion.Version
-    If Not osVer.Major >= 6 Then
+    If osVer.Major < 6 Then
       My.Settings.AutoUpdate = False
 
-      My.Settings.OsSupport = False
       updateversion = False
-      statusUpdate = 3
+      osSupport = False
     Else
-      My.Settings.OsSupport = True
+      osSupport = True
     End If
 
     If (My.Application.CommandLineArgs.Count > 0) Then

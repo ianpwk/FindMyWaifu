@@ -60,6 +60,7 @@ Public Class MainFrm
       Dim osVer As Version = Environment.OSVersion.Version
       ToolStripStatusLabel2.Text = "v" + ver + " (Update Error)"
       ToolStripStatusLabel2.ForeColor = Color.Red
+      statusUpdate = 2
     Else
       If majorOnline = My.Application.Info.Version.Major.ToString Then
         If bulidOnline = My.Application.Info.Version.Build.ToString Then
@@ -95,6 +96,7 @@ Public Class MainFrm
   End Sub
 
   Sub notifUpdate()
+    statusUpdate = 3
     Dim cariupdate As Integer = MsgBox("Versi terbaru (v" & newver.ToString & ") sudah hadir" + Chr(13) + "Apakah akan mengupdatenya?", MsgBoxStyle.YesNo + MsgBoxStyle.Information, "Update Avaiable")
     If cariupdate = vbYes Then
       FrmUpdate.ShowDialog()
@@ -238,12 +240,12 @@ Public Class MainFrm
 
     Dim Names As String
 
-
     Names = My.Settings.name
+    NameModule = Names
 
     Label3.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
     Label1.Text = "Waifu " + Names + " adalah?"
-    If My.Settings.OsSupport = True Then
+    If osSupport = True Then
       If InternetGetConnectedState(Out, 0) = True Then
         If My.Settings.AutoUpdate = True Then
           ToolStripStatusLabel2.ForeColor = Color.Green
@@ -254,6 +256,7 @@ Public Class MainFrm
           ToolStripStatusLabel2.Text = "v" + ver + " (Auto Update Disabled)"
           ToolStripStatusLabel2.ForeColor = Color.CornflowerBlue
           updateversion = True
+          statusUpdate = 2
         End If
       Else
         ToolStripStatusLabel2.Text = "v" + ver + " (Disconnect)"

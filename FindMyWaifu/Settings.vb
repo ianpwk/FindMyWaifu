@@ -67,6 +67,7 @@ Public Class SettingsFrm
 
   Private Sub Settings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     Label6.Text = ""
+    LblName.Text = NameModule
     RadioButton2.Enabled = False
     saveenabled = 0
     errortheme = False
@@ -206,17 +207,18 @@ Public Class SettingsFrm
     EditDatabase.ShowDialog()
   End Sub
 
+
   Private Sub fai_chibi_CheckedChanged(sender As Object, e As EventArgs) Handles fai_chibi.CheckedChanged
-    If def_chibi.Checked = True Or hap_chibi.Checked = True Then
-      def_chibi.Checked = False
-      hap_chibi.Checked = False
-      fai_chibi.Checked = True
-    End If
+        If def_chibi.Checked = True Or hap_chibi.Checked = True Then
+            def_chibi.Checked = False
+            hap_chibi.Checked = False
+            fai_chibi.Checked = True
+        End If
 
-    chbiPreview.Image = Set_fail
-  End Sub
+        chbiPreview.Image = Set_fail
+    End Sub
 
-  Sub saved()
+    Sub saved()
     If saveenabled < 0 Then
       BtnSave.Enabled = False
       BtnSaveExit.Enabled = False

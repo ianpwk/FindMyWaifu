@@ -111,21 +111,36 @@ Public Class FrmUpdate
   End Sub
 
   Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    Try
-      ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
-    Catch ex As Exception
-      security = True
-    End Try
-    Dim create As New CreateFolder()
-
-    If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data\updates")) Then
-      System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data\updates")
-    End If
-
-    RichTextBox1.ReadOnly = True
+    Label2.Text = "Update Ver.: 0"
     Label1.Text = "Curent ver.: " + ver
 
-    If InternetGetConnectedState(Out, 0) = True Then
+    Select Case osSupport
+      Case False 'When OS not Supported
+        UpdateNotSupported()
+      Case True
+        Select Case statusUpdate
+          Case 1 'When Update is Current
+
+          Case 2 'When Internet not Connect
+
+          Case 3 'When Update Avaiable
+
+        End Select
+    End Select
+        If InternetGetConnectedState(Out, 0) = True Then
+      Try
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+      Catch ex As Exception
+        security = True
+      End Try
+      Dim create As New CreateFolder()
+
+      If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data\updates")) Then
+        System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data\updates")
+      End If
+
+      RichTextBox1.ReadOnly = True
+
       If majorOnline = "" And bulidOnline = "" And bulidOnline = "" And revisionOnline = "" Then
         Label2.Text = "Update Ver.: 0"
         Label3.Text = "Plase Wait..."
@@ -137,9 +152,12 @@ Public Class FrmUpdate
         UpdatefromUtama()
       End If
     Else
-      MessageBox.Show("Pastikan internet terkoneksi untuk update online", "Connection", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-      Me.Close()
+
     End If
+  End Sub
+
+  Private Sub UpdateNotSupported()
+
   End Sub
 
   Sub UpdatefromUtama()

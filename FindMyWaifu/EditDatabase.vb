@@ -77,47 +77,6 @@ Public Class EditDatabase
     FormWaifu.ShowDialog()
   End Sub
 
-  Private Sub ListBox1_MouseClick(sender As Object, e As MouseEventArgs) Handles ListBox1.MouseClick
-    Try
-      ID = ListBox1.SelectedItem.ToString.Split(".")(0)
-      NameWaifu = ListBox1.SelectedItem.ToString.Split(". ")(1)
-
-      Button1.Enabled = True
-      Button2.Enabled = True
-
-      Koneksi()
-
-      Dim cmd1 As New OleDbCommand
-      cmd1 = Conn.CreateCommand
-
-      cmd1.Parameters.AddWithValue("@id", ID)
-      cmd1.CommandText = "SELECT * from [NameWaifu] where [No] =@id"
-      Dim dr1 As OleDbDataReader = cmd1.ExecuteReader(CommandBehavior.SingleResult)
-
-      Dim imgwaifu As String = ""
-
-      If dr1.Read Then
-        imgwaifu = dr1("image").ToString
-      End If
-
-      If Not imgwaifu = "" Then
-        imgFMW = img.appDataFMW & "\_data\waifu\" & ID & "\" & imgwaifu
-
-        If File.Exists(imgFMW) Then
-          Button3.Enabled = True
-        Else
-          Button3.Enabled = False
-        End If
-      Else
-        Button3.Enabled = False
-      End If
-    Catch ex As Exception
-      Button1.Enabled = False
-      Button2.Enabled = False
-      Button3.Enabled = False
-    End Try
-  End Sub
-
   Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
     Dim ID As String = ListBox1.SelectedItem.ToString.Split(".")(0)
     Dim edit As New FormWaifu
@@ -160,5 +119,46 @@ Public Class EditDatabase
 
   Private Sub EditDatabase_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
     Conn.Close()
+  End Sub
+
+  Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+    Try
+      ID = ListBox1.SelectedItem.ToString.Split(".")(0)
+      NameWaifu = ListBox1.SelectedItem.ToString.Split(". ")(1)
+
+      Button1.Enabled = True
+      Button2.Enabled = True
+
+      Koneksi()
+
+      Dim cmd1 As New OleDbCommand
+      cmd1 = Conn.CreateCommand
+
+      cmd1.Parameters.AddWithValue("@id", ID)
+      cmd1.CommandText = "SELECT * from [NameWaifu] where [No] =@id"
+      Dim dr1 As OleDbDataReader = cmd1.ExecuteReader(CommandBehavior.SingleResult)
+
+      Dim imgwaifu As String = ""
+
+      If dr1.Read Then
+        imgwaifu = dr1("image").ToString
+      End If
+
+      If Not imgwaifu = "" Then
+        imgFMW = img.appDataFMW & "\_data\waifu\" & ID & "\" & imgwaifu
+
+        If File.Exists(imgFMW) Then
+          Button3.Enabled = True
+        Else
+          Button3.Enabled = False
+        End If
+      Else
+        Button3.Enabled = False
+      End If
+    Catch ex As Exception
+      Button1.Enabled = False
+      Button2.Enabled = False
+      Button3.Enabled = False
+    End Try
   End Sub
 End Class

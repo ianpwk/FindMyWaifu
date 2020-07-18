@@ -32,6 +32,9 @@ Partial Class FrmUpdate
     Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
     Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -55,34 +58,36 @@ Partial Class FrmUpdate
         'RichTextBox1
         '
         Me.RichTextBox1.BackColor = System.Drawing.SystemColors.Control
-        Me.RichTextBox1.Location = New System.Drawing.Point(0, 131)
+        Me.RichTextBox1.Location = New System.Drawing.Point(-2, 111)
         Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.Size = New System.Drawing.Size(411, 152)
+        Me.RichTextBox1.Size = New System.Drawing.Size(275, 152)
         Me.RichTextBox1.TabIndex = 2
         Me.RichTextBox1.Text = ""
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(279, 9)
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Button1.Location = New System.Drawing.Point(12, 298)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(123, 23)
+        Me.Button1.Size = New System.Drawing.Size(126, 23)
         Me.Button1.TabIndex = 3
-        Me.Button1.Text = "Update"
+        Me.Button1.Text = "Update Automatic"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(1, 121)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-1, 64)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(409, 10)
+        Me.ProgressBar1.Size = New System.Drawing.Size(274, 10)
         Me.ProgressBar1.TabIndex = 4
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 102)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 79)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(39, 13)
+        Me.Label3.Size = New System.Drawing.Size(27, 9)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Label3"
         '
@@ -96,11 +101,41 @@ Partial Class FrmUpdate
         'BackgroundWorker2
         '
         '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(144, 269)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(115, 23)
+        Me.Button2.TabIndex = 6
+        Me.Button2.Text = "Get Zip..."
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(12, 269)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(126, 23)
+        Me.Button3.TabIndex = 7
+        Me.Button3.Text = "Download Update"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(144, 298)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(115, 23)
+        Me.Button4.TabIndex = 8
+        Me.Button4.Text = "How to Get Update"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'FrmUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(411, 285)
+        Me.ClientSize = New System.Drawing.Size(271, 342)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button1)
@@ -124,4 +159,7 @@ Partial Class FrmUpdate
     Friend WithEvents Timer1 As Timer
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents BackgroundWorker2 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents Button4 As Button
 End Class
