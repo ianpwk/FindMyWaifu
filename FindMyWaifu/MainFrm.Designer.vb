@@ -22,28 +22,31 @@ Partial Class MainFrm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-    Me.components = New System.ComponentModel.Container()
-    Me.Panel1 = New System.Windows.Forms.Panel()
-    Me.Label3 = New System.Windows.Forms.Label()
-    Me.Chibis = New System.Windows.Forms.PictureBox()
-    Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-    Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-    Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
-    Me.Label1 = New System.Windows.Forms.Label()
-    Me.Button1 = New System.Windows.Forms.Button()
-    Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-    Me.Label2 = New System.Windows.Forms.Label()
-    Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
-    Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-    Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
-    Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-    Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-    Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-    Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainFrm))
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Chibis = New System.Windows.Forms.PictureBox()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSplitButton1 = New System.Windows.Forms.ToolStripSplitButton()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UpdateToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.DonateBtn = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripProgressBar1 = New System.Windows.Forms.ToolStripProgressBar()
         Me.Panel1.SuspendLayout()
         CType(Me.Chibis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
@@ -83,7 +86,7 @@ Partial Class MainFrm
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 369)
         Me.StatusStrip1.Name = "StatusStrip1"
         Me.StatusStrip1.Size = New System.Drawing.Size(395, 22)
@@ -141,7 +144,7 @@ Partial Class MainFrm
         'ToolStrip2
         '
         Me.ToolStrip2.BackColor = System.Drawing.SystemColors.Info
-        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4})
+        Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSplitButton1, Me.ToolStripSeparator4, Me.DonateBtn})
         Me.ToolStrip2.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.Size = New System.Drawing.Size(395, 25)
@@ -202,6 +205,21 @@ Partial Class MainFrm
         'BackgroundWorker1
         '
         '
+        'DonateBtn
+        '
+        Me.DonateBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
+        Me.DonateBtn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text
+        Me.DonateBtn.Image = CType(resources.GetObject("DonateBtn.Image"), System.Drawing.Image)
+        Me.DonateBtn.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.DonateBtn.Name = "DonateBtn"
+        Me.DonateBtn.Size = New System.Drawing.Size(49, 22)
+        Me.DonateBtn.Text = "Donate"
+        '
+        'ToolStripProgressBar1
+        '
+        Me.ToolStripProgressBar1.Name = "ToolStripProgressBar1"
+        Me.ToolStripProgressBar1.Size = New System.Drawing.Size(100, 16)
+        '
         'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -250,4 +268,6 @@ Partial Class MainFrm
   Friend WithEvents ProgressBar1 As ProgressBar
   Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
+    Friend WithEvents DonateBtn As ToolStripButton
+    Friend WithEvents ToolStripProgressBar1 As ToolStripProgressBar
 End Class

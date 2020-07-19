@@ -2,9 +2,8 @@
 
 Public Class SettingsFrm
 
-  ReadOnly create As New CreateFolder()
-  Dim dirTheme As String = create.appDataFMW & "\theme"
-  Dim dirChibi As String = create.appDataFMW & "\chibi"
+  Dim dirTheme As String = appDataFMW & "\theme"
+  Dim dirChibi As String = appDataFMW & "\chibi"
 
   Dim xsiColor As JObject
   Dim CusTheme As String
@@ -73,12 +72,12 @@ Public Class SettingsFrm
     errortheme = False
     errorchibi = False
 
-    If (Not System.IO.Directory.Exists(create.appDataFMW & "\theme")) Then
-      System.IO.Directory.CreateDirectory(create.appDataFMW & "\theme")
+    If (Not System.IO.Directory.Exists(appDataFMW & "\theme")) Then
+      System.IO.Directory.CreateDirectory(appDataFMW & "\theme")
     End If
 
-    If (Not System.IO.Directory.Exists(create.appDataFMW & "\chibi")) Then
-      System.IO.Directory.CreateDirectory(create.appDataFMW & "\chibi")
+    If (Not System.IO.Directory.Exists(appDataFMW & "\chibi")) Then
+      System.IO.Directory.CreateDirectory(appDataFMW & "\chibi")
     End If
 
     ComboTheme.DisplayMember = "Text"
@@ -209,16 +208,16 @@ Public Class SettingsFrm
 
 
   Private Sub fai_chibi_CheckedChanged(sender As Object, e As EventArgs) Handles fai_chibi.CheckedChanged
-        If def_chibi.Checked = True Or hap_chibi.Checked = True Then
-            def_chibi.Checked = False
-            hap_chibi.Checked = False
-            fai_chibi.Checked = True
-        End If
+    If def_chibi.Checked = True Or hap_chibi.Checked = True Then
+      def_chibi.Checked = False
+      hap_chibi.Checked = False
+      fai_chibi.Checked = True
+    End If
 
-        chbiPreview.Image = Set_fail
-    End Sub
+    chbiPreview.Image = Set_fail
+  End Sub
 
-    Sub saved()
+  Sub saved()
     If saveenabled < 0 Then
       BtnSave.Enabled = False
       BtnSaveExit.Enabled = False
@@ -379,11 +378,11 @@ Public Class SettingsFrm
   End Sub
 
   Private Sub OpenFThemeBtn_Click(sender As Object, e As EventArgs) Handles OpenFThemeBtn.Click
-    Process.Start(create.appDataFMW & "\theme")
+    Process.Start(appDataFMW & "\theme")
   End Sub
 
   Private Sub ChibiSearchFol_Click(sender As Object, e As EventArgs) Handles ChibiSearchFol.Click
-    Process.Start(create.appDataFMW & "\chibi")
+    Process.Start(appDataFMW & "\chibi")
   End Sub
 
   Private Sub ComboChibi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboChibi.SelectedIndexChanged
@@ -392,8 +391,7 @@ Public Class SettingsFrm
       CusChibi = ComboChibi.SelectedItem.ToString.Replace("Custom - ", "")
     End If
 
-    Dim foldata As New CreateFolder()
-    Dim folChibi As String = foldata.appDataFMW & "\chibi\"
+    Dim folChibi As String = appDataFMW & "\chibi\"
 
     If ComboChibi.SelectedItem = "Default" Then
       Set_Default = My.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
@@ -510,13 +508,13 @@ Public Class SettingsFrm
 
       If pathsave = ".jsns" Then
         Try
-          File.Copy(OpenFileDialog1.FileName.ToString, create.appDataFMW & "\_data\settings\backup.json", True)
+          File.Copy(OpenFileDialog1.FileName.ToString, appDataFMW & "\_data\settings\backup.json", True)
         Catch ex As Exception
-          File.Delete(create.appDataFMW & "\_data\settings\backup.json")
-          File.Copy(OpenFileDialog1.FileName.ToString, create.appDataFMW & "\_data\settings\backup.json")
+          File.Delete(appDataFMW & "\_data\settings\backup.json")
+          File.Copy(OpenFileDialog1.FileName.ToString, appDataFMW & "\_data\settings\backup.json")
         End Try
 
-        Dim ReadJson As String = File.ReadAllText(create.appDataFMW & "\_data\settings\backup.json")
+        Dim ReadJson As String = File.ReadAllText(appDataFMW & "\_data\settings\backup.json")
         Dim JsonObject As JObject = JObject.Parse(ReadJson.ToString)
 
         Dim CustomThemes As String = JsonObject.SelectToken("theme")
@@ -584,8 +582,8 @@ Public Class SettingsFrm
           End If
 
           If chibiNotFound = True Or themeNotFound = True Then
-            File.Delete(create.appDataFMW & "\_data\settings\backup.json")
-            File.WriteAllText(create.appDataFMW & "\_data\settings\backup.json", JsonObject.ToString)
+            File.Delete(appDataFMW & "\_data\settings\backup.json")
+            File.WriteAllText(appDataFMW & "\_data\settings\backup.json", JsonObject.ToString)
           End If
 
           My.Settings.Reset()
@@ -602,8 +600,8 @@ Public Class SettingsFrm
     Dim hasil As String = MessageBox.Show("Mereset setting akan mengembalikan ke setting default" & ControlChars.CrLf &
                         "Apakah ingin melanjutkan? (Reboot program diperlukan)", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
     If hasil = Windows.Forms.DialogResult.Yes Then
-      If File.Exists(create.appDataFMW & "\_data\settings\backup.json") Then
-        File.Delete(create.appDataFMW & "\_data\settings\backup.json")
+      If File.Exists(appDataFMW & "\_data\settings\backup.json") Then
+        File.Delete(appDataFMW & "\_data\settings\backup.json")
       End If
       My.Settings.Reset()
       MainFrm.RestartPaksa = True

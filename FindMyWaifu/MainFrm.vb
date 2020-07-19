@@ -25,6 +25,9 @@ Public Class MainFrm
   Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
     Dim osVer As Version = Environment.OSVersion.Version
     Try
+      ToolStripProgressBar1.Visible = True
+      ToolStripProgressBar1.Style = ProgressBarStyle.Marquee
+
       Dim xmlUpdate As New XmlTextReader(readXML)
 
       While xmlUpdate.Read()
@@ -62,6 +65,7 @@ Public Class MainFrm
       ToolStripStatusLabel2.ForeColor = Color.Red
       statusUpdate = 2
     Else
+      CacheUpdate()
       If majorOnline = My.Application.Info.Version.Major.ToString Then
         If bulidOnline = My.Application.Info.Version.Build.ToString Then
           If mirorOnline = My.Application.Info.Version.Minor.ToString Then
@@ -245,7 +249,23 @@ Public Class MainFrm
 
     Label3.Text = "Hai " + Names + ", senang berjumpa denganmu!!"
     Label1.Text = "Waifu " + Names + " adalah?"
+    ToolStripProgressBar1.Visible = False
+
     If osSupport = True Then
+      If File.Exists(appDataFMW & "\_data\settings\_update.json") Then
+        Dim getVersion As JObject = JObject.Parse(File.ReadAllText(appDataFMW & "\_data\settings\_update.json"))
+
+        newver = getVersion.SelectToken("version").ToString
+        desc = getVersion.SelectToken("description").ToString
+        dates = getVersion.SelectToken("date").ToString
+
+        Dim versions As JObject = JObject.Parse(getVersion.SelectToken("version_detalis").ToString)
+        majorOnline = versions.SelectToken("major").ToString
+        mirorOnline = versions.SelectToken("miror").ToString
+        bulidOnline = versions.SelectToken("bulid").ToString
+        revisionOnline = versions.SelectToken("revision").ToString
+      End If
+
       If InternetGetConnectedState(Out, 0) = True Then
         If My.Settings.AutoUpdate = True Then
           ToolStripStatusLabel2.ForeColor = Color.Green
@@ -308,8 +328,7 @@ Public Class MainFrm
   End Sub
 
   Public Sub ChibiLoad()
-    Dim foldata As New CreateFolder()
-    Dim folChibi As String = foldata.appDataFMW & "\chibi\"
+    Dim folChibi As String = appDataFMW & "\chibi\"
 
     If My.Settings.Chibi = "Default" Then
       Default_Chibi = My.Resources.Kasumi_Toyama_Power_chibi_YfxFAe
@@ -343,10 +362,8 @@ Public Class MainFrm
     ElseIf ProgressBar1.Value = "100" Then
       Timer1.Enabled = False
 
-      Dim img As New CreateFolder()
-
       If Not imgWaifu = "" Then
-        Dim imgFMW As String = img.appDataFMW & "\_data\waifu\" & NumberRnd.ToString() & "\" & imgWaifu
+        Dim imgFMW As String = appDataFMW & "\_data\waifu\" & NumberRnd.ToString() & "\" & imgWaifu
 
         If File.Exists(imgFMW) Then
           ImgView.PictureBox1.Image = Image.FromFile(imgFMW)

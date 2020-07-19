@@ -1,14 +1,9 @@
 ﻿Imports Newtonsoft.Json, Newtonsoft.Json.Linq
 Public Class SettingsSaver
   Dim setting As New JArray
-  Dim save As New CreateFolder()
-  Dim savejson As String = save.appDataFMW & "\_data\settings\backup.json"
+  Dim savejson As String = appDataFMW & "\_data\settings\backup.json"
 
   Public Sub Settings()
-    If (Not System.IO.Directory.Exists(save.appDataFMW & "\_data\settings")) Then
-      System.IO.Directory.CreateDirectory(save.appDataFMW & "\_data\settings")
-    End If
-
     If System.IO.File.Exists(savejson) Then
       System.IO.File.Delete(savejson)
     End If

@@ -7,7 +7,6 @@ Imports System.IO
 
 Public Class EditDatabase
 
-  Dim img As New CreateFolder()
   Dim ID As String
   Dim NameWaifu As String
   Dim imgFMW As String
@@ -145,7 +144,7 @@ Public Class EditDatabase
       End If
 
       If Not imgwaifu = "" Then
-        imgFMW = img.appDataFMW & "\_data\waifu\" & ID & "\" & imgwaifu
+        imgFMW = appDataFMW & "\_data\waifu\" & ID & "\" & imgwaifu
 
         If File.Exists(imgFMW) Then
           Button3.Enabled = True

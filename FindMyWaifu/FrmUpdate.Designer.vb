@@ -35,6 +35,8 @@ Partial Class FrmUpdate
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.DateLbl = New System.Windows.Forms.Label()
+        Me.HelpBtn = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Label1
@@ -49,7 +51,7 @@ Partial Class FrmUpdate
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(9, 35)
+        Me.Label2.Location = New System.Drawing.Point(9, 26)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(66, 13)
         Me.Label2.TabIndex = 1
@@ -84,10 +86,10 @@ Partial Class FrmUpdate
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 79)
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 73)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(27, 9)
+        Me.Label3.Size = New System.Drawing.Size(32, 12)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Label3"
         '
@@ -125,24 +127,45 @@ Partial Class FrmUpdate
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(115, 23)
         Me.Button4.TabIndex = 8
-        Me.Button4.Text = "How to Get Update"
+        Me.Button4.Text = "Install Update"
         Me.Button4.UseVisualStyleBackColor = True
+        '
+        'DateLbl
+        '
+        Me.DateLbl.AutoSize = True
+        Me.DateLbl.Location = New System.Drawing.Point(9, 43)
+        Me.DateLbl.Name = "DateLbl"
+        Me.DateLbl.Size = New System.Drawing.Size(73, 13)
+        Me.DateLbl.TabIndex = 1
+        Me.DateLbl.Text = "Latest Check:"
+        '
+        'HelpBtn
+        '
+        Me.HelpBtn.Location = New System.Drawing.Point(235, 4)
+        Me.HelpBtn.Name = "HelpBtn"
+        Me.HelpBtn.Size = New System.Drawing.Size(29, 23)
+        Me.HelpBtn.TabIndex = 9
+        Me.HelpBtn.Text = "?"
+        Me.HelpBtn.UseVisualStyleBackColor = True
         '
         'FrmUpdate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(271, 342)
+        Me.Controls.Add(Me.HelpBtn)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.RichTextBox1)
+        Me.Controls.Add(Me.DateLbl)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.Label3)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
+        Me.HelpButton = True
         Me.Name = "FrmUpdate"
         Me.Text = "Update"
         Me.ResumeLayout(False)
@@ -162,4 +185,6 @@ Partial Class FrmUpdate
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
     Friend WithEvents Button4 As Button
+    Friend WithEvents DateLbl As Label
+    Friend WithEvents HelpBtn As Button
 End Class

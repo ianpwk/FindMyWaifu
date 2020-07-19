@@ -1,8 +1,7 @@
 ﻿Imports Newtonsoft.Json, Newtonsoft.Json.Linq
 Public Class ThemePreview
-  Dim DataFolder As New CreateFolder
   Dim CusTheme As String = My.Settings.Theme.Replace("Custom - ", "")
-  Public FindJsons As String = DataFolder.appDataFMW & "\theme\" & CusTheme & ".jsnx"
+  Public FindJsons As String = appDataFMW & "\theme\" & CusTheme & ".jsnx"
 
   Dim ReadJson As String
   Dim xsiColorString As String
@@ -55,7 +54,7 @@ Public Class ThemePreview
   Sub CheckChibi()
     If My.Settings.CustomChibi = True Then
       Dim ChibiFolder = My.Settings.Chibi.Replace("Custom - ", "")
-      Dim folder = DataFolder.appDataFMW & "\chibi\" & ChibiFolder
+      Dim folder = appDataFMW & "\chibi\" & ChibiFolder
 
       If System.IO.Directory.Exists(folder) Then
         If System.IO.File.Exists(folder & "set-default.png") And

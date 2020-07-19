@@ -1,4 +1,4 @@
-﻿Imports System.Data.OleDb
+﻿Imports System.Data.OleDb, Newtonsoft.Json, Newtonsoft.Json.Linq
 Module Connection
   'Mulai
   Public Conn As OleDbConnection
@@ -11,12 +11,14 @@ Module Connection
   Public updateversion As Boolean
   Public statusUpdate As Integer
   Public osSupport As Boolean
+  Public currentEnabled As Boolean
   Public NameModule As String
 
   Public majorOnline, mirorOnline, bulidOnline, revisionOnline As String
   Public ver As String = Application.ProductVersion.ToString
   Public newver As String = ""
   Public desc As String = ""
+  Public dates As String
 
   Sub Koneksi()
 
@@ -41,5 +43,28 @@ Module Connection
     'Else
     FrmUpdate.ShowDialog()
     'End If
+  End Sub
+
+  Public Sub CacheUpdate()
+    Dim Chaches As String = appDataFMW & "\_data\settings\_update.json"
+
+    If System.IO.File.Exists(Chaches) Then
+      System.IO.File.Delete(Chaches)
+    End If
+
+    dates = Date.Today
+    Dim updateData As JObject = New JObject(
+      New JProperty("date", dates.ToString),
+      New JProperty("version", newver),
+      New JProperty("version_detalis", New JObject(
+        New JProperty("major", majorOnline),
+        New JProperty("miror", mirorOnline),
+        New JProperty("bulid", bulidOnline),
+        New JProperty("revision", revisionOnline)
+        )),
+      New JProperty("description", desc)
+      )
+
+    System.IO.File.WriteAllText(Chaches, updateData.ToString)
   End Sub
 End Module

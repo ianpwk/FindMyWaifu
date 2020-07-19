@@ -2,7 +2,6 @@
 Public Class FormWaifu
   Public idedit As Integer = 0
 
-  Dim img As New CreateFolder()
   Dim imgFMW As String
   Private Sub FormWaifu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
     Try
@@ -33,7 +32,7 @@ Public Class FormWaifu
     End Try
 
     If Not TextBox2.Text = "" Then
-      imgFMW = img.appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text
+      imgFMW = appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text
       If File.Exists(imgFMW) Then
         Button2.Enabled = True
       Else
@@ -56,12 +55,12 @@ Public Class FormWaifu
       cmd2.ExecuteNonQuery()
 
       If Not TextBox2.Text = "" Then
-        If Not Directory.Exists(img.appDataFMW & "\_data\waifu\" & idedit) Then
-          Directory.CreateDirectory(img.appDataFMW & "\_data\waifu\" & idedit)
+        If Not Directory.Exists(appDataFMW & "\_data\waifu\" & idedit) Then
+          Directory.CreateDirectory(appDataFMW & "\_data\waifu\" & idedit)
         End If
 
-        If Not File.Exists(img.appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text) Then
-          File.Copy(imgFMW, img.appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text)
+        If Not File.Exists(appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text) Then
+          File.Copy(imgFMW, appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text)
         End If
       End If
 
@@ -84,12 +83,12 @@ Public Class FormWaifu
       cmd2.ExecuteNonQuery()
 
       If Not TextBox2.Text = "" Then
-        If Not Directory.Exists(img.appDataFMW & "\_data\waifu\" & idedit) Then
-          Directory.CreateDirectory(img.appDataFMW & "\_data\waifu\" & idedit)
+        If Not Directory.Exists(appDataFMW & "\_data\waifu\" & idedit) Then
+          Directory.CreateDirectory(appDataFMW & "\_data\waifu\" & idedit)
         End If
 
-        If Not File.Exists(img.appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text) Then
-          File.Copy(imgFMW, img.appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text)
+        If Not File.Exists(appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text) Then
+          File.Copy(imgFMW, appDataFMW & "\_data\waifu\" & idedit & "\" & TextBox2.Text)
         End If
       End If
 

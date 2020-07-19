@@ -2,8 +2,7 @@
 Imports Newtonsoft.Json, Newtonsoft.Json.Linq
 Imports System.IO
 Public Class FormSplash
-  Dim DataFolder As New CreateFolder
-  Dim savejson As String = DataFolder.appDataFMW & "\_data\settings\backup.json"
+  Dim savejson As String = appDataFMW & "\_data\settings\backup.json"
 
   Dim ReadJson As String
   Dim xsiColorString As String
@@ -26,22 +25,30 @@ Public Class FormSplash
       openfile = My.Application.CommandLineArgs(0).ToString
     End If
 
-    Dim create As New CreateFolder()
-    Call create.CreateFolderFMW()
+    Call CreateFolderFMW()
 
-    If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data")) Then
-      System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data")
+    If (Not System.IO.Directory.Exists(appDataFMW & "\_data")) Then
+      System.IO.Directory.CreateDirectory(appDataFMW & "\_data")
 
-      IO.File.SetAttributes(create.appDataFMW & "\_data", IO.FileAttributes.Hidden Or
+      IO.File.SetAttributes(appDataFMW & "\_data", IO.FileAttributes.Hidden Or
                             IO.FileAttributes.System)
     End If
 
-    If Not Directory.Exists(create.appDataFMW & "\theme") Then
-      Directory.CreateDirectory(create.appDataFMW & "\theme")
+    If Not Directory.Exists(appDataFMW & "\theme") Then
+      Directory.CreateDirectory(appDataFMW & "\theme")
     End If
 
-    If Not Directory.Exists(create.appDataFMW & "\chibi") Then
-      Directory.CreateDirectory(create.appDataFMW & "\chibi")
+    If Not Directory.Exists(appDataFMW & "\chibi") Then
+      Directory.CreateDirectory(appDataFMW & "\chibi")
+    End If
+
+    If (Not System.IO.Directory.Exists(appDataFMW & "\_data\settings")) Then
+      System.IO.Directory.CreateDirectory(appDataFMW & "\_data\settings")
+    End If
+
+
+    If (Not System.IO.Directory.Exists(appDataFMW & "\_data\updates")) Then
+      System.IO.Directory.CreateDirectory(appDataFMW & "\_data\updates")
     End If
 
     If Process.GetProcessesByName(Process.GetCurrentProcess.ProcessName).Length > 1 Then
@@ -50,10 +57,9 @@ Public Class FormSplash
         Dim settheme As Boolean = False
 
         If Not openfile = "" Then
-          Dim theme As New CreateFolder()
           Dim checks As String = Path.GetExtension(openfile.ToString)
           Dim checkfile As String = Path.GetFileName(openfile.ToString)
-          Dim checksource As String = theme.appDataFMW & "\theme\" & checkfile
+          Dim checksource As String = appDataFMW & "\theme\" & checkfile
           If checks = ".jsnx" Then
             If File.Exists(checksource) Then
               Dim duplikat As String = MessageBox.Show("Theme yang ditambahkan sudah ditambahkan sebelumnya" & ControlChars.CrLf &
@@ -115,10 +121,9 @@ Public Class FormSplash
       Dim FileExist As New ThemePreview
 
       If Not openfile = "" Then
-        Dim theme As New CreateFolder()
         Dim checks As String = Path.GetExtension(openfile.ToString)
         Dim checkfile As String = Path.GetFileName(openfile.ToString)
-        Dim checksource As String = theme.appDataFMW & "\theme\" & checkfile
+        Dim checksource As String = appDataFMW & "\theme\" & checkfile
         If checks = ".jsnx" Then
           If File.Exists(checksource) Then
             Dim duplikat As String = MessageBox.Show("Theme yang ditambahkan sudah ditambahkan sebelumnya" & ControlChars.CrLf &

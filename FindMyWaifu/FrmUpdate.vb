@@ -8,8 +8,7 @@ Public Class FrmUpdate
   Dim DataDownload As String = "https://github.com/yansaan/FindMyWaifu/releases/latest/download/FindMyWaifuPortable.zip" 'Files Update
   Dim Out As Integer
   Dim updates As Integer = 0
-  Dim fol As New CreateFolder()
-  Dim filedownload As String = fol.appDataFMW & "\_data\updates\update.zip" 'Location
+  Dim filedownload As String = appDataFMW & "\_data\updates\update.zip" 'Location
   Dim readXml As String = "https://onedrive.live.com/download?cid=9675D76E084032AB&resid=9675D76E084032AB%21815&authkey=APPoahifAoJiGZo" 'Update Checker
   Dim Curent As String
 
@@ -18,6 +17,14 @@ Public Class FrmUpdate
   Dim security As Boolean = False
 
   Private Declare Function InternetGetConnectedState Lib "wininet" (ByRef conn As Long, ByVal val As Long) As Boolean
+
+  Sub checking()
+    Label3.Text = "Plase Wait..."
+    ProgressBar1.Style = ProgressBarStyle.Marquee
+    Button1.Enabled = False
+
+    BackgroundWorker2.RunWorkerAsync()
+  End Sub
 
   Private Sub BackgroundWorker2_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker2.DoWork
     Dim osVer As Version = Environment.OSVersion.Version
@@ -55,154 +62,173 @@ Public Class FrmUpdate
   Public Sub CheckForUpdates(ByVal cancelled As Boolean)
     If cancelled Then
       ProgressBar1.Style = ProgressBarStyle.Blocks
-      Label3.Text = ""
-        updates = 0
-      RichTextBox1.Text = "Internet sedang gangguan, kilk Retry untuk menyambung ulang"
-      Button1.Text = "Retry"
+      updates = 0
+      Label3.Text = "Internet sedang gangguan, kilk Check Updates untuk menyambung ulang"
+      Button1.Text = "Check Updates"
     Else
       ProgressBar1.Style = ProgressBarStyle.Blocks
-      Label2.Text = "Update Ver.: " + newver
-
-      updates = 1
-      Button1.Text = "Update"
-
-      If majorOnline = My.Application.Info.Version.Major.ToString Then
-        If bulidOnline = My.Application.Info.Version.Build.ToString Then
-          If mirorOnline = My.Application.Info.Version.Minor.ToString Then
-            If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
-              NoUpdate()
-            Else
-              thisUpdate()
-            End If
-          ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
-            NoUpdate()
-          Else
-            thisUpdate()
-          End If
-        ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
-          NoUpdate()
-        Else
-          thisUpdate()
-        End If
-      ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
-        NoUpdate()
-      Else
-        thisUpdate()
-      End If
-    End If
-
-  End Sub
-
-  Sub NoUpdate()
-    Label3.Text = "Sudah Terupdate"
-    RichTextBox1.Text = "Versi anda sudah yang terbaru"
-    Button1.Enabled = False
-
-    updateversion = False
-    statusUpdate = 1
-
-    MessageBox.Show("Versi Sudah diperbaharui", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    Me.Close()
-  End Sub
-
-  Sub thisUpdate()
-    RichTextBox1.Text = desc
-    Label3.Text = "Update Avaiable"
-  End Sub
-
-  Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    Label2.Text = "Update Ver.: 0"
-    Label1.Text = "Curent ver.: " + ver
-
-    Select Case osSupport
-      Case False 'When OS not Supported
-        UpdateNotSupported()
-      Case True
-        Select Case statusUpdate
-          Case 1 'When Update is Current
-
-          Case 2 'When Internet not Connect
-
-          Case 3 'When Update Avaiable
-
-        End Select
-    End Select
-        If InternetGetConnectedState(Out, 0) = True Then
-      Try
-        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
-      Catch ex As Exception
-        security = True
-      End Try
-      Dim create As New CreateFolder()
-
-      If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data\updates")) Then
-        System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data\updates")
-      End If
-
-      RichTextBox1.ReadOnly = True
-
-      If majorOnline = "" And bulidOnline = "" And bulidOnline = "" And revisionOnline = "" Then
-        Label2.Text = "Update Ver.: 0"
-        Label3.Text = "Plase Wait..."
-        ProgressBar1.Style = ProgressBarStyle.Marquee
-        Button1.Enabled = False
-
-        BackgroundWorker2.RunWorkerAsync()
-      Else
-        UpdatefromUtama()
-      End If
-    Else
-
+      CheckThisUpdate()
+      'Label2.Text = "Update Ver.: " + newver
     End If
   End Sub
 
-  Private Sub UpdateNotSupported()
-
-  End Sub
-
-  Sub UpdatefromUtama()
-    Label2.Text = "Update Ver.: " + newver
-
-    updates = 1
-    Button1.Text = "Update"
+  Sub CheckThisUpdate()
+    Label2.Text = "Update Ver.: " & If(newver = "", "0", newver)
+    daysUpdate()
 
     If majorOnline = My.Application.Info.Version.Major.ToString Then
       If bulidOnline = My.Application.Info.Version.Build.ToString Then
         If mirorOnline = My.Application.Info.Version.Minor.ToString Then
           If revisionOnline <= My.Application.Info.Version.Revision.ToString Then
-            NoUpdate()
+            CurrentUpdate()
           Else
             thisUpdate()
           End If
         ElseIf mirorOnline < My.Application.Info.Version.Minor.ToString Then
-          NoUpdate()
+          CurrentUpdate()
         Else
           thisUpdate()
         End If
       ElseIf bulidOnline < My.Application.Info.Version.Build.ToString Then
-        NoUpdate()
+        CurrentUpdate()
       Else
         thisUpdate()
       End If
     ElseIf majorOnline < My.Application.Info.Version.Major.ToString Then
-      NoUpdate()
+      CurrentUpdate()
     Else
       thisUpdate()
     End If
   End Sub
 
+  Sub thisUpdate()
+    updates = 1
+    RichTextBox1.Text = desc
+    Label3.Text = "Update Avaiable"
+    Button1.Text = "Update now"
+  End Sub
+
+  Private Sub FrmUpdate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Label2.Text = "Update Ver.: " & If(newver = "", "0", newver)
+    Label1.Text = "Curent ver.: " + ver
+
+    If My.Settings.AutoUpdate = True Then
+      daysUpdate()
+
+      Select Case osSupport
+        Case False 'When OS not Supported
+          UpdateNotSupported()
+        Case True
+          Select Case statusUpdate
+            Case 1 'When Update is Current
+              CurrentUpdate()
+            Case 2 'When Internet not Connect
+              Label3.Text = "Internet not Connect"
+              CheckThisUpdate()
+            Case 3 'When Update Avaiable
+              thisUpdate()
+          End Select
+      End Select
+    Else
+      checking()
+    End If
+
+    '    If InternetGetConnectedState(Out, 0) = True Then
+    '  Try
+    '    ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+    '  Catch ex As Exception
+    '    security = True
+    '  End Try
+    '  Dim create As New CreateFolder()
+
+    '  If (Not System.IO.Directory.Exists(create.appDataFMW & "\_data\updates")) Then
+    '    System.IO.Directory.CreateDirectory(create.appDataFMW & "\_data\updates")
+    '  End If
+
+    '  RichTextBox1.ReadOnly = True
+
+    '  If majorOnline = "" And bulidOnline = "" And bulidOnline = "" And revisionOnline = "" Then
+    '    Label2.Text = "Update Ver.: 0"
+    '    Label3.Text = "Plase Wait..."
+    '    ProgressBar1.Style = ProgressBarStyle.Marquee
+    '    Button1.Enabled = False
+
+    '    BackgroundWorker2.RunWorkerAsync()
+    '  Else
+    '    UpdatefromUtama()
+    '  End If
+    'Else
+
+    'End If
+  End Sub
+
+  Private Sub daysUpdate()
+    Button1.Enabled = True
+    Try
+      Dim dateToday As Date = Today
+      Dim dateLatest As Date = Date.Parse(dates)
+
+      Dim dayTotal As Integer = (dateToday - dateLatest).TotalDays
+      Dim titleDay As String = " Days Ago"
+
+      Select Case dayTotal
+        Case >= 7
+          dayTotal = Math.Floor(dayTotal / 7)
+          titleDay = " Week Ago"
+          Select Case dayTotal
+            Case >= 4
+              dayTotal = Math.Floor(dayTotal / 4)
+              titleDay = " Mouth Ago"
+
+              Select Case dayTotal
+                Case >= 12
+                  Math.Floor(dayTotal / 12)
+                  titleDay = " Year Ago"
+              End Select
+          End Select
+
+        Case 0
+          titleDay = "Today"
+      End Select
+      DateLbl.Text = "Latest Check:" & If(dayTotal = 0, titleDay, dayTotal.ToString & titleDay)
+    Catch ex As Exception
+      DateLbl.Text = ""
+    End Try
+  End Sub
+
+  Private Sub CurrentUpdate()
+    RichTextBox1.Text = "This is latest Version"
+    Button1.Text = "Check Updates"
+
+    updates = 0
+  End Sub
+
+  Private Sub UpdateNotSupported()
+    Label3.Text = "Your OS not support for Automatic updates"
+    RichTextBox1.Text = "This is latest Version"
+    Button1.Text = "Check Updates"
+    Button1.Enabled = False
+
+    updates = -1
+  End Sub
+
   Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
     Dim fileDetail = My.Computer.FileSystem.GetFileInfo(filedownload)
-    If updates = -1 Then
-      Process.Start("https://github.com/yansaan/FindMyWaifu/releases/latest/")
-    ElseIf updates = 0 Then
-      Label2.Text = "Update Ver.: 0"
-      Label3.Text = "Plase Wait..."
-      ProgressBar1.Style = ProgressBarStyle.Marquee
-      Button1.Enabled = False
-
-      BackgroundWorker2.RunWorkerAsync()
+    If updates = 0 Then
+      If InternetGetConnectedState(Out, 0) = True Then
+        checking()
+      Else
+        MessageBox.Show("Pastikan internet anda terkoneksi", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+      End If
     ElseIf updates = 1 Then
+      Try
+        ServicePointManager.SecurityProtocol = CType(3072, SecurityProtocolType)
+      Catch ex As Exception
+        If osSupport = True Then
+          MsgBox("Update disabled because not install .NET 4.5", vbExclamation, "Error")
+          security = True
+        End If
+      End Try
 
       If security = False Then
         If Not File.Exists(filedownload) Then
@@ -400,5 +426,13 @@ Public Class FrmUpdate
         e.Cancel = True
       End If
     End If
+  End Sub
+
+  Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
+  End Sub
+
+  Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Process.Start("https://github.com/yansaan/FindMyWaifu/releases/latest/")
   End Sub
 End Class
